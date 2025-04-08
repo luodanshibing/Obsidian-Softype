@@ -1,34 +1,1372 @@
-body {
-	--radius-s: 0px;
-	--radius-m: 0px;
-	--radius-l: 0px;
-	--input-radius: 0px;
-	--tab-radius-active: 0px;
-	--checkbox-radius: 0px;
-	--toggle-radius: 0px;
-	--toggle-thumb-radius: 0px;
-	--slider-thumb-radius: 0px;
+/* ---------------------------------------- Style settings 设置项 ---------------------------------------- */
+/* ---------------------------------------- Style settings 设置项 ---------------------------------------- */
+/* ---------------------------------------- Style settings 设置项 ---------------------------------------- */
+
+/* @settings
+name: Softype
+id: obsidian-Softype-theme
+settings:
+		- 
+			id: about
+			title: 关于
+			description: "一个专注于内容的极简主题，主题名称寓意为——舒舒服服的打字"
+			type: heading
+			level: 2
+		-
+			id: style-layout
+			title: 布局
+			description: "布局风格，锐棱还是圆润"
+			type: heading
+			level: 2
+		-
+			id: style-color
+			title: 预设
+			description: "色彩预设，纯净还是淡彩"
+			type: heading
+			level: 2
+		-
+			id: style-custom
+			title: 微调
+			description: "完全自定义每个细节"
+			type: heading
+			level: 2
+*/
+
+
+/* ---------------------------------------- 定义全局变量 ---------------------------------------- */
+/* ---------------------------------------- 定义全局变量 ---------------------------------------- */
+/* ---------------------------------------- 定义全局变量 ---------------------------------------- */
+
+:root {
+	/* 精确控制特殊字体 */
+	--font-family-1: 微软雅黑;
+	--font-family-2: 黑体;
+	--font-family-3: 宋体;
+	--font-family-4: 仿宋;
+	--font-family-5: 楷体;
+	/* 标题字体 */
+	--font-header: var(--font-family-1);
+	/* 强调字体 */
+	--font-strong: var(--font-family-1);
+	/* 标签字体 */
+	--font-tag: var(--font-family-2);
+
+	/* 精确控制字体大小 */
+	--font-header-size-1: 2.4rem;
+	--font-header-size-2: 1.8rem;
+	--font-header-size-3: 1.5rem;
+	--font-header-size-4: 1.4rem;
+	--font-header-size-5: 1.3rem;
+	--font-header-size-6: 1.2rem;
+	--font-strong-size: 1.0rem;
+
+	/* 精确控制色彩 */
+	--theme-color: #8a5cf5;
+	/*obsidian默认主题色*/
+	--rainbow-color-0: #E57373;
+	--rainbow-color-1: #F06292;
+	--rainbow-color-2: #BA68C8;
+	--rainbow-color-3: #9575CD;
+	--rainbow-color-4: #7986CB;
+	--rainbow-color-5: #64B5F6;
+	--rainbow-color-6: #4DD0E1;
+	--rainbow-color-7: #4DB6AC;
+	--rainbow-color-8: #81C784;
+	--rainbow-color-9: #DCE775;
+	--rainbow-color-A: #FFD54F;
+	--rainbow-color-B: #FFB74D;
+	--rainbow-color-C: #FF8A65;
+	--rainbow-color-D: #A1887F;
+	--rainbow-color-E: #E0E0E0;
+	--rainbow-color-F: #90A4AE;
+
+	/* 文件列表图标颜色变量传递 */
+	--Fold0: var(--rainbow-color-0);
+	--Fold1: var(--rainbow-color-1);
+	--Fold2: var(--rainbow-color-2);
+	--Fold3: var(--rainbow-color-3);
+	--Fold4: var(--rainbow-color-4);
+	--Fold5: var(--rainbow-color-5);
+	--Fold6: var(--rainbow-color-6);
+	--Fold7: var(--rainbow-color-7);
+	--Fold8: var(--rainbow-color-8);
+	--Fold9: var(--rainbow-color-9);
+	--FoldA: var(--rainbow-color-A);
+	--FoldB: var(--rainbow-color-B);
+	--FoldC: var(--rainbow-color-C);
+	--FoldD: var(--rainbow-color-D);
+	--FoldE: var(--rainbow-color-E);
+	--FoldF: var(--rainbow-color-F);
+
+	/* 有序/无序列表图标颜色变量传递 */
+	--list-color-0: var(--rainbow-color-0);
+	--list-color-1: var(--rainbow-color-1);
+	--list-color-2: var(--rainbow-color-2);
+	--list-color-3: var(--rainbow-color-3);
+	--list-color-4: var(--rainbow-color-4);
+	--list-color-5: var(--rainbow-color-5);
+	--list-color-6: var(--rainbow-color-6);
+	--list-color-7: var(--rainbow-color-7);
+	--list-color-8: var(--rainbow-color-8);
+	--list-color-9: var(--rainbow-color-9);
+	--list-color-A: var(--rainbow-color-A);
+	--list-color-B: var(--rainbow-color-B);
+	--list-color-C: var(--rainbow-color-C);
+	--list-color-D: var(--rainbow-color-D);
+	--list-color-E: var(--rainbow-color-E);
+	--list-color-F: var(--rainbow-color-F);
+
+	/* tag背景颜色变量传递 */
+	--tag-font-color: white;
+	/* tag字体颜色 */
+	--tag-background-color-0: var(--rainbow-color-0);
+	--tag-background-color-1: var(--rainbow-color-1);
+	--tag-background-color-2: var(--rainbow-color-2);
+	--tag-background-color-3: var(--rainbow-color-3);
+	--tag-background-color-4: var(--rainbow-color-4);
+	--tag-background-color-5: var(--rainbow-color-5);
+	--tag-background-color-6: var(--rainbow-color-6);
+	--tag-background-color-7: var(--rainbow-color-7);
+	--tag-background-color-8: var(--rainbow-color-8);
+	--tag-background-color-9: var(--rainbow-color-9);
+	--tag-background-color-A: var(--rainbow-color-A);
+	--tag-background-color-B: var(--rainbow-color-B);
+	--tag-background-color-C: var(--rainbow-color-C);
+	--tag-background-color-D: var(--rainbow-color-D);
+	--tag-background-color-E: var(--rainbow-color-E);
+	--tag-background-color-F: var(--rainbow-color-F);
 }
 
-.workspace-tab-header.is-active::before, .workspace-tab-header.is-active::after {
+
+/* ---------------------------------------- 自定义页面宽度 ---------------------------------------- */
+/* ---------------------------------------- 自定义页面宽度 ---------------------------------------- */
+/* ---------------------------------------- 自定义页面宽度 ---------------------------------------- */
+
+/* 默认页面宽度 */
+body {
+	--file-line-width: 60rem;
+}
+
+/* 通过在yaml区声明CSS类来指定页面宽度 */
+body .width-45 {
+	--file-line-width: 45rem;
+}
+
+body .width-50 {
+	--file-line-width: 50rem;
+}
+
+body .width-55 {
+	--file-line-width: 55rem;
+}
+
+body .width-60 {
+	--file-line-width: 60rem;
+}
+
+body .width-65 {
+	--file-line-width: 65rem;
+}
+
+body .width-70 {
+	--file-line-width: 70rem;
+}
+
+body .width-75 {
+	--file-line-width: 75rem;
+}
+
+body .width-80 {
+	--file-line-width: 80rem;
+}
+
+body .width-85 {
+	--file-line-width: 85rem;
+}
+
+body .width-90 {
+	--file-line-width: 90rem;
+}
+
+body .width-95 {
+	--file-line-width: 95rem;
+}
+
+body .width-100 {
+	--file-line-width: 100rem;
+}
+
+
+/* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
+/* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
+/* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
+
+/* 通过声明CSS类来自定义banner样式 */ 
+.header-image {
+	width: 100%;
+	/* 宽度占满容器 */
+	height: 250px;
+	/* 容器高度固定 */
+	background-size: cover;
+	/* 背景图片填充整个容器 */
+	background-position: center;
+	/* 背景图片居中显示 */
+	background-repeat: no-repeat;
+	/* 背景图片不重复 */
+	position: relative;
+	/* 相对定位，以便在图片上添加其他元素 */
+	border-radius: 8px;
+	/* 图片添加圆角 */
+	overflow: hidden;
+	/* 确保背景图片不会超出圆角边界 */
+}
+
+
+/* ---------------------------------------- 自定义嵌入样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义嵌入样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义嵌入样式 ---------------------------------------- */
+
+/* 隐藏嵌入的标题 */
+.embed-title {
 	display: none;
 }
 
-svg * {
-	stroke-linecap: square;
-	stroke-linejoin: miter;
-	rx: 0;
-	ry: 0;
+/* 隐藏默认的链接符号 */
+.markdown-preview-view .markdown-embed-link {
+	display: none;
 }
 
-.menu {
-	padding: var(--size-2-1);
+/* 当鼠标悬浮时显示链接符号 */
+.markdown-preview-view .markdown-embed:hover .markdown-embed-link {
+	display: inline;
+	opacity: 0.5;
+	transition: opacity 0.3s ease;
 }
 
-.menu-item {
-	padding: var(--size-4-1) var(--size-4-2);
+/* 鼠标离开时隐藏链接符号 */
+.markdown-preview-view .markdown-embed .markdown-embed-link:hover {
+	opacity: 1;
 }
 
-.menu-separator {
-	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+/* 块嵌入不缩进，无左侧标志 */
+.markdown-embed {
+	padding: 12px 0 12px 12px;
+	border-left: none;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
 }
+/*此处是为了嵌入块两侧对称，嵌入块右侧有东西无法去掉，手动设置数值配平了，蠢透了*/
+
+
+/* ---------------------------------------- 自定义界面样式细节 ---------------------------------------- */
+/* ---------------------------------------- 自定义界面样式细节 ---------------------------------------- */
+/* ---------------------------------------- 自定义界面样式细节 ---------------------------------------- */
+
+/* 滚动条隐藏,悬浮时显示 */
+::-webkit-scrollbar-thumb {
+	visibility: hidden;
+}
+
+::-webkit-scrollbar:hover {
+	visibility: initial;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	visibility: initial;
+}
+
+/* 阅读模式下隐藏属性 */
+.metadata-container {
+	display: none !important;
+}
+
+/* 标签页固定按钮隐藏 */
+.workspace-tab-header-status-icon.mod-pinned {
+	display: none;
+	pointer-events: none;
+}
+
+/* 标签页关闭按钮隐藏 */
+.workspace-tab-header-inner-close-button {
+	display: none !important;
+}
+
+/* 文件列表标题栏图标左对齐 */
+.nav-buttons-container {
+	display: flex;
+	justify-content: flex-start;
+}
+
+/* recent files 列表左对齐 */
+.recent-files-title {
+	padding-left: 0;
+}
+
+/* calendar 隐藏年份指示器 */
+.year.svelte-1vwr9dd {
+	display: none;
+}
+
+/* calendar 隐藏标题等级指示器 */
+.title.svelte-1vwr9dd::after {
+	display: none;
+}
+
+/* calendar 隐藏导航栏指示器 */
+/* #calendar-container .nav.svelte-1vwr9dd {display: none;}  */
+/* calendar 缩小容器左侧空白 */
+#calendar-container.container.svelte-pcimu8 { padding-left: 0; }
+/* calendar 给周数添加主题色 */
+#calendar-container .week-num.svelte-egt0yd {
+	color: var(--theme-color);
+}
+
+
+/* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
+
+/* 预览和编辑模式下居中附件 */
+img,
+video {
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-content>* {
+	margin: auto !important;
+}
+
+/* 双模式添加图片圆角效果*/
+.markdown-source-view img,
+.markdown-preview-view img {
+	border-radius: 8px;
+}
+
+/*预览模式添加视频圆角效果*/
+.markdown-preview-view video {
+	border-radius: 8px;
+}
+
+/*预览模式添加图片圆角*/
+/* 将图片渲染为圆形以制作头像效果：通过在yaml区添加 cssclasses: rounded-image 来使得页面内图片都为圆形 */
+.rounded-image img {
+	border-radius: 50%;
+}
+
+
+/* ---------------------------------------- 自定义表格样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义表格样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义表格样式 ---------------------------------------- */
+
+/* 表格居中显示 */
+.markdown-reading-view table {
+	margin: 0 auto;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper {
+	margin: 0 auto;
+}
+
+/* 表格全宽显示 */
+.markdown-rendered table {
+	width: 100%;
+}
+
+/* 隐藏表格边线 */
+.markdown-preview-view table th,
+.markdown-preview-view table td {
+	border: none;
+}
+
+/* 明亮主题下设置表格样式-单线样式 */
+/* 首行边线及背景色设置*/
+.theme-light .markdown-preview-view table thead tr:first-child th {
+	border-top: 0px solid #000;
+	border-bottom: 2px solid #000;
+	background-color: #f6f6f6;
+}
+/*末行下边线设置*/
+.theme-light .markdown-preview-view table tbody tr:last-child td {
+	border-bottom: 0px solid #000;
+}
+
+/* 暗色主题下设置表格样式-单线样式 */
+/* 首行边线及背景色设置*/
+.theme-dark .markdown-preview-view table thead tr:first-child th {
+	border-top: 0px solid #fff;
+	border-bottom: 2px solid #fff;
+	background-color: #363636;
+}
+/*末行下边线设置*/
+.theme-dark .markdown-preview-view table tbody tr:last-child td {
+	border-bottom: 0px solid #fff;
+}
+
+
+/* ---------------------------------------- 自定义分割线样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义分割线样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义分割线样式 ---------------------------------------- */
+
+/* 明亮主题下的分割线样式 */
+.theme-light .markdown-preview-view hr,
+.theme-light .cm-editor hr {
+	border: none;
+	border-bottom: 2px solid #000000;
+}
+
+/* 黑暗主题下的分割线样式 */
+.theme-dark .markdown-preview-view hr,
+.theme-dark .cm-editor hr {
+	border: none;
+	border-bottom: 2px solid #dadada;
+}
+
+
+/* ---------------------------------------- 自定义mermaid样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义mermaid样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义mermaid样式 ---------------------------------------- */
+
+/* mermaid图表自适应页面宽度 */
+.mermaid svg {
+	width: 100%;
+	height: auto;
+}
+
+
+/* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
+
+.cm-strong,
+.markdown-preview-view strong,
+.callout strong {
+	font-family: var(--font-strong);
+	font-size: var(--font-strong-size);
+	color: var(--theme-color);
+}
+
+
+/* ---------------------------------------- 自定义代码块、引用块样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义代码块、引用块样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义代码块、引用块样式 ---------------------------------------- */
+/* 明亮主题下 */
+.theme-light {
+	--blockquote-background-color: #f6f6f6;
+	--code-background: #f6f6f6;
+}
+
+/* 暗黑主题下 */
+.theme-dark {
+	--blockquote-background-color: #363636;
+	--code-background: #363636;
+}
+
+
+/* ---------------------------------------- 自定义链接样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义链接样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义链接样式 ---------------------------------------- */
+
+/* 删除链接下划线 */
+.theme-light,
+.theme-dark {
+	--link-decoration: none;
+	--link-decoration-hover: none;
+	--link-external-decoration: underline;
+	--link-external-decoration-hover: underline;
+}
+
+/* 去除内部链接下划线 */
+.internal-link {
+	text-decoration: none;
+}
+
+/* 去除外部链接下划线 */
+.external-link {
+	text-decoration: none;
+}
+
+
+/* ---------------------------------------- 淡彩风格文件列表 ---------------------------------------- */
+/* ---------------------------------------- 淡彩风格文件列表 ---------------------------------------- */
+/* ---------------------------------------- 淡彩风格文件列表 ---------------------------------------- */
+
+/* 设置文件夹图标 */
+.nav-folder-title::before {
+	content: '🖿' !important;
+	padding-right: 4px;
+}
+
+/* 文件夹图标彩虹色 */
+.nav-folder:nth-child(11n+2) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+2) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+2) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+2) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+2) .mod-collapsible::before {
+	color: var(--Fold0);
+}
+
+.nav-folder:nth-child(11n+3) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+3) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+3) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+3) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+3) .mod-collapsible::before {
+	color: var(--Fold1);
+}
+
+.nav-folder:nth-child(11n+4) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+4) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+4) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+4) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+4) .mod-collapsible::before {
+	color: var(--Fold2);
+}
+
+.nav-folder:nth-child(11n+5) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+5) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+5) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+5) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+5) .mod-collapsible::before {
+	color: var(--Fold3);
+}
+
+.nav-folder:nth-child(11n+6) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+6) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+6) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+6) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+6) .mod-collapsible::before {
+	color: var(--Fold4);
+}
+
+.nav-folder:nth-child(11n+7) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+7) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+7) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+7) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+7) .mod-collapsible::before {
+	color: var(--Fold5);
+}
+
+.nav-folder:nth-child(11n+8) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+8) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+8) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+8) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+8) .mod-collapsible::before {
+	color: var(--Fold6);
+}
+
+.nav-folder:nth-child(11n+9) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+9) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+9) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+9) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+9) .mod-collapsible::before {
+	color: var(--Fold7);
+}
+
+.nav-folder:nth-child(11n+10) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+10) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+10) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+10) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+10) .mod-collapsible::before {
+	color: var(--Fold8);
+}
+
+.nav-folder:nth-child(11n+11) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+11) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+11) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+11) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+11) .mod-collapsible::before {
+	color: var(--Fold9);
+}
+
+.nav-folder:nth-child(11n+12) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+12) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+12) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+12) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+12) .mod-collapsible::before {
+	color: var(--FoldA);
+}
+
+.nav-folder:nth-child(11n+13) .mod-collapsible::before,
+.nav-folder-children .nav-folder:nth-child(11n+13) .mod-collapsible::before,
+.nav-folder-children .nav-folder .nav-folder:nth-child(11n+13) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+13) .mod-collapsible::before,
+.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+13) .mod-collapsible::before {
+	color: var(--FoldB);
+}
+
+/* 设置文件图标 */
+.nav-folder-children .nav-file-title-content::before {
+	content: '📋';
+	margin-right: 4px;
+}
+
+/* 设置md文件图标 */
+.nav-folder-children .tree-item.nav-file div[data-path$='.md'] .nav-file-title-content::before {
+	content: '📑';
+	margin-right: 4px;
+}
+
+/* 设置图片文件图标 */
+.nav-folder-children .tree-item.nav-file div[data-path$='.png'] .nav-file-title-content::before,
+.nav-folder-children .tree-item.nav-file div[data-path$='.jpg'] .nav-file-title-content::before,
+.nav-folder-children .tree-item.nav-file div[data-path$='.jpeg'] .nav-file-title-content::before {
+	content: '🎨';
+	margin-right: 4px;
+}
+
+
+/* ---------------------------------------- 淡彩风格标题样式 ---------------------------------------- */
+/* ---------------------------------------- 淡彩风格标题样式 ---------------------------------------- */
+/* ---------------------------------------- 淡彩风格标题样式 ---------------------------------------- */
+
+/* 明亮模式下标题级别指示器 */
+.theme-light .HyperMD-header-2:not(.cm-formatting-header)::after,
+.theme-light h2::after {
+	content: " H2";
+	color: var(--theme-color);
+	font-size: 16px;
+}
+
+.theme-light .HyperMD-header-3:not(.cm-formatting-header)::after,
+.theme-light h3::after {
+	content: " H3";
+	color: var(--rainbow-color-3);
+	font-size: 14px;
+}
+
+.theme-light .HyperMD-header-4:not(.cm-formatting-header)::after,
+.theme-light h4::after {
+	content: " H4";
+	color: var(--rainbow-color-4);
+	font-size: 12px;
+}
+
+.theme-light .HyperMD-header-5:not(.cm-formatting-header)::after,
+.theme-light h5::after {
+	content: " H5";
+	color: var(--rainbow-color-5);
+	font-size: 12px;
+}
+
+.theme-light .HyperMD-header-6:not(.cm-formatting-header)::after,
+.theme-light h6::after {
+	content: " H6";
+	color: var(--rainbow-color-6);
+	font-size: 12px;
+}
+
+/* 暗黑模式下标题级别指示器 */
+.theme-dark .HyperMD-header-2:not(.cm-formatting-header)::after,
+.theme-dark h2::after {
+	content: " H2";
+	color: var(--theme-color);
+	font-size: 16px;
+}
+
+.theme-dark .HyperMD-header-3:not(.cm-formatting-header)::after,
+.theme-dark h3::after {
+	content: " H3";
+	color: var(--rainbow-color-3);
+	font-size: 14px;
+}
+
+.theme-dark .HyperMD-header-4:not(.cm-formatting-header)::after,
+.theme-dark h4::after {
+	content: " H4";
+	color: var(--rainbow-color-4);
+	font-size: 12px;
+}
+
+.theme-dark .HyperMD-header-5:not(.cm-formatting-header)::after,
+.theme-dark h5::after {
+	content: " H5";
+	color: var(--rainbow-color-5);
+	font-size: 12px;
+}
+
+.theme-dark .HyperMD-header-6:not(.cm-formatting-header)::after,
+.theme-dark h6::after {
+	content: " H6";
+	color: var(--rainbow-color-6);
+	font-size: 12px;
+}
+
+/* 明亮主题下标题的自定义 */
+/* 预览模式 */
+.theme-light h1 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-1);
+}
+
+.theme-light h2 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-2);
+}
+
+.theme-light h3 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-3);
+}
+
+.theme-light h4 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-4);
+}
+
+.theme-light h5 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-5);
+}
+
+.theme-light h6 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-6);
+}
+
+/* 编辑模式 */
+.theme-light .HyperMD-header-1 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-1);
+}
+
+.theme-light .HyperMD-header-2 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-2);
+}
+
+.theme-light .HyperMD-header-3 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-3);
+}
+
+.theme-light .HyperMD-header-4 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-4);
+}
+
+.theme-light .HyperMD-header-5 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-5);
+}
+
+.theme-light .HyperMD-header-6 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-6);
+}
+
+/* 黑暗主题下标题的自定义 */
+/* 预览模式 */
+.theme-dark h1 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-1);
+}
+
+.theme-dark h2 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-2);
+}
+
+.theme-dark h3 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-3);
+}
+
+.theme-dark h4 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-4);
+}
+
+.theme-dark h5 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-5);
+}
+
+.theme-dark h6 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-6);
+}
+
+/* 编辑模式 */
+.theme-dark .HyperMD-header-1 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-1);
+}
+
+.theme-dark .HyperMD-header-2 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-2);
+}
+
+.theme-dark .HyperMD-header-3 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-3);
+}
+
+.theme-dark .HyperMD-header-4 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-4);
+}
+
+.theme-dark .HyperMD-header-5 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-5);
+}
+
+.theme-dark .HyperMD-header-6 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-6);
+}
+
+
+/* ---------------------------------------- 淡彩风格tags ---------------------------------------- */
+/* ---------------------------------------- 淡彩风格tags ---------------------------------------- */
+/* ---------------------------------------- 淡彩风格tags ---------------------------------------- */
+
+/* 设置tags基本样式 */
+.tag:not(.token) {
+	padding: 4px 10px;
+	display: inline-block;
+	color: var(--tag-font-color);
+	font-family: var(--font-tag);
+	transition: all 0.5s;
+}
+
+/* tags彩虹色配色 */
+.tag:not(.token):nth-child(12n+1) {
+	background-color: var(--theme-color);
+}
+
+.tag:not(.token):nth-child(12n+2) {
+	background-color: var(--tag-background-color-2);
+}
+
+.tag:not(.token):nth-child(12n+3) {
+	background-color: var(--tag-background-color-3);
+}
+
+.tag:not(.token):nth-child(12n+4) {
+	background-color: var(--tag-background-color-4);
+}
+
+.tag:not(.token):nth-child(12n+5) {
+	background-color: var(--tag-background-color-5);
+}
+
+.tag:not(.token):nth-child(12n+6) {
+	background-color: var(--tag-background-color-6);
+}
+
+.tag:not(.token):nth-child(12n+7) {
+	background-color: var(--tag-background-color-7);
+}
+
+.tag:not(.token):nth-child(12n+8) {
+	background-color: var(--tag-background-color-8);
+}
+
+.tag:not(.token):nth-child(12n+9) {
+	background-color: var(--tag-background-color-9);
+}
+
+.tag:not(.token):nth-child(12n+10) {
+	background-color: var(--tag-background-color-A);
+}
+
+.tag:not(.token):nth-child(12n+11) {
+	background-color: var(--tag-background-color-B);
+}
+
+.tag:not(.token):nth-child(12n+12) {
+	background-color: var(--tag-background-color-C);
+}
+
+/* 鼠标悬停样式 */
+.tag:not(.token):hover {
+	padding: 4px 16px;
+	color: var(--tag-font-color);
+	transition: all 0.5s;
+}
+
+
+/* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
+
+/* callout样式：书籍、电影、人物等信息卡 */
+.callout[data-callout="bookinfo"] {
+	--callout-color: 64, 201, 75;
+	--callout-icon: lucide-book-open;
+}
+
+.callout[data-callout="bookinfo"] .callout-content {
+	display: flex;
+}
+
+.callout[data-callout="bookinfo"] .callout-content p:first-child {
+	margin-right: 20px;
+}
+
+/* callout样式：极简自动分栏(仅对段落有效) */
+.callout[data-callout="multicolumns"] {
+	--callout-color: 180, 180, 180;
+}
+
+.callout[data-callout="multicolumns"] .callout-title {
+	display: none;
+}
+
+.callout[data-callout="multicolumns"] .callout-content {
+	display: flex;
+	gap: 2rem;
+}
+
+.callout[data-callout="multicolumns"] .callout-content p {
+	flex: 1;
+	text-align: justify;
+}
+
+/* callout样式：此CSS代码是应用于thino插件的样式，用于创建基于页内内容的时间轴 */
+.callout.callout[data-callout~=thino] {
+	--callout-icon: "clock-3";
+	--callout-padding: 0px;
+	--callout-title-padding: 10px;
+	--callout-content-padding: 12px;
+	border: unset;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	clear: both;
+}
+
+.callout.callout[data-callout~=thino] .callout-title {
+	float: left;
+	width: 9rem;
+	flex-direction: row-reverse;
+	text-align: right;
+	align-content: center;
+	align-items: center;
+	background-color: transparent;
+	padding: var(--callout-title-padding);
+}
+
+.callout.callout[data-callout~=thino]>.callout-title .callout-icon {
+	background-color: var(--background-primary);
+	margin-right: -1.25rem;
+	transform: scale(1.2);
+	border-radius: 20px;
+	z-index: 1;
+}
+
+.callout.callout[data-callout~=thino] .callout-content {
+	background-color: rgb(var(--callout-color), 0.1);
+	padding-top: 2px;
+	border-left: 4px solid rgb(var(--callout-color), 0.7);
+	z-index: 0;
+}
+
+.callout.callout[data-callout~=thino] .callout-content p {
+	margin-block-start: 1em;
+}
+
+/* callout样式：使用Callout实现页面边注效果 */
+/* 代码是抄过来的，暂时还看不懂 */
+body {
+	--aside-width: 200px;
+	--aside-offset: var(--size-4-4);
+	--line-width: var(--file-line-width, --line-width);
+}
+
+.markdown-source-view.mod-cm6 .cm-content>.cm-callout:has(.callout[data-callout-metadata*="aside"])[contenteditable=false] {
+	contain: none !important;
+	overflow: visible;
+}
+
+.markdown-source-view.mod-cm6 .cm-content>.cm-callout:has(.callout[data-callout-metadata*="aside"])[contenteditable=false]>.markdown-rendered {
+	overflow: visible;
+}
+
+.cm-callout:has(.callout[data-callout-metadata*="aside"])[contenteditable=false]>.edit-block-button {
+	display: none;
+}
+
+:is(.markdown-source-view .cm-callout, div:not([class])):has(> .callout[data-callout-metadata*="aside"]) {
+	position: relative;
+	overflow: visible;
+}
+
+.callout[data-callout-metadata*="aside"] {
+	position: absolute;
+}
+
+.callout[data-callout-metadata*="aside-l"] {
+	left: calc(-1 * (var(--aside-width) + var(--aside-offset)));
+	right: calc(100% + var(--aside-offset));
+}
+
+.callout[data-callout-metadata*="aside-r"] {
+	left: calc(var(--file-line-width) + var(--aside-offset));
+	right: calc(-1 * var(--aside-width));
+}
+
+@media (hover: hover) {
+	.markdown-source-view.mod-cm6 .cm-embed-block:has(> div > [data-callout-metadata*="aside"]):hover {
+		overflow: visible;
+	}
+
+	.markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget):hover {
+		box-shadow: unset;
+	}
+}
+
+.callout[data-callout-metadata*="aside"] {
+	--block-spacing: 0.75rem;
+	--speaker-block-width: 20%;
+	margin: 0px;
+	padding: 0px;
+	display: grid;
+	background-color: var(--background-primary) !important;
+	border: none;
+}
+
+.sidenote-backgound .callout[data-callout-metadata*="aside"] {
+	background-color: rgba(var(--callout-color), 0.1) !important;
+	padding-bottom: 10px;
+}
+
+.callout[data-callout-metadata*="aside"] {
+	grid-template-columns: var(--speaker-block-width) calc(100% - var(--speaker-block-width));
+}
+
+.top-sidenote-callout-title .callout[data-callout-metadata*="aside"] {
+	grid-template-columns: unset;
+}
+
+.callout[data-callout-metadata*="aside"] .callout-title {
+	height: calc(100% - var(--block-spacing));
+	text-align: right;
+	word-wrap: break-word;
+	border-right: 3px solid;
+	border-bottom: unset;
+	flex: 1 0 auto;
+	color: rgb(var(--callout-color)) !important;
+	background-color: unset !important;
+	/* padding-right: var(--block-spacing); */
+	padding: 0;
+}
+
+.callout[data-callout-metadata*="aside"] .callout-title {
+	display: inline-block;
+}
+
+body:not(.top-sidenote-callout-title) .setting-item[data-id="top-left-sidenote-callout-title-position"],
+body:not(.top-sidenote-callout-title) .setting-item[data-id="top-right-sidenote-callout-title-position"] {
+	display: none;
+}
+
+.top-sidenote-callout-title .callout[data-callout-metadata*="aside"] .callout-title {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.callout[data-callout-metadata*="aside"] .callout-title-inner {
+	font-weight: var(--bold-weight) !important;
+	color: rgb(var(--callout-color)) !important;
+	width: 1ch;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.top-sidenote-callout-title .callout[data-callout-metadata*="aside"] .callout-title-inner {
+	margin: 0 auto;
+	width: unset;
+}
+
+.callout[data-callout-metadata*="aside"] .callout-title-inner {
+	margin: 0 auto;
+}
+
+.l-left-callout-title .callout[data-callout-metadata*="aside-l"] .callout-title-inner {
+	margin-left: var(--block-spacing);
+}
+
+.l-right-callout-title .callout[data-callout-metadata*="aside-l"] .callout-title-inner {
+	margin: 0 var(--block-spacing);
+}
+
+.r-left-callout-title .callout[data-callout-metadata*="aside-r"] .callout-title-inner {
+	margin-left: var(--block-spacing);
+}
+
+.r-right-callout-title .callout[data-callout-metadata*="aside-r"] .callout-title-inner {
+	margin: 0 var(--block-spacing);
+}
+
+.callout[data-callout-metadata*="aside"]>* {
+	margin-top: var(--block-spacing);
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-title>.callout-icon {
+	display: none;
+}
+
+.hide-sidenote-callout-fold-icon .callout[data-callout-metadata*="aside"] .callout-fold {
+	display: none;
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-title>.callout-fold,
+.callout[data-callout-metadata*="aside"]>.callout-title>.callout-fold.is-collapsed {
+	padding: 0;
+	justify-content: center;
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-content {
+	padding: 0px var(--block-spacing);
+	border-top: unset;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-content>p:first-child {
+	margin-top: 0px;
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-content>p:last-child {
+	margin-bottom: 0px;
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-content::-webkit-scrollbar-thumb {
+	width: 11px;
+	height: 11px;
+	background-color: transparent !important;
+}
+
+.callout[data-callout-metadata*="aside"]>.callout-content:hover::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-bg) !important;
+}
+
+
+/* ---------------------------------------- 自定义列表样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义列表样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义列表样式 ---------------------------------------- */
+
+body {
+	--rainbow-1: #E06C75;
+	--rainbow-2: #D19A66;
+	--rainbow-3: #98C379;
+	--rainbow-4: #56B6C2;
+	--rainbow-5: #AA7FB7;
+	--rainbow-6: #C678DD;
+
+	/* 彩色有序列表符号 */
+
+	ol li::marker,
+	ol li::before,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
+	.cm-formatting.cm-formatting-list.cm-formatting-list-ol,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
+		color: var(--theme-color);
+	}
+
+	:is(ul, ol) ol li::marker,
+	:is(ul, ol) ol li::before,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
+		color: var(--rainbow-color-2);
+	}
+
+	:is(ul, ol) :is(ul, ol) ol li::marker,
+	:is(ul, ol) :is(ul, ol) ol li::before,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
+		color: var(--rainbow-color-3);
+	}
+
+	:is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::marker,
+	:is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::before,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
+		color: var(--rainbow-color-4);
+	}
+
+	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::marker,
+	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::before,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
+		color: var(--rainbow-color-5);
+	}
+
+	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::marker,
+	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::before,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
+		color: var(--rainbow-color-6);
+	}
+
+	/* 彩色无序列表符号 */
+	--list-ul-marker-color:var(--theme-color);
+
+	.has-list-bullet .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line>span.cm-formatting:first-of-type .list-bullet::after {
+		height: 8px;
+		width: 8px;
+		border-radius: 50%;
+		background-color: var(--theme-color);
+	}
+
+	.has-list-bullet .has-list-bullet .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
+		height: 7px;
+		width: 7px;
+		border-radius: 50%;
+		background-color: var(--rainbow-color-2);
+	}
+
+	.has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
+		height: 6px;
+		width: 6px;
+		border-radius: 50%;
+		background-color: var(--rainbow-color-3);
+	}
+
+	.has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
+		height: 5px;
+		width: 5px;
+		border-radius: 50%;
+		background-color: var(--rainbow-color-4);
+	}
+
+	.has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
+		height: 5px;
+		width: 5px;
+		border-radius: 50%;
+		background-color: var(--rainbow-color-5);
+	}
+
+	.has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
+	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
+		height: 5px;
+		width: 5px;
+		border-radius: 50%;
+		background-color: var(--rainbow-color-6);
+	}
+
+	/* 彩色层级线 */
+	:is(ul, ol)>li,
+	.cm-hmd-list-indent .cm-indent:nth-child(1)::before {
+		--indentation-guide-color: var(--theme-color);
+	}
+
+	:is(ul ul, ol ol)>li,
+	.cm-hmd-list-indent .cm-indent:nth-child(2)::before {
+		--indentation-guide-color: var(--rainbow-color-2);
+	}
+
+	:is(ul ul ul, ol ol ol)>li,
+	.cm-hmd-list-indent .cm-indent:nth-child(3)::before {
+		--indentation-guide-color: var(--rainbow-color-3);
+	}
+
+	:is(ul ul ul ul, ol ol ol ol)>li,
+	.cm-hmd-list-indent .cm-indent:nth-child(4)::before {
+		--indentation-guide-color: var(--rainbow-color-4);
+	}
+
+	:is(ul ul ul ul ul, ol ol ol ol ol)>li,
+	.cm-hmd-list-indent .cm-indent:nth-child(5)::before {
+		--indentation-guide-color: var(--rainbow-color-5);
+	}
+
+	:is(ul ul ul ul ul ul, ol ol ol ol ol ol)>li,
+	.cm-hmd-list-indent .cm-indent:nth-child(6)::before {
+		--indentation-guide-color: var(--rainbow-color-6);
+	}
+}
+
+
+/* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
+/* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
+
+/* obsidian-checkbox-css https://github.com/netgamesekai/obsidian-checkbox-css */
+
+body {
+	/* checkbox colors */
+	--checkbox: #999ba3;
+	--checkbox-done: #59c583;
+	--checkbox-wip: #ead467;
+	--checkbox-forwarded: #6aadce;
+	/* no strikethrough on completed tasks */
+	--checklist-done-decoration: inherit;
+	--checklist-done-color: inherit;
+}
+
+/* strikethrough on forwarded or cancelled tasks */
+.task-list-item[data-task=">"],
+.task-list-item[data-task="-"],
+.HyperMD-task-line[data-task=">"] span,
+.HyperMD-task-line[data-task="-"] span {
+	color: var(--checkbox);
+	text-decoration: line-through;
+}
+
+/* initialising */
+input[type="checkbox"].task-list-item-checkbox:checked::after {
+	display: none;
+}
+
+input[type="checkbox"].task-list-item-checkbox:checked {
+	background-image: none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	position: relative;
+}
+
+/* styling */
+/* new task */
+.task-list-item[data-task=" "] input[type="checkbox"].task-list-item-checkbox,
+input[type="checkbox"][data-task=" "].task-list-item-checkbox {
+	border-color: var(--checkbox) !important;
+}
+
+/* completed */
+input[type="checkbox"][data-task="x"].task-list-item-checkbox:checked,
+.task-list-item[data-task="x"] input[type="checkbox"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-done) !important;
+	background-color: var(--checkbox-done) !important;
+	background-image: url('data:image/svg+xml,<svg version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><path d="M 38.525 7.876 L 36.127 5.946 C 34.945 4.996 34.258 5.007 33.246 6.257 L 15.817 27.766 L 7.706 21.027 C 6.587 20.087 5.887 20.137 4.967 21.287 L 3.116 23.697 C 2.177 24.879 2.297 25.55 3.407 26.477 L 14.967 36.039 C 16.157 37.039 16.827 36.936 17.747 35.817 L 38.826 10.756 C 39.816 9.566 39.756 8.855 38.525 7.876 Z" style="fill: rgb(255, 255, 255);"></path></svg>');
+}
+
+/* working in progress */
+.task-list-item[data-task="/"] input[type="checkbox"].task-list-item-checkbox:checked,
+input[type="checkbox"][data-task="/"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-wip);
+	background: linear-gradient(90deg, var(--checkbox-wip) 50%, transparent 50%) !important;
+}
+
+/* forwarded */
+.task-list-item[data-task=">"] input[type="checkbox"].task-list-item-checkbox:checked,
+input[type="checkbox"][data-task=">"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-forwarded);
+	background-color: var(--checkbox-forwarded) !important;
+	background-image: url('data:image/svg+xml,<svg version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><polygon fill-rule="evenodd" points="28.566 40.819 8.5 20.751 28.068 1.181 33.002 6.114 18.365 20.751 33.5 35.885" style="fill: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(-1, 0, 0, -1, 0, 0.000002)"></polygon></svg>');
+}
+
+/* cancelled */
+.task-list-item[data-task="-"] input[type="checkbox"].task-list-item-checkbox:checked,
+input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox);
+	background-color: var(--checkbox) !important;
+	background-image: url('data:image/svg+xml,<svg fill="%23000000" version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><rect x="5.15" y="16.928" width="31.7" height="8.143" style="fill: rgb(255, 255, 255);"></rect></svg>');
+}
+
