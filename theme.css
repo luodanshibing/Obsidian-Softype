@@ -38,7 +38,7 @@ settings:
 /* ---------------------------------------- 定义全局变量 ---------------------------------------- */
 
 :root {
-	/* 精确控制特殊字体 */
+	/* 自定义字体 */
 	--font-family-1: 微软雅黑;
 	--font-family-2: 黑体;
 	--font-family-3: 宋体;
@@ -48,21 +48,207 @@ settings:
 	--font-header: var(--font-family-1);
 	/* 强调字体 */
 	--font-strong: var(--font-family-1);
-	/* 标签字体 */
-	--font-tag: var(--font-family-2);
-
-	/* 精确控制字体大小 */
+	/* 字体大小 */
 	--font-header-size-1: 2.4rem;
 	--font-header-size-2: 1.8rem;
-	--font-header-size-3: 1.5rem;
-	--font-header-size-4: 1.4rem;
-	--font-header-size-5: 1.3rem;
-	--font-header-size-6: 1.2rem;
+	--font-header-size-3: 1.4rem;
+	--font-header-size-4: 1.3rem;
+	--font-header-size-5: 1.2rem;
+	--font-header-size-6: 1.1rem;
 	--font-strong-size: 1.0rem;
-
-	/* 精确控制色彩 */
-	--theme-color: #8a5cf5;
-	/*obsidian默认主题色*/
+	/* 自定义色彩 */
+	/* 基础色卡 */
+	--color-grey-01: #ffffff;
+	--color-grey-02: #FAFAFA;
+	--color-grey-03: #F5F5F5;
+	--color-grey-04: #EEEEEE;
+	--color-grey-05: #E0E0E0;
+	--color-grey-06: #BDBDBD;
+	--color-grey-07: #9E9E9E;
+	--color-grey-08: #757575;
+	--color-grey-09: #616161;
+	--color-grey-10: #424242;
+	--color-bluegrey-01: #ECEFF1;
+	--color-bluegrey-02: #CFD8DC;
+	--color-bluegrey-03: #B0BEC5;
+	--color-bluegrey-04: #90A4AE;
+	--color-bluegrey-04: #78909C;
+	--color-bluegrey-06: #607D8B;
+	--color-bluegrey-07: #546E7A;
+	--color-bluegrey-08: #455A64;
+	--color-bluegrey-09: #37474F;
+	--color-bluegrey-10: #263238;
+	--color-brown-01: #EFEBE9;
+	--color-brown-02: #D7CCC8;
+	--color-brown-03: #BCAAA4;
+	--color-brown-04: #A1887F;
+	--color-brown-05: #8D6E63;
+	--color-brown-06: #795548;
+	--color-brown-07: #6D4C41;
+	--color-brown-08: #5D4037;
+	--color-brown-09: #4E342E;
+	--color-brown-10: #3E2723;
+	--color-deeporange-01: #FBE9E7;
+	--color-deeporange-02: #FFCCBC;
+	--color-deeporange-03: #FFAB91;
+	--color-deeporange-04: #FF8A65;
+	--color-deeporange-05: #FF7043;
+	--color-deeporange-06: #FF5722;
+	--color-deeporange-07: #F4511E;
+	--color-deeporange-08: #E64A19;
+	--color-deeporange-09: #D84315;
+	--color-deeporange-10: #BF360C;
+	--color-orange-01: #FFF3E0;
+	--color-orange-02: #FFE0B2;
+	--color-orange-03: #FFCC80;
+	--color-orange-04: #FFB74D;
+	--color-orange-05: #FFA726;
+	--color-orange-06: #FF9800;
+	--color-orange-07: #FB8C00;
+	--color-orange-08: #F57C00;
+	--color-orange-09: #EF6C00;
+	--color-orange-10: #E65100;
+	--color-amber-01: #FFF8E1;
+	--color-amber-02: #FFECB3;
+	--color-amber-03: #FFE082;
+	--color-amber-04: #FFD54F;
+	--color-amber-05: #FFCA28;
+	--color-amber-06: #FFC107;
+	--color-amber-07: #FFB300;
+	--color-amber-08: #FFA000;
+	--color-amber-09: #FF8F00;
+	--color-amber-10: #FF6F00;
+	--color-yellow-01: #FFFDE7;
+	--color-yellow-02: #FFF9C4;
+	--color-yellow-03: #FFF59D;
+	--color-yellow-04: #FFF176;
+	--color-yellow-05: #FFEE58;
+	--color-yellow-06: #FFEB3B;
+	--color-yellow-07: #FDD835;
+	--color-yellow-08: #FBC02D;
+	--color-yellow-09: #F9A825;
+	--color-yellow-10: #F57F17;
+	--color-lime-01: #F9FBE7;
+	--color-lime-02: #F0F4C3;
+	--color-lime-03: #E6EE9C;
+	--color-lime-04: #DCE775;
+	--color-lime-05: #D4E157;
+	--color-lime-06: #CDDC39;
+	--color-lime-07: #C0CA33;
+	--color-lime-08: #AFB42B;
+	--color-lime-09: #9E9D24;
+	--color-lime-10: #827717;
+	--color-lightgreen-01: #F1F8E9;
+	--color-lightgreen-02: #DCEDC8;
+	--color-lightgreen-03: #C5E1A5;
+	--color-lightgreen-04: #AED581;
+	--color-lightgreen-05: #9CCC65;
+	--color-lightgreen-06: #8BC34A;
+	--color-lightgreen-07: #7CB342;
+	--color-lightgreen-08: #689F38;
+	--color-lightgreen-09: #558B2F;
+	--color-lightgreen-10: #33691E;
+	--color-green-01: #E8F5E9;
+	--color-green-02: #C8E6C9;
+	--color-green-03: #A5D6A7;
+	--color-green-04: #81C784;
+	--color-green-05: #66BB6A;
+	--color-green-06: #4CAF50;
+	--color-green-07: #43A047;
+	--color-green-08: #388E3C;
+	--color-green-09: #2E7D32;
+	--color-green-10: #1B5E20;
+	--color-teal-01: #E0F2F1;
+	--color-teal-02: #B2DFDB;
+	--color-teal-03: #80CBC4;
+	--color-teal-04: #4DB6AC;
+	--color-teal-05: #26A69A;
+	--color-teal-06: #009688;
+	--color-teal-07: #00897B;
+	--color-teal-08: #00796B;
+	--color-teal-09: #00695C;
+	--color-teal-10: #004D40;
+	--color-cyan-01: #E0F7FA;
+	--color-cyan-02: #B2EBF2;
+	--color-cyan-03: #80DEEA;
+	--color-cyan-04: #4DD0E1;
+	--color-cyan-05: #26C6DA;
+	--color-cyan-06: #00BCD4;
+	--color-cyan-07: #00ACC1;
+	--color-cyan-08: #0097A7;
+	--color-cyan-09: #00838F;
+	--color-cyan-10: #006064;
+	--color-lightblue-01: #E1F5FE;
+	--color-lightblue-02: #B3E5FC;
+	--color-lightblue-03: #81D4FA;
+	--color-lightblue-04: #4FC3F7;
+	--color-lightblue-05: #29B6F6;
+	--color-lightblue-06: #03A9F4;
+	--color-lightblue-07: #039BE5;
+	--color-lightblue-08: #0288D1;
+	--color-lightblue-09: #0277BD;
+	--color-lightblue-10: #01579B;
+	--color-blue-01: #E3F2FD;
+	--color-blue-02: #BBDEFB;
+	--color-blue-03: #90CAF9;
+	--color-blue-04: #64B5F6;
+	--color-blue-05: #42A5F5;
+	--color-blue-06: #2196F3;
+	--color-blue-07: #1E88E5;
+	--color-blue-08: #1976D2;
+	--color-blue-09: #1565C0;
+	--color-blue-10: #0D47A1;
+	--color-indigo-01: #E8EAF6;
+	--color-indigo-02: #C5CAE9;
+	--color-indigo-03: #9FA8DA;
+	--color-indigo-04: #7986CB;
+	--color-indigo-05: #5C6BC0;
+	--color-indigo-06: #3F51B5;
+	--color-indigo-07: #3949AB;
+	--color-indigo-08: #303F9F;
+	--color-indigo-09: #283593;
+	--color-indigo-10: #1A237E;
+	--color-deeppurple-01: #EDE7F6;
+	--color-deeppurple-02: #D1C4E9;
+	--color-deeppurple-03: #B39DDB;
+	--color-deeppurple-04: #9575CD;
+	--color-deeppurple-05: #7E57C2;
+	--color-deeppurple-06: #673AB7;
+	--color-deeppurple-07: #5E35B1;
+	--color-deeppurple-08: #512DA8;
+	--color-deeppurple-09: #4527A0;
+	--color-deeppurple-10: #311B92;
+	--color-purple-01: #F3E5F5;
+	--color-purple-02: #E1BEE7;
+	--color-purple-03: #CE93D8;
+	--color-purple-04: #BA68C8;
+	--color-purple-05: #AB47BC;
+	--color-purple-06: #9C27B0;
+	--color-purple-07: #8E24AA;
+	--color-purple-08: #7B1FA2;
+	--color-purple-09: #6A1B9A;
+	--color-purple-10: #4A148C;
+	--color-pink-01: #FCE4EC;
+	--color-pink-02: #F8BBD0;
+	--color-pink-03: #F48FB1;
+	--color-pink-04: #F06292;
+	--color-pink-05: #EC407A;
+	--color-pink-06: #E91E63;
+	--color-pink-07: #D81B60;
+	--color-pink-08: #C2185B;
+	--color-pink-09: #AD1457;
+	--color-pink-10: #880E4F;
+	--color-red-0: #FFEBEE;
+	--color-red-1: #FFCDD2;
+	--color-red-2: #EF9A9A;
+	--color-red-3: #E57373;
+	--color-red-4: #EF5350;
+	--color-red-5: #F44336;
+	--color-red-6: #E53935;
+	--color-red-7: #D32F2F;
+	--color-red-8: #C62828;
+	--color-red-9: #B71C1C;
+	/* 自定义彩虹色 */
 	--rainbow-color-0: #E57373;
 	--rainbow-color-1: #F06292;
 	--rainbow-color-2: #BA68C8;
@@ -79,7 +265,6 @@ settings:
 	--rainbow-color-D: #A1887F;
 	--rainbow-color-E: #E0E0E0;
 	--rainbow-color-F: #90A4AE;
-
 	/* 文件列表图标颜色变量传递 */
 	--Fold0: var(--rainbow-color-0);
 	--Fold1: var(--rainbow-color-1);
@@ -97,7 +282,6 @@ settings:
 	--FoldD: var(--rainbow-color-D);
 	--FoldE: var(--rainbow-color-E);
 	--FoldF: var(--rainbow-color-F);
-
 	/* 有序/无序列表图标颜色变量传递 */
 	--list-color-0: var(--rainbow-color-0);
 	--list-color-1: var(--rainbow-color-1);
@@ -115,10 +299,7 @@ settings:
 	--list-color-D: var(--rainbow-color-D);
 	--list-color-E: var(--rainbow-color-E);
 	--list-color-F: var(--rainbow-color-F);
-
-	/* tag背景颜色变量传递 */
-	--tag-font-color: white;
-	/* tag字体颜色 */
+	/* tag背景颜色 */
 	--tag-background-color-0: var(--rainbow-color-0);
 	--tag-background-color-1: var(--rainbow-color-1);
 	--tag-background-color-2: var(--rainbow-color-2);
@@ -201,7 +382,7 @@ body .width-100 {
 /* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
 /* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
 
-/* 通过声明CSS类来自定义banner样式 */ 
+/* 通过声明CSS类来自定义banner样式 */
 .header-image {
 	width: 100%;
 	/* 宽度占满容器 */
@@ -255,6 +436,7 @@ body .width-100 {
 	border: 1px solid var(--background-modifier-border);
 	border-radius: 8px;
 }
+
 /*此处是为了嵌入块两侧对称，嵌入块右侧有东西无法去掉，手动设置数值配平了，蠢透了*/
 
 
@@ -315,10 +497,13 @@ body .width-100 {
 /* calendar 隐藏导航栏指示器 */
 /* #calendar-container .nav.svelte-1vwr9dd {display: none;}  */
 /* calendar 缩小容器左侧空白 */
-#calendar-container.container.svelte-pcimu8 { padding-left: 0; }
+#calendar-container.container.svelte-pcimu8 {
+	padding-left: 0;
+}
+
 /* calendar 给周数添加主题色 */
 #calendar-container .week-num.svelte-egt0yd {
-	color: var(--theme-color);
+	color: var(--color-accent);
 }
 
 
@@ -341,12 +526,12 @@ video {
 /* 双模式添加图片圆角效果*/
 .markdown-source-view img,
 .markdown-preview-view img {
-	border-radius: 8px;
+	border-radius: 4px;
 }
 
 /*预览模式添加视频圆角效果*/
 .markdown-preview-view video {
-	border-radius: 8px;
+	border-radius: 4px;
 }
 
 /*预览模式添加图片圆角*/
@@ -385,8 +570,8 @@ video {
 .theme-light .markdown-preview-view table thead tr:first-child th {
 	border-top: 0px solid #000;
 	border-bottom: 2px solid #000;
-	background-color: #f6f6f6;
 }
+
 /*末行下边线设置*/
 .theme-light .markdown-preview-view table tbody tr:last-child td {
 	border-bottom: 0px solid #000;
@@ -397,8 +582,8 @@ video {
 .theme-dark .markdown-preview-view table thead tr:first-child th {
 	border-top: 0px solid #fff;
 	border-bottom: 2px solid #fff;
-	background-color: #363636;
 }
+
 /*末行下边线设置*/
 .theme-dark .markdown-preview-view table tbody tr:last-child td {
 	border-bottom: 0px solid #fff;
@@ -444,7 +629,6 @@ video {
 .callout strong {
 	font-family: var(--font-strong);
 	font-size: var(--font-strong-size);
-	color: var(--theme-color);
 }
 
 
@@ -452,16 +636,16 @@ video {
 /* ---------------------------------------- 自定义代码块、引用块样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义代码块、引用块样式 ---------------------------------------- */
 /* 明亮主题下 */
-.theme-light {
-	--blockquote-background-color: #f6f6f6;
-	--code-background: #f6f6f6;
-}
+/* .theme-light {
+	--blockquote-background-color: #fafafa;
+	--code-background: #fafafa;
+}  */
 
 /* 暗黑主题下 */
-.theme-dark {
+/* .theme-dark {
 	--blockquote-background-color: #363636;
 	--code-background: #363636;
-}
+}  */
 
 
 /* ---------------------------------------- 自定义链接样式 ---------------------------------------- */
@@ -488,171 +672,43 @@ video {
 }
 
 
-/* ---------------------------------------- 淡彩风格文件列表 ---------------------------------------- */
-/* ---------------------------------------- 淡彩风格文件列表 ---------------------------------------- */
-/* ---------------------------------------- 淡彩风格文件列表 ---------------------------------------- */
-
-/* 设置文件夹图标 */
-.nav-folder-title::before {
-	content: '🖿' !important;
-	padding-right: 4px;
-}
-
-/* 文件夹图标彩虹色 */
-.nav-folder:nth-child(11n+2) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+2) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+2) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+2) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+2) .mod-collapsible::before {
-	color: var(--Fold0);
-}
-
-.nav-folder:nth-child(11n+3) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+3) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+3) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+3) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+3) .mod-collapsible::before {
-	color: var(--Fold1);
-}
-
-.nav-folder:nth-child(11n+4) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+4) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+4) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+4) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+4) .mod-collapsible::before {
-	color: var(--Fold2);
-}
-
-.nav-folder:nth-child(11n+5) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+5) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+5) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+5) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+5) .mod-collapsible::before {
-	color: var(--Fold3);
-}
-
-.nav-folder:nth-child(11n+6) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+6) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+6) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+6) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+6) .mod-collapsible::before {
-	color: var(--Fold4);
-}
-
-.nav-folder:nth-child(11n+7) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+7) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+7) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+7) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+7) .mod-collapsible::before {
-	color: var(--Fold5);
-}
-
-.nav-folder:nth-child(11n+8) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+8) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+8) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+8) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+8) .mod-collapsible::before {
-	color: var(--Fold6);
-}
-
-.nav-folder:nth-child(11n+9) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+9) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+9) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+9) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+9) .mod-collapsible::before {
-	color: var(--Fold7);
-}
-
-.nav-folder:nth-child(11n+10) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+10) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+10) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+10) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+10) .mod-collapsible::before {
-	color: var(--Fold8);
-}
-
-.nav-folder:nth-child(11n+11) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+11) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+11) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+11) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+11) .mod-collapsible::before {
-	color: var(--Fold9);
-}
-
-.nav-folder:nth-child(11n+12) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+12) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+12) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+12) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+12) .mod-collapsible::before {
-	color: var(--FoldA);
-}
-
-.nav-folder:nth-child(11n+13) .mod-collapsible::before,
-.nav-folder-children .nav-folder:nth-child(11n+13) .mod-collapsible::before,
-.nav-folder-children .nav-folder .nav-folder:nth-child(11n+13) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+13) .mod-collapsible::before,
-.nav-folder-children .nav-folder-children .nav-folder-children .nav-folder .nav-folder:nth-child(11n+13) .mod-collapsible::before {
-	color: var(--FoldB);
-}
-
-/* 设置文件图标 */
-.nav-folder-children .nav-file-title-content::before {
-	content: '📋';
-	margin-right: 4px;
-}
-
-/* 设置md文件图标 */
-.nav-folder-children .tree-item.nav-file div[data-path$='.md'] .nav-file-title-content::before {
-	content: '📑';
-	margin-right: 4px;
-}
-
-/* 设置图片文件图标 */
-.nav-folder-children .tree-item.nav-file div[data-path$='.png'] .nav-file-title-content::before,
-.nav-folder-children .tree-item.nav-file div[data-path$='.jpg'] .nav-file-title-content::before,
-.nav-folder-children .tree-item.nav-file div[data-path$='.jpeg'] .nav-file-title-content::before {
-	content: '🎨';
-	margin-right: 4px;
-}
-
-
-/* ---------------------------------------- 淡彩风格标题样式 ---------------------------------------- */
-/* ---------------------------------------- 淡彩风格标题样式 ---------------------------------------- */
-/* ---------------------------------------- 淡彩风格标题样式 ---------------------------------------- */
+/* ---------------------------------------- 风格标题样式 ---------------------------------------- */
+/* ---------------------------------------- 风格标题样式 ---------------------------------------- */
+/* ---------------------------------------- 风格标题样式 ---------------------------------------- */
 
 /* 明亮模式下标题级别指示器 */
 .theme-light .HyperMD-header-2:not(.cm-formatting-header)::after,
 .theme-light h2::after {
 	content: " H2";
-	color: var(--theme-color);
+	color: var(--color-grey-05);
 	font-size: 16px;
 }
 
 .theme-light .HyperMD-header-3:not(.cm-formatting-header)::after,
 .theme-light h3::after {
 	content: " H3";
-	color: var(--rainbow-color-3);
+	color: var(--color-grey-05);
 	font-size: 14px;
 }
 
 .theme-light .HyperMD-header-4:not(.cm-formatting-header)::after,
 .theme-light h4::after {
 	content: " H4";
-	color: var(--rainbow-color-4);
+	color: var(--color-grey-05);
 	font-size: 12px;
 }
 
 .theme-light .HyperMD-header-5:not(.cm-formatting-header)::after,
 .theme-light h5::after {
 	content: " H5";
-	color: var(--rainbow-color-5);
+	color: var(--color-grey-05);
 	font-size: 12px;
 }
 
 .theme-light .HyperMD-header-6:not(.cm-formatting-header)::after,
 .theme-light h6::after {
 	content: " H6";
-	color: var(--rainbow-color-6);
+	color: var(--color-grey-05);
 	font-size: 12px;
 }
 
@@ -660,35 +716,35 @@ video {
 .theme-dark .HyperMD-header-2:not(.cm-formatting-header)::after,
 .theme-dark h2::after {
 	content: " H2";
-	color: var(--theme-color);
+	color: var(--color-grey-08);
 	font-size: 16px;
 }
 
 .theme-dark .HyperMD-header-3:not(.cm-formatting-header)::after,
 .theme-dark h3::after {
 	content: " H3";
-	color: var(--rainbow-color-3);
+	color: var(--color-grey-08);
 	font-size: 14px;
 }
 
 .theme-dark .HyperMD-header-4:not(.cm-formatting-header)::after,
 .theme-dark h4::after {
 	content: " H4";
-	color: var(--rainbow-color-4);
+	color: var(--color-grey-08);
 	font-size: 12px;
 }
 
 .theme-dark .HyperMD-header-5:not(.cm-formatting-header)::after,
 .theme-dark h5::after {
 	content: " H5";
-	color: var(--rainbow-color-5);
+	color: var(--color-grey-08);
 	font-size: 12px;
 }
 
 .theme-dark .HyperMD-header-6:not(.cm-formatting-header)::after,
 .theme-dark h6::after {
 	content: " H6";
-	color: var(--rainbow-color-6);
+	color: var(--color-grey-08);
 	font-size: 12px;
 }
 
@@ -819,76 +875,6 @@ video {
 }
 
 
-/* ---------------------------------------- 淡彩风格tags ---------------------------------------- */
-/* ---------------------------------------- 淡彩风格tags ---------------------------------------- */
-/* ---------------------------------------- 淡彩风格tags ---------------------------------------- */
-
-/* 设置tags基本样式 */
-.tag:not(.token) {
-	padding: 4px 10px;
-	display: inline-block;
-	color: var(--tag-font-color);
-	font-family: var(--font-tag);
-	transition: all 0.5s;
-}
-
-/* tags彩虹色配色 */
-.tag:not(.token):nth-child(12n+1) {
-	background-color: var(--theme-color);
-}
-
-.tag:not(.token):nth-child(12n+2) {
-	background-color: var(--tag-background-color-2);
-}
-
-.tag:not(.token):nth-child(12n+3) {
-	background-color: var(--tag-background-color-3);
-}
-
-.tag:not(.token):nth-child(12n+4) {
-	background-color: var(--tag-background-color-4);
-}
-
-.tag:not(.token):nth-child(12n+5) {
-	background-color: var(--tag-background-color-5);
-}
-
-.tag:not(.token):nth-child(12n+6) {
-	background-color: var(--tag-background-color-6);
-}
-
-.tag:not(.token):nth-child(12n+7) {
-	background-color: var(--tag-background-color-7);
-}
-
-.tag:not(.token):nth-child(12n+8) {
-	background-color: var(--tag-background-color-8);
-}
-
-.tag:not(.token):nth-child(12n+9) {
-	background-color: var(--tag-background-color-9);
-}
-
-.tag:not(.token):nth-child(12n+10) {
-	background-color: var(--tag-background-color-A);
-}
-
-.tag:not(.token):nth-child(12n+11) {
-	background-color: var(--tag-background-color-B);
-}
-
-.tag:not(.token):nth-child(12n+12) {
-	background-color: var(--tag-background-color-C);
-}
-
-/* 鼠标悬停样式 */
-.tag:not(.token):hover {
-	padding: 4px 16px;
-	color: var(--tag-font-color);
-	transition: all 0.5s;
-}
-
-
 /* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
@@ -909,7 +895,7 @@ video {
 
 /* callout样式：极简自动分栏(仅对段落有效) */
 .callout[data-callout="multicolumns"] {
-	--callout-color: 180, 180, 180;
+	--callout-color: 250, 250, 250;
 }
 
 .callout[data-callout="multicolumns"] .callout-title {
@@ -1146,153 +1132,6 @@ body:not(.top-sidenote-callout-title) .setting-item[data-id="top-right-sidenote-
 }
 
 
-/* ---------------------------------------- 自定义列表样式 ---------------------------------------- */
-/* ---------------------------------------- 自定义列表样式 ---------------------------------------- */
-/* ---------------------------------------- 自定义列表样式 ---------------------------------------- */
-
-body {
-	--rainbow-1: #E06C75;
-	--rainbow-2: #D19A66;
-	--rainbow-3: #98C379;
-	--rainbow-4: #56B6C2;
-	--rainbow-5: #AA7FB7;
-	--rainbow-6: #C678DD;
-
-	/* 彩色有序列表符号 */
-
-	ol li::marker,
-	ol li::before,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
-	.cm-formatting.cm-formatting-list.cm-formatting-list-ol,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
-		color: var(--theme-color);
-	}
-
-	:is(ul, ol) ol li::marker,
-	:is(ul, ol) ol li::before,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
-		color: var(--rainbow-color-2);
-	}
-
-	:is(ul, ol) :is(ul, ol) ol li::marker,
-	:is(ul, ol) :is(ul, ol) ol li::before,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
-		color: var(--rainbow-color-3);
-	}
-
-	:is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::marker,
-	:is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::before,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
-		color: var(--rainbow-color-4);
-	}
-
-	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::marker,
-	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::before,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
-		color: var(--rainbow-color-5);
-	}
-
-	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::marker,
-	:is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ol li::before,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line div.cm-fold-indicator~span.cm-formatting.cm-formatting-list-ol,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line span.cm-hmd-list-indent~span.cm-formatting.cm-formatting-list-ol {
-		color: var(--rainbow-color-6);
-	}
-
-	/* 彩色无序列表符号 */
-	--list-ul-marker-color:var(--theme-color);
-
-	.has-list-bullet .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line>span.cm-formatting:first-of-type .list-bullet::after {
-		height: 8px;
-		width: 8px;
-		border-radius: 50%;
-		background-color: var(--theme-color);
-	}
-
-	.has-list-bullet .has-list-bullet .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
-		height: 7px;
-		width: 7px;
-		border-radius: 50%;
-		background-color: var(--rainbow-color-2);
-	}
-
-	.has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
-		height: 6px;
-		width: 6px;
-		border-radius: 50%;
-		background-color: var(--rainbow-color-3);
-	}
-
-	.has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
-		height: 5px;
-		width: 5px;
-		border-radius: 50%;
-		background-color: var(--rainbow-color-4);
-	}
-
-	.has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
-		height: 5px;
-		width: 5px;
-		border-radius: 50%;
-		background-color: var(--rainbow-color-5);
-	}
-
-	.has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line div.cm-fold-indicator~span.cm-formatting .list-bullet::after,
-	.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line span.cm-hmd-list-indent~span.cm-formatting .list-bullet::after {
-		height: 5px;
-		width: 5px;
-		border-radius: 50%;
-		background-color: var(--rainbow-color-6);
-	}
-
-	/* 彩色层级线 */
-	:is(ul, ol)>li,
-	.cm-hmd-list-indent .cm-indent:nth-child(1)::before {
-		--indentation-guide-color: var(--theme-color);
-	}
-
-	:is(ul ul, ol ol)>li,
-	.cm-hmd-list-indent .cm-indent:nth-child(2)::before {
-		--indentation-guide-color: var(--rainbow-color-2);
-	}
-
-	:is(ul ul ul, ol ol ol)>li,
-	.cm-hmd-list-indent .cm-indent:nth-child(3)::before {
-		--indentation-guide-color: var(--rainbow-color-3);
-	}
-
-	:is(ul ul ul ul, ol ol ol ol)>li,
-	.cm-hmd-list-indent .cm-indent:nth-child(4)::before {
-		--indentation-guide-color: var(--rainbow-color-4);
-	}
-
-	:is(ul ul ul ul ul, ol ol ol ol ol)>li,
-	.cm-hmd-list-indent .cm-indent:nth-child(5)::before {
-		--indentation-guide-color: var(--rainbow-color-5);
-	}
-
-	:is(ul ul ul ul ul ul, ol ol ol ol ol ol)>li,
-	.cm-hmd-list-indent .cm-indent:nth-child(6)::before {
-		--indentation-guide-color: var(--rainbow-color-6);
-	}
-}
-
-
 /* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
@@ -1370,3 +1209,87 @@ input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
 	background-image: url('data:image/svg+xml,<svg fill="%23000000" version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><rect x="5.15" y="16.928" width="31.7" height="8.143" style="fill: rgb(255, 255, 255);"></rect></svg>');
 }
 
+
+/* ------------------------------ UI组件设置 ------------------------------ */
+/* ------------------------------ UI组件设置 ------------------------------ */
+/* ------------------------------ UI组件设置 ------------------------------ */
+
+/* 自定义侧边栏导航图标：默认缩小显示，鼠标悬浮时完全显示 */
+body:not(.is-mobile) .nav-header {
+	display: flex;
+	/* 显示为弹性盒 */
+	justify-content: left;
+	/* 水平居左 */
+	align-items: center;
+	/* 垂直居中 */
+	padding: var(--size-4-1);
+	/* 内边距 */
+	padding-left: var(--size-4-3);
+	/* 左内边距 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-action-button {
+	flex-grow: 0;
+	/* 不增长 */
+	max-width: 5px;
+	/* 最大宽度 */
+	max-height: 5px;
+	/* 最大高度 */
+	overflow: hidden;
+	/* 隐藏溢出内容 */
+	border-radius: 50%;
+	/* 圆角半径 */
+	padding: 0px;
+	/* 内边距 */
+	background-color: var(--text-faint);
+	/* 背景颜色 */
+	transition: max-width 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		/* 过渡效果 */
+		max-height 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		padding 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		background-color 120ms linear;
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-action-button {
+	max-width: 32px;
+	/* 最大宽度 */
+	max-height: 64px;
+	/* 最大高度 */
+	opacity: 0.85;
+	/* 不透明度 */
+	flex-grow: 1;
+	/* 增长 */
+	background-color: transparent;
+	/* 背景颜色 */
+	padding: var(--size-2-2) var(--size-2-3);
+	/* 内边距 */
+}
+
+/* 设置文件列表的文件夹图标 */
+
+.nav-file-title,
+.nav-folder-title {
+	margin-bottom: 4px;
+}
+
+.nav-file-title,
+.nav-folder-title {
+	gap: 2px;
+}
+
+body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
+body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="bookmarks"] .tree-item-icon.collapse-icon {
+	background-color: var(--icon-color);
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M4 9.333 4.967 7.4a1.333 1.333 0 0 1 1.193-.733h7.173m0 0a1.333 1.333 0 0 1 1.294 1.666l-1.034 4a1.333 1.333 0 0 1-1.293 1H2.667A1.333 1.333 0 0 1 1.333 12V3.333C1.333 2.6 1.933 2 2.667 2h2.62a1.333 1.333 0 0 1 1.106.6l.547.8a1.333 1.333 0 0 0 1.107.6H12a1.333 1.333 0 0 1 1.333 1.333v1.334Z'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	-webkit-mask-repeat: no-repeat;
+}
+
+body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="file-explorer"] .is-collapsed .tree-item-icon.collapse-icon,
+body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="bookmarks"] .is-collapsed .tree-item-icon.collapse-icon {
+	background-color: var(--icon-color);
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M2.667 13.333h10.666A1.333 1.333 0 0 0 14.667 12V5.333A1.333 1.333 0 0 0 13.333 4H8.047a1.333 1.333 0 0 1-1.107-.6l-.547-.8A1.333 1.333 0 0 0 5.287 2h-2.62a1.333 1.333 0 0 0-1.334 1.333V12c0 .733.6 1.333 1.334 1.333Z'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	-webkit-mask-repeat: no-repeat;
+}
