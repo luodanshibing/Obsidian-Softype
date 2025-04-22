@@ -58,21 +58,21 @@ settings:
 	--font-strong-size: 1.0rem;
 	/* 自定义色彩 */
 	/* 基础色卡 */
-	--color-grey-01: #ffffff;
-	--color-grey-02: #FAFAFA;
-	--color-grey-03: #F5F5F5;
-	--color-grey-04: #EEEEEE;
-	--color-grey-05: #E0E0E0;
-	--color-grey-06: #BDBDBD;
-	--color-grey-07: #9E9E9E;
-	--color-grey-08: #757575;
-	--color-grey-09: #616161;
-	--color-grey-10: #424242;
+	--color-grey-01: #FAFAFA;
+	--color-grey-02: #F5F5F5;
+	--color-grey-03: #EEEEEE;
+	--color-grey-04: #E0E0E0;
+	--color-grey-05: #BDBDBD;
+	--color-grey-06: #9E9E9E;
+	--color-grey-07: #757575;
+	--color-grey-08: #616161;
+	--color-grey-09: #424242;
+	--color-grey-10: #212121;
 	--color-bluegrey-01: #ECEFF1;
 	--color-bluegrey-02: #CFD8DC;
 	--color-bluegrey-03: #B0BEC5;
 	--color-bluegrey-04: #90A4AE;
-	--color-bluegrey-04: #78909C;
+	--color-bluegrey-05: #78909C;
 	--color-bluegrey-06: #607D8B;
 	--color-bluegrey-07: #546E7A;
 	--color-bluegrey-08: #455A64;
@@ -1136,7 +1136,7 @@ body:not(.top-sidenote-callout-title) .setting-item[data-id="top-right-sidenote-
 /* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
 
-/* obsidian-checkbox-css https://github.com/netgamesekai/obsidian-checkbox-css */
+/* 代码来源：obsidian-checkbox-css https://github.com/netgamesekai/obsidian-checkbox-css */
 
 body {
 	/* checkbox colors */
@@ -1210,9 +1210,11 @@ input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
 }
 
 
-/* ------------------------------ UI组件设置 ------------------------------ */
-/* ------------------------------ UI组件设置 ------------------------------ */
-/* ------------------------------ UI组件设置 ------------------------------ */
+/* ---------------------------------------- UI组件设置 ---------------------------------------- */
+/* ---------------------------------------- UI组件设置 ---------------------------------------- */
+/* ---------------------------------------- UI组件设置 ---------------------------------------- */
+
+/* 代码片段来自Composer主题 */
 
 /* 自定义侧边栏导航图标：默认缩小显示，鼠标悬浮时完全显示 */
 body:not(.is-mobile) .nav-header {
@@ -1292,4 +1294,1256 @@ body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="bo
 	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M2.667 13.333h10.666A1.333 1.333 0 0 0 14.667 12V5.333A1.333 1.333 0 0 0 13.333 4H8.047a1.333 1.333 0 0 1-1.107-.6l-.547-.8A1.333 1.333 0 0 0 5.287 2h-2.62a1.333 1.333 0 0 0-1.334 1.333V12c0 .733.6 1.333 1.334 1.333Z'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
 	-webkit-mask-repeat: no-repeat;
+}
+
+/* 设置全局变量，定义各种样式属性的默认值 */
+body {
+	--titlebar-background: transparent;
+	/* 标题栏的背景颜色 */
+	--titlebar-background-focused: transparent;
+	/* 聚焦时标题栏的背景颜色 */
+	--mod-root-header-margin: 0px 0px 4px 0px;
+	/* 根工作区头部的边距 */
+	--root-workspace-padding-bottom: 28px;
+	/* 根工作区底部的内边距 */
+	--root-workspace-radius: var(--radius-m);
+	/* 根工作区的圆角半径 */
+	--root-workspace-margin-spacing: 16px;
+	/* 根工作区的边距 */
+}
+
+/* 浅色主题配色，配色与主题色关联 */
+.theme-light {
+	background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 40%)),
+			/* 比主题色浅,且降低饱和度 */
+			hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 45%))
+			/* 比主题色浅，且降低饱和度 */
+		);
+
+	/* 主要背景渐变 */
+	.vertical-tab-header {
+		background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 40%)),
+				/* 比主题色浅,且降低饱和度 */
+				hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 45%))
+				/* 比主题色浅,且降低饱和度 */
+			);
+	}
+
+	/* 设置栏背景渐变 */
+}
+
+/* 深色主题配色，配色与主题色关联 */
+.theme-dark {
+	background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 45%)),
+			/* 比主题色深,且降降低饱和度 */
+			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 40%))
+			/* 比主题色深,且降降低饱和度 */
+		);
+
+	/* 主要背景渐变 */
+	.vertical-tab-header {
+		background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 45%)),
+				/* 比主题色深,且降降低饱和度 */
+				hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 40%))
+				/* 比主题色深,且降降低饱和度 */
+			);
+	}
+
+	/* 设置栏背景渐变 */
+}
+
+/* UI组件样式 */
+.workspace-ribbon {
+	--divider-color: transparent;
+	/* 分隔符颜色 */
+	--divider-width: 0px;
+	/* 分隔符宽度 */
+}
+
+body:not(.is-mobile) .workspace-ribbon.mod-left {
+	background-color: var(--mod-left-ribbon-background);
+	/* 背景颜色 */
+	margin-top: 0px;
+	/* 顶部外边距 */
+	padding-top: var(--header-height);
+	/* 顶部内边距 */
+}
+
+body:not(.is-mobile) .workspace-ribbon.mod-left.is-collapsed {
+	background-color: var(--mod-left-ribbon-background-collapsed);
+	/* 折叠时的背景颜色 */
+}
+
+.workspace-ribbon.mod-left:before {
+	background-color: var(--mod-left-ribbon-background);
+	/* 背景颜色 */
+	display: none;
+	/* 显示为隐藏 */
+}
+
+body.is-focused .titlebar,
+body.is-focused .workspace-ribbon.mod-left {
+	border: none;
+	/* 边框 */
+}
+
+.side-dock-settings .side-dock-ribbon-action,
+.side-dock-actions .side-dock-ribbon-action {
+	margin: 0 auto;
+	/* 外边距 */
+	--icon-size: var(--icon-xs);
+	/* 图标尺寸 */
+}
+
+.side-dock-actions {
+	border-width: 1px 1px 1px 0px;
+	/* 边框宽度 */
+	border-style: solid;
+	/* 边框样式 */
+	border-color: var(--side-dock-actions-border-color);
+	/* 边框颜色 */
+	border-radius: 0px var(--radius-m) var(--radius-m) 0px;
+	/* 圆角半径 */
+	overflow: hidden;
+	/* 溢出隐藏 */
+	padding: 2px;
+	/* 内边距 */
+	margin-top: 2px;
+	/* 顶部外边距 */
+}
+
+/* 工作区导航头部样式 */
+body:not(.is-mobile) .nav-header {
+	display: flex;
+	/* 显示为弹性盒子 */
+	justify-content: center;
+	/* 水平居中 */
+	align-items: center;
+	/* 垂直居中 */
+	padding: var(--size-4-1);
+	/* 内边距 */
+	padding-left: var(--size-4-3);
+	/* 左侧内边距 */
+}
+
+body:not(.is-mobile) .nav-buttons-container {
+	background-color: var(--nav-button-container-bg);
+	/* 背景颜色 */
+	border-radius: var(--radius-m);
+	/* 圆角半径 */
+	padding: 2px 4px;
+	/* 内边距 */
+	width: fit-content;
+	/* 宽度 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-buttons-container {
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-buttons-container {
+	background-color: var(--nav-button-container-bg);
+	/* 背景颜色 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-action-button:hover {
+	background-color: var(--background-modifier-hover);
+	/* 悬停时的背景颜色 */
+	opacity: var(--icon-opacity);
+	/* 不透明度 */
+	border-radius: var(--clickable-icon-radius);
+	/* 圆角半径 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf .workspace-leaf-content .nav-header .nav-action-button {
+	flex-grow: 0;
+	/* 弹性增长 */
+	max-width: 5px;
+	/* 最大宽度 */
+	max-height: 5px;
+	/* 最大高度 */
+	overflow: hidden;
+	/* 溢出隐藏 */
+	border-radius: 50%;
+	/* 圆角半径 */
+	padding: 0px;
+	/* 内边距 */
+	background-color: var(--text-faint);
+	/* 背景颜色 */
+	transition: max-width 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		max-height 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		padding 240ms cubic-bezier(0.4, 0, 0.2, 1),
+		background-color 120ms linear;
+	/* 过渡效果 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-action-button.is-active {
+	background-color: var(--icon-color-active);
+	/* 激活时的背景颜色 */
+}
+
+body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-action-button {
+	max-width: 32px;
+	/* 最大宽度 */
+	max-height: 64px;
+	/* 最大高度 */
+	opacity: 0.85;
+	/* 不透明度 */
+	flex-grow: 1;
+	/* 弹性增长 */
+	background-color: transparent;
+	/* 背景颜色 */
+	padding: var(--size-2-2) var(--size-2-3);
+	/* 内边距 */
+}
+
+/* 工作区标签头部样式 */
+.mod-left-split .workspace-tab-header-container-inner,
+.mod-right-split .workspace-tab-header-container-inner {
+	gap: 4px;
+	/* 间距 */
+	opacity: 1;
+	/* 不透明度 */
+}
+
+body:not(.is-phone) .workspace:not(.is-left-sidedock-open) .sidebar-toggle-button.mod-left {
+	margin-top: 2px;
+	/* 顶部外边距 */
+}
+
+body:not(.is-phone) .workspace:not(.is-right-sidedock-open) .sidebar-toggle-button.mod-right {
+	margin-top: 2px;
+	/* 顶部外边距 */
+}
+
+.workspace-tab-header-tab-list,
+.workspace-tab-header-new-tab,
+.workspace-tab-header-spacer {
+	margin-top: 6px;
+	/* 顶部外边距 */
+}
+
+.nav-header .nav-buttons-container,
+.clickable-icon.side-dock-ribbon-action .svg-icon,
+.mod-left-split .workspace-tab-header-inner-icon .svg-icon,
+.mod-right-split .workspace-tab-header-inner-icon .svg-icon {
+	--icon-size: var(--icon-s);
+	/* 图标尺寸 */
+}
+
+/* 工作区样式 */
+body:not(.is-phone) .workspace {
+	background-color: var(--background-secondary);
+	/* 背景颜色 */
+	background: var(--background-gradient);
+	/* 背景渐变 */
+}
+
+body.is-phone .workspace {
+	background-color: var(--background-secondary);
+	/* 背景颜色 */
+}
+
+.workspace-tabs .workspace-leaf {
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+.workspace-tab-header-container {
+	border-bottom: none;
+	/* 底部边框 */
+	background-color: var(--workspace-header-background);
+	/* 背景颜色 */
+}
+
+.workspace-tab-header.is-active:hover {
+	background-color: var(--tab-background-active);
+	/* 悬停时的背景颜色 */
+}
+
+.workspace-tab-header-inner {
+	padding: 0 4px;
+	/* 内边距 */
+}
+
+body:not(.is-phone) .workspace-tab-container {
+	background-color: var(--background-primary);
+	/* 背景颜色 */
+}
+
+.workspace .mod-left-split .workspace-tab-container {
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+.workspace .mod-right-split .workspace-tab-container {
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+.mod-root .workspace-tabs .workspace-leaf {
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+/* 根标签样式 */
+.workspace .mod-root {
+	background-color: var(--mod-root-background);
+	/* 背景颜色 */
+	border: var(--mod-root-border);
+	/* 边框 */
+}
+
+.workspace .mod-root .workspace-tab-header-container {
+	background-color: var(--mod-root-header-background);
+	/* 背景颜色 */
+}
+
+.workspace .mod-root .workspace-tab-header {
+	padding: 2px;
+	/* 内边距 */
+	border: 1px solid transparent;
+	/* 边框 */
+	border-radius: var(--radius-s);
+	/* 圆角半径 */
+}
+
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover {
+	color: var(--text-normal);
+	/* 颜色 */
+	background-color: var(--tab-background-active);
+	/* 背景颜色 */
+}
+
+.workspace .mod-root .workspace-tab-header.is-active {
+	box-shadow: none;
+	/* 阴影 */
+	color: var(--tab-text-color-active);
+	/* 颜色 */
+	background-color: var(--tab-background-active);
+	/* 背景颜色 */
+	position: relative;
+	/* 定位 */
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.mod-root .workspace-tab-header-container-inner {
+	padding: 1px 12px 0px 6px;
+	/* 内边距 */
+}
+
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+	border: none;
+	/* 边框 */
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+.workspace .mod-root .workspace-tab-header-inner::after,
+.workspace-split.mod-root .workspace-tab-header.is-active::before,
+.workspace-split.mod-root .workspace-tab-header.is-active::after {
+	display: none;
+	/* 显示为隐藏 */
+}
+
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right {
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+/* 工作区分割样式 */
+body:not(.is-mobile) .workspace-split.mod-vertical,
+body:not(.is-mobile) .workspace-split.mod-horizontal {
+	gap: 16px;
+	/* 间距 */
+}
+
+body:not(.is-mobile) .mod-root .workspace-tabs {
+	overflow: visible;
+	/* 溢出可见 */
+}
+
+body:not(.is-mobile) .mod-root .workspace-tab-container {
+	border-radius: var(--root-workspace-radius);
+	/* 圆角半径 */
+	box-shadow: var(--root-workspace-shadow);
+	/* 阴影 */
+	background-color: var(--root-workspace-background);
+	/* 背景颜色 */
+}
+
+body:not(.is-phone) .mod-root .workspace-tab-header-container {
+	padding: 0px 12px 4px 0px;
+	/* 内边距 */
+	margin: var(--mod-root-header-margin);
+	/* 外边距 */
+}
+
+body:not(.is-phone) .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
+	border-radius: 0px;
+	/* 圆角半径 */
+	border: none;
+	/* 边框 */
+	border-right: 1.5px dashed var(--background-modifier-border);
+	/* 右边框 */
+	box-shadow: none;
+	/* 阴影 */
+}
+
+body:not(.is-phone) .workspace:is(.is-left-sidedock-open.is-right-sidedock-open) .mod-root.workspace-split.mod-vertical {
+	margin-left: 0;
+	/* 左侧外边距 */
+	margin-right: 0;
+	/* 右侧外边距 */
+	padding-bottom: var(--root-workspace-padding-bottom);
+	/* 底部内边距 */
+}
+
+body:not(.is-phone) .workspace:is(.is-left-sidedock-open):not(.is-right-sidedock-open) .mod-root.workspace-split.mod-vertical {
+	margin-left: 0;
+	/* 左侧外边距 */
+	margin-right: var(--root-workspace-margin-spacing);
+	/* 右侧外边距 */
+	padding-bottom: var(--root-workspace-padding-bottom);
+	/* 底部内边距 */
+}
+
+body:not(.is-phone) .workspace:is(.is-right-sidedock-open):not(.is-left-sidedock-open) .mod-root.workspace-split.mod-vertical {
+	margin-left: var(--root-workspace-margin-spacing);
+	/* 左侧外边距 */
+	margin-right: 0;
+	/* 右侧外边距 */
+	padding-bottom: var(--root-workspace-padding-bottom);
+	/* 底部内边距 */
+}
+
+body:not(.is-phone) .workspace:not(.is-right-sidedock-open):not(.is-left-sidedock-open) .mod-root.workspace-split.mod-vertical {
+	margin-left: var(--root-workspace-margin-spacing);
+	/* 左侧外边距 */
+	margin-right: var(--root-workspace-margin-spacing);
+	/* 右侧外边距 */
+	padding-bottom: var(--root-workspace-padding-bottom);
+	/* 底部内边距 */
+}
+
+.workspace-split.mod-right-split {
+	padding-bottom: var(--root-workspace-padding-bottom);
+	/* 底部内边距 */
+}
+
+.workspace-split.mod-left-split>.workspace-leaf-resize-handle,
+.workspace-split.mod-right-split>.workspace-leaf-resize-handle,
+.workspace-split.mod-vertical>*>.workspace-leaf-resize-handle {
+	opacity: 0 !important;
+	/* 不透明度 */
+}
+
+.workspace-split.mod-left-split>.workspace-leaf-resize-handle:hover,
+.workspace-split.mod-right-split>.workspace-leaf-resize-handle:hover,
+.workspace-split.mod-vertical>*>.workspace-leaf-resize-handle:hover {
+	opacity: 1 !important;
+	/* 不透明度 */
+}
+
+.workspace-split.mod-horizontal:not(.mod-left-split, .mod-right-split)>*>.workspace-leaf-resize-handle {
+	opacity: 0 !important;
+	/* 不透明度 */
+}
+
+.workspace-split.mod-horizontal:not(.mod-left-split, .mod-right-split)>*>.workspace-leaf-resize-handle:hover {
+	opacity: 1 !important;
+	/* 不透明度 */
+}
+
+/* 设置左右分割样式使其融合 */
+.workspace-split.mod-left-split {
+	background-color: var(--mod-left-split-background);
+	/* 背景颜色 */
+}
+
+.workspace-split.mod-right-split {
+	background-color: var(--mod-right-split-background);
+	/* 背景颜色 */
+}
+
+/* 设置保险库个人资料样式使其与左侧栏融合 */
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+	border: none;
+	/* 边框 */
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+/* 设置状态栏样式使其与下边融合 */
+.status-bar {
+	max-height: 24px;
+	/* 最大高度 */
+	padding: 0px;
+	/* 内边距 */
+	border: none;
+	/* 边框 */
+	background-color: transparent;
+	/* 背景颜色 */
+}
+
+
+/* ---------------------------------------- dataview表格卡片布局显示 ---------------------------------------- */
+/* ---------------------------------------- dataview表格卡片布局显示 ---------------------------------------- */
+/* ---------------------------------------- dataview表格卡片布局显示 ---------------------------------------- */
+
+/* 代码片段来自minimal主题 */
+
+/* 
+  == 全局变量定义 ==
+  定义卡片布局的核心变量，用于控制卡片的尺寸、间距、背景色、边框等样式。
+  这些变量会在后续的 CSS 中被广泛使用。
+*/
+body {
+	--cards-min-width: 180px;
+	/* 卡片的最小宽度 */
+	--cards-max-width: 1fr;
+	/* 卡片的最大宽度 */
+	--cards-mobile-width: 120px;
+	/* 移动设备上的卡片宽度 */
+	--cards-image-height: 400px;
+	/* 卡片内图片的最大高度 */
+	--cards-padding: 1.2em;
+	/* 卡片的内边距 */
+	--cards-image-fit: contain;
+	/* 图片的适应方式（默认为 contain） */
+	--cards-background: transparent;
+	/* 卡片的背景色 */
+	--cards-border-width: 1px;
+	/* 卡片边框的宽度 */
+	--cards-aspect-ratio: auto;
+	/* 卡片的宽高比（默认为自动） */
+	--cards-columns: repeat(auto-fit, minmax(var(--cards-min-width), var(--cards-max-width)));
+	/* 卡片的网格布局 */
+}
+
+/* 
+  == 响应式设计（小屏幕适配）==
+  当屏幕宽度小于 400pt 时，调整卡片的最小宽度为移动设备宽度。
+*/
+@media (max-width: 400pt) {
+	body {
+		--cards-min-width: var(--cards-mobile-width);
+		/* 使用移动设备宽度 */
+	}
+}
+
+/* 
+  == 表格基础样式 ==
+  为卡片表格设置基础样式，包括内边距和行高。
+*/
+.cards.table-100 table.dataview tbody,
+.table-100 .cards table.dataview tbody {
+	padding: 0.25rem 0.75rem;
+	/* 表格内边距 */
+}
+
+/* 
+  == 表格样式（卡片模式）==
+  定义卡片表格的样式，包括宽度、边距、网格布局等。
+*/
+.cards table.dataview {
+	--table-width: 100%;
+	/* 表格宽度 */
+	--table-edge-cell-padding-first: calc(var(--cards-padding) / 2);
+	/* 边缘单元格的内边距 */
+	--table-edge-cell-padding-last: calc(var(--cards-padding) / 2);
+	/* 边缘单元格的内边距 */
+	--table-cell-padding: calc(var(--cards-padding) / 3) calc(var(--cards-padding) / 2);
+	/* 单元格的内边距 */
+	line-height: 1.3;
+	/* 表格的行高 */
+}
+
+/* 
+  == 表格主体样式（网格布局）==
+  使用 CSS Grid 布局卡片表格的主体部分。
+*/
+.cards table.dataview tbody {
+	clear: both;
+	/* 清除浮动 */
+	padding: 0.5rem 0;
+	/* 表格主体的内边距 */
+	display: grid;
+	/* 使用网格布局 */
+	grid-template-columns: var(--cards-columns);
+	/* 按变量定义的列数布局 */
+	grid-column-gap: 0.75rem;
+	/* 列间距 */
+	grid-row-gap: 0.75rem;
+	/* 行间距 */
+}
+
+/* 
+  == 卡片样式（表格行）==
+  定义卡片的样式，包括背景色、边框、阴影、过渡效果等。
+*/
+.cards table.dataview>tbody>tr {
+	background-color: var(--cards-background);
+	/* 卡片背景色 */
+	border: var(--cards-border-width) solid var(--background-modifier-border);
+	/* 卡片边框 */
+	display: flex;
+	/* 使用 Flexbox 布局 */
+	flex-direction: column;
+	/* Flex 方向为垂直 */
+	margin: 0;
+	/* 外边距 */
+	padding: 0 0 calc(var(--cards-padding) / 3) 0;
+	/* 内边距 */
+	border-radius: 6px;
+	/* 圆角 */
+	overflow: hidden;
+	/* 隐藏溢出内容 */
+	transition: box-shadow 0.15s linear;
+	/* 阴影过渡效果 */
+	max-width: var(--cards-max-width);
+	/* 最大宽度 */
+	height: auto;
+	/* 高度自适应 */
+}
+
+/* 
+  == 卡片悬停效果 ==
+  定义卡片悬停时的边框和阴影效果。
+*/
+.cards table.dataview>tbody>tr:hover {
+	border: var(--cards-border-width) solid var(--background-modifier-border-hover);
+	/* 悬停时的边框色 */
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 1px rgba(0, 0, 0, 0.025);
+	/* 悬停时的阴影 */
+	transition: box-shadow 0.15s linear;
+	/* 阴影过渡效果 */
+}
+
+/* 
+  == 卡片标题单元格样式 ==
+  定义卡片标题单元格的样式，包括字体粗细和链接样式。
+*/
+.cards table.dataview tbody>tr>td:first-child {
+	font-weight: var(--bold-weight);
+	/* 标题字体加粗 */
+	border: none;
+	/* 无边框 */
+}
+
+.cards table.dataview tbody>tr>td:first-child a {
+	display: block;
+	/* 链接块级显示 */
+}
+
+/* 
+  == 卡片内容单元格样式（最后一个单元格）==
+  定义最后一个单元格的样式，包括边框和内边距。
+*/
+.cards table.dataview tbody>tr>td:last-child {
+	border: none;
+	/* 无边框 */
+}
+
+/* 
+  == 卡片内容单元格样式（非标题单元格）==
+  定义非标题单元格的样式，包括字体大小和颜色。
+*/
+.cards table.dataview tbody>tr>td:not(:first-child) {
+	font-size: calc(var(--table-text-size) * 0.9);
+	/* 字体大小 */
+	color: var(--text-muted);
+	/* 文字颜色 */
+}
+
+/* 
+  == 卡片内容单元格内元素样式 ==
+  定义单元格内元素的内边距。
+*/
+.cards table.dataview tbody>tr>td>* {
+	padding: calc(var(--cards-padding) / 3) 0;
+	/* 内边距 */
+}
+
+/* 
+  == 卡片内容单元格样式（中间单元格）==
+  定义中间单元格的样式，包括内边距和边框。
+*/
+.cards table.dataview tbody>tr>td:not(:last-child):not(:first-child) {
+	padding: 4px 0;
+	/* 内边距 */
+	border-bottom: 1px solid var(--background-modifier-border);
+	/* 底边框 */
+	width: calc(100% - var(--cards-padding));
+	/* 宽度 */
+	margin: 0 calc(var(--cards-padding) / 2);
+	/* 外边距 */
+}
+
+/* 
+  == 卡片内链接样式 ==
+  定义卡片内链接的样式，包括无下划线。
+*/
+.cards table.dataview tbody>tr>td a {
+	text-decoration: none;
+	/* 无下划线 */
+}
+
+/* 
+  == 卡片内按钮样式 ==
+  定义卡片内按钮的样式，包括宽度和外边距。
+*/
+.cards table.dataview tbody>tr>td>button {
+	width: 100%;
+	/* 按钮宽度 */
+	margin: calc(var(--cards-padding) / 2) 0;
+	/* 外边距 */
+}
+
+/* 
+  == 卡片内按钮样式（最后一个按钮）==
+  定义最后一个按钮的样式，包括底部外边距。
+*/
+.cards table.dataview tbody>tr>td:last-child>button {
+	margin-bottom: calc(var(--cards-padding) / 6);
+	/* 底部外边距 */
+}
+
+/* 
+  == 卡片内列表样式 ==
+  定义卡片内列表的样式，包括宽度和内边距。
+*/
+.cards table.dataview tbody>tr>td>ul {
+	width: 100%;
+	/* 列表宽度 */
+	padding: 0.25em 0 !important;
+	/* 内边距 */
+	margin: 0 auto !important;
+	/* 外边距 */
+}
+
+/* 
+  == 卡片内图片单元格样式 ==
+  定义包含图片的单元格的样式，包括背景色和显示方式。
+*/
+.cards table.dataview tbody>tr>td:has(img) {
+	padding: 0 !important;
+	/* 内边距 */
+	background-color: var(--background-secondary);
+	/* 背景色 */
+	display: block;
+	/* 块级显示 */
+	margin: 0;
+	/* 外边距 */
+	width: 100%;
+	/* 宽度 */
+}
+
+/* 
+  == 卡片内图片样式 ==
+  定义图片的样式，包括宽高比、对象适应方式和最大高度。
+*/
+.cards table.dataview tbody>tr>td img {
+	aspect-ratio: var(--cards-aspect-ratio);
+	/* 宽高比 */
+	width: 100%;
+	/* 宽度 */
+	object-fit: var(--cards-image-fit);
+	/* 对象适应方式 */
+	max-height: var(--cards-image-height);
+	/* 最大高度 */
+	background-color: var(--background-secondary);
+	/* 背景色 */
+	vertical-align: bottom;
+	/* 垂直对齐方式 */
+}
+
+/* 
+  == 卡片内文本样式（Markdown 源视图）==
+  定义 Markdown 源视图中卡片的文本样式，包括换行方式。
+*/
+.markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td,
+.trim-cols .cards table.dataview tbody>tr>td {
+	white-space: normal;
+	/* 换行方式 */
+}
+
+/* 
+  == 卡片内链接样式（内部链接）==
+  定义内部链接的样式，包括无下划线。
+*/
+.links-int-on .cards table {
+	--link-decoration: none;
+	/* 无下划线 */
+}
+
+/* 
+  == 编辑按钮样式（Markdown 源视图）==
+  定义编辑按钮的样式，包括位置和透明度。
+*/
+.markdown-source-view.mod-cm6.cards .edit-block-button {
+	top: -1px;
+	/* 顶部位置 */
+	right: 28px;
+	/* 右侧位置 */
+	opacity: 1;
+	/* 透明度 */
+}
+
+/* 
+  == 表头样式（位置和宽度）==
+  定义表头的位置和宽度。
+*/
+.cards.table-100 table.dataview thead>tr,
+.table-100 .cards table.dataview thead>tr {
+	right: 0.75rem;
+	/* 右侧位置 */
+}
+
+/* 
+  == 表头伪元素样式（前缀）==
+  定义表头伪元素的样式，包括右侧间距。
+*/
+.cards.table-100 table.dataview thead:before,
+.table-100 .cards table.dataview thead:before {
+	margin-right: 0.75rem;
+	/* 右侧间距 */
+}
+
+/* 
+  == 表头样式（基础样式）==
+  定义表头的基础样式，包括选择、宽度、显示方式等。
+*/
+.cards table.dataview thead {
+	user-select: none;
+	/* 禁止选择 */
+	width: 180px;
+	/* 宽度 */
+	display: block;
+	/* 块级显示 */
+	float: right;
+	/* 右浮动 */
+	position: relative;
+	/* 相对定位 */
+	text-align: right;
+	/* 文本右对齐 */
+	height: 24px;
+	/* 高度 */
+	padding-bottom: 0;
+	/* 底部内边距 */
+}
+
+/* 
+  == 表头悬停效果（伪元素）==
+  定义表头悬停时的伪元素样式，包括背景色。
+*/
+.cards table.dataview thead:hover:after,
+.cards table.dataview thead:hover:before {
+	background-color: var(--background-modifier-hover);
+	/* 悬停时的背景色 */
+}
+
+/* 
+  == 表头伪元素样式（基础样式）==
+  定义表头伪元素的样式，包括位置、宽度、高度等。
+*/
+.cards table.dataview thead:after,
+.cards table.dataview thead:before {
+	content: "";
+	/* 内容为空 */
+	position: absolute;
+	/* 绝对定位 */
+	right: 0;
+	/* 右侧位置 */
+	top: 0;
+	/* 顶部位置 */
+	width: 10px;
+	/* 宽度 */
+	height: 16px;
+	/* 高度 */
+	cursor: var(--cursor);
+	/* 光标样式 */
+	text-align: right;
+	/* 文本右对齐 */
+	padding: var(--size-4-1) var(--size-4-2);
+	/* 内边距 */
+	margin-bottom: 2px;
+	/* 底部外边距 */
+	border-radius: var(--radius-s);
+	/* 圆角 */
+	font-weight: 500;
+	/* 字体粗细 */
+	font-size: var(--font-adaptive-small);
+	/* 字体大小 */
+}
+
+/* 
+  == 表头伪元素样式（前缀）==
+  定义表头伪元素的样式，包括背景色和遮罩。
+*/
+.cards table.dataview thead:before {
+	background-color: var(--text-faint);
+	/* 背景色 */
+	--webkit-mask-repeat: no-repeat;
+	/* 遮罩不重复 */
+	--webkit-mask-size: 16px;
+	/* 遮罩大小 */
+	--webkit-mask-position: center center;
+	/* 遮罩位置 */
+	--webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="currentColor" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>');
+	/* 遮罩图像 */
+}
+
+/* 
+  == 表头样式（隐藏的表头行）==
+  定义表头行的样式，包括位置、显示方式等。
+*/
+.cards table.dataview thead>tr {
+	top: -1px;
+	/* 顶部位置 */
+	position: absolute;
+	/* 绝对定位 */
+	display: none;
+	/* 默认隐藏 */
+	z-index: 9;
+	/* 层级 */
+	border: 1px solid var(--background-modifier-border-hover);
+	/* 边框 */
+	background-color: var(--background-secondary);
+	/* 背景色 */
+	box-shadow: var(--shadow-s);
+	/* 阴影 */
+	padding: 6px;
+	/* 内边距 */
+	border-radius: var(--radius-m);
+	/* 圆角 */
+	flex-direction: column;
+	/* Flex 方向为垂直 */
+	margin: 24px 0 0 0;
+	/* 外边距 */
+	width: 100%;
+	/* 宽度 */
+}
+
+/* 
+  == 表头悬停效果（显示表头行）==
+  定义表头悬停时显示表头行。
+*/
+.cards table.dataview thead:hover>tr {
+	display: flex;
+	/* 悬停时显示 */
+	height: auto;
+	/* 高度自适应 */
+}
+
+/* 
+  == 表头单元格样式（基础样式）==
+  定义表头单元格的样式，包括内边距、边框、字体等。
+*/
+.cards table.dataview thead>tr>th {
+	display: block;
+	/* 块级显示 */
+	padding: 3px 30px 3px 6px !important;
+	/* 内边距 */
+	border-radius: var(--radius-s);
+	/* 圆角 */
+	width: 100%;
+	/* 宽度 */
+	font-weight: 400;
+	/* 字体粗细 */
+	color: var(--text-normal);
+	/* 文字颜色 */
+	cursor: var(--cursor);
+	/* 光标样式 */
+	border: none;
+	/* 无边框 */
+	font-size: var(--font-ui-small);
+	/* 字体大小 */
+}
+
+/* 
+  == 表头单元格样式（排序样式）==
+  定义表头单元格的排序样式，包括文字颜色。
+*/
+.cards table.dataview thead>tr>th[sortable-style="sortable-asc"],
+.cards table.dataview thead>tr>th[sortable-style="sortable-desc"] {
+	color: var(--text-normal);
+	/* 文字颜色 */
+}
+
+/* 
+  == 表头单元格悬停效果 ==
+  定义表头单元格悬停时的样式，包括背景色。
+*/
+.cards table.dataview thead>tr>th:hover {
+	color: var(--text-normal);
+	/* 文字颜色 */
+	background-color: var(--background-modifier-hover);
+	/* 悬停时的背景色 */
+}
+
+/* 
+  == 列表卡片样式（Markdown 预览）==
+  定义 Markdown 预览中列表卡片的样式，包括隐藏某些元素。
+*/
+.list-cards.markdown-preview-view .list-bullet,
+.list-cards.markdown-preview-view .list-collapse-indicator,
+.list-cards.markdown-preview-view.markdown-rendered.show-indentation-guide li>ul::before {
+	display: none;
+	/* 隐藏元素 */
+}
+
+/* 
+  == 列表卡片样式（网格布局）==
+  定义列表卡片的网格布局样式。
+*/
+.list-cards.markdown-preview-view div>ul {
+	display: grid;
+	/* 使用网格布局 */
+	gap: 0.75rem;
+	/* 间距 */
+	grid-template-columns: var(--cards-columns);
+	/* 按变量定义的列数布局 */
+	padding: 0;
+	/* 内边距 */
+	line-height: var(--line-height-tight);
+	/* 行高 */
+}
+
+/* 
+  == 列表卡片项样式（基础样式）==
+  定义列表卡片项的样式，包括背景色、内边距等。
+*/
+.list-cards.markdown-preview-view div>ul>li {
+	background-color: var(--cards-background);
+	/* 背景色 */
+	padding: calc(var(--cards-padding) / 2);
+	/* 内边距 */
+	border-radius: var(--radius-s);
+	/* 圆角 */
+	border: var(--cards-border-width) solid var(--background-modifier-border);
+	/* 边框 */
+	overflow: hidden;
+	/* 隐藏溢出内容 */
+}
+
+/* 
+  == 列表卡片图片样式（嵌入图片）==
+  定义嵌入图片的样式，包括背景色和圆角。
+*/
+.list-cards.markdown-preview-view div>ul .image-embed {
+	padding: 0;
+	/* 内边距 */
+	display: block;
+	/* 块级显示 */
+	background-color: var(--background-secondary);
+	/* 背景色 */
+	border-radius: var(--image-radius);
+	/* 圆角 */
+}
+
+/* 
+  == 列表卡片图片样式（图片本身）==
+  定义图片的样式，包括宽高比、对象适应方式和最大高度。
+*/
+.list-cards.markdown-preview-view div>ul .image-embed img {
+	aspect-ratio: var(--cards-aspect-ratio);
+	/* 宽高比 */
+	object-fit: var(--cards-image-fit);
+	/* 对象适应方式 */
+	max-height: var(--cards-image-height);
+	/* 最大高度 */
+	background-color: var(--background-secondary);
+	/* 背景色 */
+	vertical-align: bottom;
+	/* 垂直对齐方式 */
+}
+
+/* 
+  == 列表卡片链接样式（标题链接）==
+  定义标题链接的样式，包括无下划线和字体粗细。
+*/
+.list-cards.markdown-preview-view div>ul>li>a {
+	--link-decoration: none;
+	/* 无下划线 */
+	--link-external-decoration: none;
+	/* 无外部链接装饰 */
+	font-weight: var(--bold-weight);
+	/* 字体加粗 */
+}
+
+/* 
+  == 列表卡片悬停效果 ==
+  定义列表卡片悬停时的边框色。
+*/
+.list-cards.markdown-preview-view div ul>li:hover {
+	border-color: var(--background-modifier-border-hover);
+	/* 悬停时的边框色 */
+}
+
+/* 
+  == 嵌套列表样式（基础样式）==
+  定义嵌套列表的样式，包括宽度、颜色和字体大小。
+*/
+.list-cards.markdown-preview-view div ul ul {
+	display: block;
+	/* 块级显示 */
+	width: 100%;
+	/* 宽度 */
+	color: var(--text-muted);
+	/* 文字颜色 */
+	font-size: var(--font-smallest);
+	/* 字体大小 */
+	margin: calc(var(--cards-padding) / -4) 0;
+	/* 外边距 */
+	padding: calc(var(--cards-padding) / 2) 0;
+	/* 内边距 */
+}
+
+/* 
+  == 嵌套列表样式（多级嵌套）==
+  定义多级嵌套列表的样式，包括底部内边距。
+*/
+.list-cards.markdown-preview-view div ul ul ul {
+	padding-bottom: calc(var(--cards-padding) / 4);
+	/* 底部内边距 */
+}
+
+/* 
+  == 嵌套列表项样式（显示方式）==
+  定义嵌套列表项的显示方式。
+*/
+.list-cards.markdown-preview-view div ul ul>li {
+	display: block;
+	/* 块级显示 */
+}
+
+/* 
+  == 宽高比预设样式（16:9）==
+  定义宽高比为 16:9 的样式。
+*/
+.cards.cards-16-9,
+.list-cards.cards-16-9 {
+	--cards-aspect-ratio: 16/9;
+	/* 宽高比 */
+}
+
+/* 
+  == 宽高比预设样式（1:1）==
+  定义宽高比为 1:1 的样式。
+*/
+.cards.cards-1-1,
+.list-cards.cards-1-1 {
+	--cards-aspect-ratio: 1/1;
+	/* 宽高比 */
+}
+
+/* 
+  == 宽高比预设样式（2:1）==
+  定义宽高比为 2:1 的样式。
+*/
+.cards.cards-2-1,
+.list-cards.cards-2-1 {
+	--cards-aspect-ratio: 2/1;
+	/* 宽高比 */
+}
+
+/* 
+  == 宽高比预设样式（2:3）==
+  定义宽高比为 2:3 的样式。
+*/
+.cards.cards-2-3,
+.list-cards.cards-2-3 {
+	--cards-aspect-ratio: 2/3;
+	/* 宽高比 */
+}
+
+/* 
+  == 列数预设样式（1 列）==
+  定义 1 列布局的样式。
+*/
+.cards.cards-cols-1,
+.list-cards.cards-cols-1 {
+	--cards-columns: repeat(1, minmax(0, 1fr));
+	/* 1 列布局 */
+}
+
+/* 
+  == 列数预设样式（2 列）==
+  定义 2 列布局的样式。
+*/
+.cards.cards-cols-2,
+.list-cards.cards-cols-2 {
+	--cards-columns: repeat(2, minmax(0, 1fr));
+	/* 2 列布局 */
+}
+
+/* 
+  == 图片适应方式预设样式（cover）==
+  定义图片适应方式为 cover 的样式。
+*/
+.cards.cards-cover,
+.list-cards.cards-cover {
+	--cards-image-fit: cover;
+	/* 图片适应方式 */
+}
+
+/* 
+  == 内容对齐方式预设样式（底部对齐）==
+  定义内容底部对齐的样式。
+*/
+.cards.cards-align-bottom table.dataview tbody>tr>td:last-child,
+.list-cards.cards-align-bottom table.dataview tbody>tr>td:last-child {
+	margin-top: auto;
+	/* 内容顶部外边距自动 */
+}
+
+/* 
+  == 响应式设计（小屏幕适配）==
+  当屏幕宽度小于 400pt 时，调整非标题单元格的字体大小。
+*/
+@media (max-width: 400pt) {
+	.cards table.dataview tbody>tr>td:not(:first-child) {
+		font-size: 80%;
+		/* 字体大小 */
+	}
+}
+
+/* 
+  == 响应式设计（大屏幕适配）==
+  当屏幕宽度大于 400pt 时，定义多列布局的样式。
+*/
+@media (min-width: 400pt) {
+	.cards-cols-3 {
+		--cards-columns: repeat(3, minmax(0, 1fr));
+		/* 3 列布局 */
+	}
+
+	.cards-cols-4 {
+		--cards-columns: repeat(4, minmax(0, 1fr));
+		/* 4 列布局 */
+	}
+
+	.cards-cols-5 {
+		--cards-columns: repeat(5, minmax(0, 1fr));
+		/* 5 列布局 */
+	}
+
+	.cards-cols-6 {
+		--cards-columns: repeat(6, minmax(0, 1fr));
+		/* 6 列布局 */
+	}
+
+	.cards-cols-7 {
+		--cards-columns: repeat(7, minmax(0, 1fr));
+		/* 7 列布局 */
+	}
+
+	.cards-cols-8 {
+		--cards-columns: repeat(8, minmax(0, 1fr));
+		/* 8 列布局 */
+	}
 }
