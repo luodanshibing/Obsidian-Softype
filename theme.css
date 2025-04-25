@@ -377,6 +377,60 @@ body .width-100 {
 	--file-line-width: 100rem;
 }
 
+/* ---------------------------------------- 自定义UI界面样式细节 ---------------------------------------- */
+/* ---------------------------------------- 自定义UI界面样式细节 ---------------------------------------- */
+/* ---------------------------------------- 自定义UI界面样式细节 ---------------------------------------- */
+
+/* 滚动条默认隐藏,悬浮时显示 */
+::-webkit-scrollbar-thumb {
+	visibility: hidden;
+}
+
+::-webkit-scrollbar:hover {
+	visibility: initial;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	visibility: initial;
+}
+
+/* 阅读模式下隐藏metadata */
+.metadata-container {
+	display: none !important;
+}
+
+/* 标签页固定按钮隐藏 */
+.workspace-tab-header-status-icon.mod-pinned {
+	display: none;
+	pointer-events: none;
+}
+
+/* 标签页关闭按钮隐藏 */
+.workspace-tab-header-inner-close-button {
+	display: none !important;
+}
+
+/* 文件列表标题栏图标左对齐 */
+.nav-buttons-container {
+	display: flex;
+	justify-content: flex-start;
+}
+
+/* calendar插件 隐藏标题等级指示器 */
+.title.svelte-1vwr9dd::after {
+	display: none;
+}
+
+/* calendar插件 缩小容器左侧空白 */
+#calendar-container.container.svelte-pcimu8 {
+	padding-left: 0;
+}
+
+/* calenda插件r 给周数添加主题色 */
+#calendar-container .week-num.svelte-egt0yd {
+	color: var(--color-accent);
+}
+
 
 /* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
 /* ---------------------------------------- 自定义头图组件 ---------------------------------------- */
@@ -440,73 +494,6 @@ body .width-100 {
 /*此处是为了嵌入块两侧对称，嵌入块右侧有东西无法去掉，手动设置数值配平了，蠢透了*/
 
 
-/* ---------------------------------------- 自定义界面样式细节 ---------------------------------------- */
-/* ---------------------------------------- 自定义界面样式细节 ---------------------------------------- */
-/* ---------------------------------------- 自定义界面样式细节 ---------------------------------------- */
-
-/* 滚动条隐藏,悬浮时显示 */
-::-webkit-scrollbar-thumb {
-	visibility: hidden;
-}
-
-::-webkit-scrollbar:hover {
-	visibility: initial;
-}
-
-::-webkit-scrollbar-thumb:hover {
-	visibility: initial;
-}
-
-/* 阅读模式下隐藏属性 */
-.metadata-container {
-	display: none !important;
-}
-
-/* 标签页固定按钮隐藏 */
-.workspace-tab-header-status-icon.mod-pinned {
-	display: none;
-	pointer-events: none;
-}
-
-/* 标签页关闭按钮隐藏 */
-.workspace-tab-header-inner-close-button {
-	display: none !important;
-}
-
-/* 文件列表标题栏图标左对齐 */
-.nav-buttons-container {
-	display: flex;
-	justify-content: flex-start;
-}
-
-/* recent files 列表左对齐 */
-.recent-files-title {
-	padding-left: 0;
-}
-
-/* calendar 隐藏年份指示器 */
-.year.svelte-1vwr9dd {
-	display: none;
-}
-
-/* calendar 隐藏标题等级指示器 */
-.title.svelte-1vwr9dd::after {
-	display: none;
-}
-
-/* calendar 隐藏导航栏指示器 */
-/* #calendar-container .nav.svelte-1vwr9dd {display: none;}  */
-/* calendar 缩小容器左侧空白 */
-#calendar-container.container.svelte-pcimu8 {
-	padding-left: 0;
-}
-
-/* calendar 给周数添加主题色 */
-#calendar-container .week-num.svelte-egt0yd {
-	color: var(--color-accent);
-}
-
-
 /* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
@@ -519,6 +506,7 @@ video {
 	margin-right: auto !important;
 }
 
+/* 编辑模式下将 .cm-content 容器下直接子元素居中 */
 .markdown-source-view.mod-cm6 .cm-content>* {
 	margin: auto !important;
 }
@@ -529,12 +517,12 @@ video {
 	border-radius: 4px;
 }
 
-/*预览模式添加视频圆角效果*/
+/*双模式添加视频圆角效果*/
+.markdown-source-view video,
 .markdown-preview-view video {
 	border-radius: 4px;
 }
 
-/*预览模式添加图片圆角*/
 /* 将图片渲染为圆形以制作头像效果：通过在yaml区添加 cssclasses: rounded-image 来使得页面内图片都为圆形 */
 .rounded-image img {
 	border-radius: 50%;
@@ -545,48 +533,45 @@ video {
 /* ---------------------------------------- 自定义表格样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义表格样式 ---------------------------------------- */
 
-/* 表格居中显示 */
-.markdown-reading-view table {
+/* 预览模式表格全宽且居中 */
+.markdown-preview-view table {
+	width: 100%;
 	margin: 0 auto;
 }
 
+/* 编辑模式下表格居中 */
 .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper {
 	margin: 0 auto;
 }
 
-/* 表格全宽显示 */
-.markdown-rendered table {
-	width: 100%;
-}
-
-/* 隐藏表格边线 */
+/* 预览模式下隐藏表格边线 */
 .markdown-preview-view table th,
 .markdown-preview-view table td {
 	border: none;
 }
 
 /* 明亮主题下设置表格样式-单线样式 */
-/* 首行边线及背景色设置*/
+/* 首行边线及颜色设置*/
 .theme-light .markdown-preview-view table thead tr:first-child th {
-	border-top: 0px solid #000;
-	border-bottom: 2px solid #000;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
 }
 
 /*末行下边线设置*/
 .theme-light .markdown-preview-view table tbody tr:last-child td {
-	border-bottom: 0px solid #000;
+	border-bottom: 1px solid #000;
 }
 
 /* 暗色主题下设置表格样式-单线样式 */
 /* 首行边线及背景色设置*/
 .theme-dark .markdown-preview-view table thead tr:first-child th {
-	border-top: 0px solid #fff;
-	border-bottom: 2px solid #fff;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
 }
 
 /*末行下边线设置*/
 .theme-dark .markdown-preview-view table tbody tr:last-child td {
-	border-bottom: 0px solid #fff;
+	border-bottom: 1px solid #fff;
 }
 
 
@@ -624,6 +609,7 @@ video {
 /* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
 /* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
 
+/* 编辑模式、预览模式、callout中强调样式 */
 .cm-strong,
 .markdown-preview-view strong,
 .callout strong {
@@ -750,62 +736,37 @@ video {
 
 /* 明亮主题下标题的自定义 */
 /* 预览模式 */
-.theme-light h1 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-1);
-}
-
-.theme-light h2 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-2);
-}
-
-.theme-light h3 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-3);
-}
-
-.theme-light h4 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-4);
-}
-
-.theme-light h5 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-5);
-}
-
-.theme-light h6 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-6);
-}
-
-/* 编辑模式 */
+.theme-light h1,
 .theme-light .HyperMD-header-1 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-1);
 }
 
+.theme-light h2,
 .theme-light .HyperMD-header-2 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-2);
 }
 
+.theme-light h3,
 .theme-light .HyperMD-header-3 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-3);
 }
 
+.theme-light h4,
 .theme-light .HyperMD-header-4 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-4);
 }
 
+.theme-light h5,
 .theme-light .HyperMD-header-5 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-5);
 }
 
+.theme-light h6,
 .theme-light .HyperMD-header-6 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-6);
@@ -813,62 +774,37 @@ video {
 
 /* 黑暗主题下标题的自定义 */
 /* 预览模式 */
-.theme-dark h1 {
+.theme-dark h1,
+.theme-dark .HyperMD-header-1{
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-1);
 }
 
-.theme-dark h2 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-2);
-}
-
-.theme-dark h3 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-3);
-}
-
-.theme-dark h4 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-4);
-}
-
-.theme-dark h5 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-5);
-}
-
-.theme-dark h6 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-6);
-}
-
-/* 编辑模式 */
-.theme-dark .HyperMD-header-1 {
-	font-family: var(--font-header);
-	font-size: var(--font-header-size-1);
-}
-
+.theme-dark h2,
 .theme-dark .HyperMD-header-2 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-2);
 }
 
+.theme-dark h3,
 .theme-dark .HyperMD-header-3 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-3);
 }
 
+.theme-dark h4,
 .theme-dark .HyperMD-header-4 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-4);
 }
 
+.theme-dark h5,
 .theme-dark .HyperMD-header-5 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-5);
 }
 
+.theme-dark h6,
 .theme-dark .HyperMD-header-6 {
 	font-family: var(--font-header);
 	font-size: var(--font-header-size-6);
@@ -1269,27 +1205,16 @@ body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .wor
 }
 
 /* 设置文件列表的文件夹图标 */
-
-.nav-file-title,
-.nav-folder-title {
-	margin-bottom: 4px;
-}
-
-.nav-file-title,
-.nav-folder-title {
-	gap: 2px;
-}
-
-body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
-body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="bookmarks"] .tree-item-icon.collapse-icon {
+.workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
+.workspace-leaf-content[data-type="bookmarks"] .tree-item-icon.collapse-icon {
 	background-color: var(--icon-color);
 	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M4 9.333 4.967 7.4a1.333 1.333 0 0 1 1.193-.733h7.173m0 0a1.333 1.333 0 0 1 1.294 1.666l-1.034 4a1.333 1.333 0 0 1-1.293 1H2.667A1.333 1.333 0 0 1 1.333 12V3.333C1.333 2.6 1.933 2 2.667 2h2.62a1.333 1.333 0 0 1 1.106.6l.547.8a1.333 1.333 0 0 0 1.107.6H12a1.333 1.333 0 0 1 1.333 1.333v1.334Z'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
 	-webkit-mask-repeat: no-repeat;
 }
 
-body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="file-explorer"] .is-collapsed .tree-item-icon.collapse-icon,
-body:not(.composer--DisableFileFolderIcon) .workspace-leaf-content[data-type="bookmarks"] .is-collapsed .tree-item-icon.collapse-icon {
+.workspace-leaf-content[data-type="file-explorer"] .is-collapsed .tree-item-icon.collapse-icon,
+.workspace-leaf-content[data-type="bookmarks"] .is-collapsed .tree-item-icon.collapse-icon {
 	background-color: var(--icon-color);
 	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M2.667 13.333h10.666A1.333 1.333 0 0 0 14.667 12V5.333A1.333 1.333 0 0 0 13.333 4H8.047a1.333 1.333 0 0 1-1.107-.6l-.547-.8A1.333 1.333 0 0 0 5.287 2h-2.62a1.333 1.333 0 0 0-1.334 1.333V12c0 .733.6 1.333 1.334 1.333Z'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
@@ -1314,9 +1239,9 @@ body {
 
 /* 浅色主题配色，配色与主题色关联 */
 .theme-light {
-	background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 40%)),
+	background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--accent-l) + 40%)),
 			/* 比主题色浅,且降低饱和度 */
-			hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 45%))
+			hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--accent-l) + 45%))
 			/* 比主题色浅，且降低饱和度 */
 		);
 
@@ -1334,13 +1259,13 @@ body {
 
 /* 深色主题配色，配色与主题色关联 */
 .theme-dark {
+	/* 主要背景渐变 */
 	background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 45%)),
 			/* 比主题色深,且降降低饱和度 */
 			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 40%))
 			/* 比主题色深,且降降低饱和度 */
 		);
-
-	/* 主要背景渐变 */
+	/* 设置栏背景渐变 */
 	.vertical-tab-header {
 		background: linear-gradient(hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 45%)),
 				/* 比主题色深,且降降低饱和度 */
@@ -1348,8 +1273,6 @@ body {
 				/* 比主题色深,且降降低饱和度 */
 			);
 	}
-
-	/* 设置栏背景渐变 */
 }
 
 /* UI组件样式 */
