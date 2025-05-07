@@ -1025,59 +1025,6 @@ input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
 	color: var(--color-accent);
 }
 
-/* ---------------------------------------- 自定义侧边导航栏图标样式 ---------------------------------------- */
-/* 自定义侧边栏导航图标：默认缩小显示，鼠标悬浮时完全显示 */
-body:not(.is-mobile) .nav-header {
-	display: flex;
-	/* 显示为弹性盒 */
-	justify-content: left;
-	/* 水平居左 */
-	align-items: center;
-	/* 垂直居中 */
-	padding: var(--size-4-1);
-	/* 内边距 */
-	padding-left: var(--size-4-3);
-	/* 左内边距 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-action-button {
-	flex-grow: 0;
-	/* 不增长 */
-	max-width: 5px;
-	/* 最大宽度 */
-	max-height: 5px;
-	/* 最大高度 */
-	overflow: hidden;
-	/* 隐藏溢出内容 */
-	border-radius: 50%;
-	/* 圆角半径 */
-	padding: 0px;
-	/* 内边距 */
-	background-color: var(--text-faint);
-	/* 背景颜色 */
-	transition: max-width 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		/* 过渡效果 */
-		max-height 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		padding 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		background-color 120ms linear;
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-action-button {
-	max-width: 32px;
-	/* 最大宽度 */
-	max-height: 64px;
-	/* 最大高度 */
-	opacity: 0.85;
-	/* 不透明度 */
-	flex-grow: 1;
-	/* 增长 */
-	background-color: transparent;
-	/* 背景颜色 */
-	padding: var(--size-2-2) var(--size-2-3);
-	/* 内边距 */
-}
-
 /* ---------------------------------------- 自定义文件列表样式 ---------------------------------------- */
 /* 设置文件列表的文件夹图标样式 */
 .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
@@ -1326,197 +1273,8 @@ body {
 	}
 }
 
-/* UI组件样式 */
-.workspace-ribbon {
-	--divider-color: transparent;
-	/* 分隔符颜色 */
-	--divider-width: 0px;
-	/* 分隔符宽度 */
-}
-
-body:not(.is-mobile) .workspace-ribbon.mod-left {
-	background-color: var(--mod-left-ribbon-background);
-	/* 背景颜色 */
-	margin-top: 0px;
-	/* 顶部外边距 */
-	padding-top: var(--header-height);
-	/* 顶部内边距 */
-}
-
-body:not(.is-mobile) .workspace-ribbon.mod-left.is-collapsed {
-	background-color: var(--mod-left-ribbon-background-collapsed);
-	/* 折叠时的背景颜色 */
-}
-
-.workspace-ribbon.mod-left:before {
-	background-color: var(--mod-left-ribbon-background);
-	/* 背景颜色 */
-	display: none;
-	/* 显示为隐藏 */
-}
-
-body.is-focused .titlebar,
-body.is-focused .workspace-ribbon.mod-left {
-	border: none;
-	/* 边框 */
-}
-
-.side-dock-settings .side-dock-ribbon-action,
-.side-dock-actions .side-dock-ribbon-action {
-	margin: 0 auto;
-	/* 外边距 */
-	--icon-size: var(--icon-xs);
-	/* 图标尺寸 */
-}
-
-.side-dock-actions {
-	border-width: 1px 1px 1px 0px;
-	/* 边框宽度 */
-	border-style: solid;
-	/* 边框样式 */
-	border-color: var(--side-dock-actions-border-color);
-	/* 边框颜色 */
-	border-radius: 0px var(--radius-m) var(--radius-m) 0px;
-	/* 圆角半径 */
-	overflow: hidden;
-	/* 溢出隐藏 */
-	padding: 2px;
-	/* 内边距 */
-	margin-top: 2px;
-	/* 顶部外边距 */
-}
-
-/* 工作区导航头部样式 */
-body:not(.is-mobile) .nav-header {
-	display: flex;
-	/* 显示为弹性盒子 */
-	justify-content: center;
-	/* 水平居中 */
-	align-items: center;
-	/* 垂直居中 */
-	padding: var(--size-4-1);
-	/* 内边距 */
-	padding-left: var(--size-4-3);
-	/* 左侧内边距 */
-}
-
-body:not(.is-mobile) .nav-buttons-container {
-	background-color: var(--nav-button-container-bg);
-	/* 背景颜色 */
-	border-radius: var(--radius-m);
-	/* 圆角半径 */
-	padding: 2px 4px;
-	/* 内边距 */
-	width: fit-content;
-	/* 宽度 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-buttons-container {
+body .workspace {
 	background-color: transparent;
-	/* 背景颜色 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-buttons-container {
-	background-color: var(--nav-button-container-bg);
-	/* 背景颜色 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-action-button:hover {
-	background-color: var(--background-modifier-hover);
-	/* 悬停时的背景颜色 */
-	opacity: var(--icon-opacity);
-	/* 不透明度 */
-	border-radius: var(--clickable-icon-radius);
-	/* 圆角半径 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf .workspace-leaf-content .nav-header .nav-action-button {
-	flex-grow: 0;
-	/* 弹性增长 */
-	max-width: 5px;
-	/* 最大宽度 */
-	max-height: 5px;
-	/* 最大高度 */
-	overflow: hidden;
-	/* 溢出隐藏 */
-	border-radius: 50%;
-	/* 圆角半径 */
-	padding: 0px;
-	/* 内边距 */
-	background-color: var(--text-faint);
-	/* 背景颜色 */
-	transition: max-width 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		max-height 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		padding 240ms cubic-bezier(0.4, 0, 0.2, 1),
-		background-color 120ms linear;
-	/* 过渡效果 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header .nav-action-button.is-active {
-	background-color: var(--icon-color-active);
-	/* 激活时的背景颜色 */
-}
-
-body:not(.is-mobile):not(.composer--DisableNavHeaderAutoHide) .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-action-button {
-	max-width: 32px;
-	/* 最大宽度 */
-	max-height: 64px;
-	/* 最大高度 */
-	opacity: 0.85;
-	/* 不透明度 */
-	flex-grow: 1;
-	/* 弹性增长 */
-	background-color: transparent;
-	/* 背景颜色 */
-	padding: var(--size-2-2) var(--size-2-3);
-	/* 内边距 */
-}
-
-/* 工作区标签头部样式 */
-.mod-left-split .workspace-tab-header-container-inner,
-.mod-right-split .workspace-tab-header-container-inner {
-	gap: 4px;
-	/* 间距 */
-	opacity: 1;
-	/* 不透明度 */
-}
-
-body:not(.is-phone) .workspace:not(.is-left-sidedock-open) .sidebar-toggle-button.mod-left {
-	margin-top: 2px;
-	/* 顶部外边距 */
-}
-
-body:not(.is-phone) .workspace:not(.is-right-sidedock-open) .sidebar-toggle-button.mod-right {
-	margin-top: 2px;
-	/* 顶部外边距 */
-}
-
-.workspace-tab-header-tab-list,
-.workspace-tab-header-new-tab,
-.workspace-tab-header-spacer {
-	margin-top: 6px;
-	/* 顶部外边距 */
-}
-
-.nav-header .nav-buttons-container,
-.clickable-icon.side-dock-ribbon-action .svg-icon,
-.mod-left-split .workspace-tab-header-inner-icon .svg-icon,
-.mod-right-split .workspace-tab-header-inner-icon .svg-icon {
-	--icon-size: var(--icon-s);
-	/* 图标尺寸 */
-}
-
-/* 工作区样式 */
-body:not(.is-phone) .workspace {
-	background-color: var(--background-secondary);
-	/* 背景颜色 */
-	background: var(--background-gradient);
-	/* 背景渐变 */
-}
-
-body.is-phone .workspace {
-	background-color: var(--background-secondary);
 	/* 背景颜色 */
 }
 
@@ -1528,58 +1286,57 @@ body.is-phone .workspace {
 .workspace-tab-header-container {
 	border-bottom: none;
 	/* 底部边框 */
-	background-color: var(--workspace-header-background);
+	background-color: transparent;
 	/* 背景颜色 */
 }
 
-.workspace-tab-header.is-active:hover {
-	background-color: var(--tab-background-active);
-	/* 悬停时的背景颜色 */
-}
-
-.workspace-tab-header-inner {
-	padding: 0 4px;
+/* ---------------------------------------- 自定义侧边导航头部样式 ---------------------------------------- */
+body .mod-sidedock .workspace-leaf .workspace-leaf-content .nav-header .nav-action-button {
+	flex-grow: 0;
+	/* 弹性增长 */
+	max-width: 2px;
+	/* 最大宽度 */
+	max-height: 2px;
+	/* 最大高度 */
+	overflow: hidden;
+	/* 溢出隐藏 */
+	border-radius: 50%;
+	/* 圆角半径 */
+	padding: 0px;
 	/* 内边距 */
-}
-
-body:not(.is-phone) .workspace-tab-container {
-	background-color: var(--background-primary);
+	background-color: var(--text-faint);
 	/* 背景颜色 */
 }
 
-.workspace .mod-left-split .workspace-tab-container {
+body .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-action-button {
+	max-width: 32px;
+	/* 最大宽度 */
+	max-height: 64px;
+	/* 最大高度 */
+	opacity: 0.85;
+	/* 不透明度 */
+	flex-grow: 1;
+	/* 弹性增长 */
 	background-color: transparent;
 	/* 背景颜色 */
 }
 
-.workspace .mod-right-split .workspace-tab-container {
-	background-color: transparent;
-	/* 背景颜色 */
-}
-
-.mod-root .workspace-tabs .workspace-leaf {
-	background-color: transparent;
-	/* 背景颜色 */
-}
-
-/* 根标签样式 */
+/* ---------------------------------------- 自定义标签页样式 ---------------------------------------- */
 .workspace .mod-root {
-	background-color: var(--mod-root-background);
-	/* 背景颜色 */
-	border: var(--mod-root-border);
-	/* 边框 */
+	background-color: transparent;
+	/* 背景透明 */
+	border: none;
+	/* 隐藏边框 */
 }
 
 .workspace .mod-root .workspace-tab-header-container {
-	background-color: var(--mod-root-header-background);
-	/* 背景颜色 */
+	background-color: transparent;
+	/* 背景透明 */
 }
 
 .workspace .mod-root .workspace-tab-header {
 	padding: 2px;
 	/* 内边距 */
-	border: 1px solid transparent;
-	/* 边框 */
 	border-radius: var(--radius-s);
 	/* 圆角半径 */
 }
@@ -1628,19 +1385,19 @@ body:not(.is-phone) .workspace-tab-container {
 	/* 背景颜色 */
 }
 
-/* 工作区分割样式 */
-body:not(.is-mobile) .workspace-split.mod-vertical,
-body:not(.is-mobile) .workspace-split.mod-horizontal {
+/* ---------------------------------------- 自定义工作区分割样式 ---------------------------------------- */
+body .workspace-split.mod-vertical,
+body .workspace-split.mod-horizontal {
 	gap: 16px;
 	/* 间距 */
 }
 
-body:not(.is-mobile) .mod-root .workspace-tabs {
+body .mod-root .workspace-tabs {
 	overflow: visible;
 	/* 溢出可见 */
 }
 
-body:not(.is-mobile) .mod-root .workspace-tab-container {
+body .mod-root .workspace-tab-container {
 	border-radius: var(--root-workspace-radius);
 	/* 圆角半径 */
 	box-shadow: var(--root-workspace-shadow);
@@ -1649,14 +1406,14 @@ body:not(.is-mobile) .mod-root .workspace-tab-container {
 	/* 背景颜色 */
 }
 
-body:not(.is-phone) .mod-root .workspace-tab-header-container {
+body .mod-root .workspace-tab-header-container {
 	padding: 0px 12px 4px 0px;
 	/* 内边距 */
 	margin: var(--mod-root-header-margin);
 	/* 外边距 */
 }
 
-body:not(.is-phone) .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
+body .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
 	border-radius: 0px;
 	/* 圆角半径 */
 	border: none;
@@ -1667,7 +1424,7 @@ body:not(.is-phone) .workspace .mod-root .workspace-tabs.mod-stacked .workspace-
 	/* 阴影 */
 }
 
-body:not(.is-phone) .workspace:is(.is-left-sidedock-open.is-right-sidedock-open) .mod-root.workspace-split.mod-vertical {
+body .workspace:is(.is-left-sidedock-open.is-right-sidedock-open) .mod-root.workspace-split.mod-vertical {
 	margin-left: 0;
 	/* 左侧外边距 */
 	margin-right: 0;
@@ -1676,7 +1433,7 @@ body:not(.is-phone) .workspace:is(.is-left-sidedock-open.is-right-sidedock-open)
 	/* 底部内边距 */
 }
 
-body:not(.is-phone) .workspace:is(.is-left-sidedock-open):not(.is-right-sidedock-open) .mod-root.workspace-split.mod-vertical {
+body .workspace:is(.is-left-sidedock-open):not(.is-right-sidedock-open) .mod-root.workspace-split.mod-vertical {
 	margin-left: 0;
 	/* 左侧外边距 */
 	margin-right: var(--root-workspace-margin-spacing);
@@ -1685,7 +1442,7 @@ body:not(.is-phone) .workspace:is(.is-left-sidedock-open):not(.is-right-sidedock
 	/* 底部内边距 */
 }
 
-body:not(.is-phone) .workspace:is(.is-right-sidedock-open):not(.is-left-sidedock-open) .mod-root.workspace-split.mod-vertical {
+body .workspace:is(.is-right-sidedock-open):not(.is-left-sidedock-open) .mod-root.workspace-split.mod-vertical {
 	margin-left: var(--root-workspace-margin-spacing);
 	/* 左侧外边距 */
 	margin-right: 0;
@@ -1694,7 +1451,7 @@ body:not(.is-phone) .workspace:is(.is-right-sidedock-open):not(.is-left-sidedock
 	/* 底部内边距 */
 }
 
-body:not(.is-phone) .workspace:not(.is-right-sidedock-open):not(.is-left-sidedock-open) .mod-root.workspace-split.mod-vertical {
+body .workspace:not(.is-right-sidedock-open):not(.is-left-sidedock-open) .mod-root.workspace-split.mod-vertical {
 	margin-left: var(--root-workspace-margin-spacing);
 	/* 左侧外边距 */
 	margin-right: var(--root-workspace-margin-spacing);
@@ -1732,14 +1489,14 @@ body:not(.is-phone) .workspace:not(.is-right-sidedock-open):not(.is-left-sidedoc
 	/* 不透明度 */
 }
 
-/* 设置左右分割样式使其融合 */
+/* ---------------------------------------- 自定义左右分割样式使其融合 ---------------------------------------- */
 .workspace-split.mod-left-split {
-	background-color: var(--mod-left-split-background);
+	background-color: transparent;
 	/* 背景颜色 */
 }
 
 .workspace-split.mod-right-split {
-	background-color: var(--mod-right-split-background);
+	background-color: transparent;
 	/* 背景颜色 */
 }
 
