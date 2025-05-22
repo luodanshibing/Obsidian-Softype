@@ -335,7 +335,7 @@ settings:
 
 /* 覆盖页面默认宽度 */
 body {
-	--file-line-width: 60rem;
+	--file-line-width: 55rem;
 }
 
 /* 通过在yaml区声明CSS类来指定页面宽度 */
@@ -1233,18 +1233,18 @@ body {
 .theme-light {
 	background: linear-gradient(
 		180deg,
-		hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--accent-l) + 40%)),
+		hsl(var(--accent-h), calc(var(--accent-s) - 50%), calc(var(--accent-l) + 30%)),
 		/* 比主题色浅,且降低饱和度 */
-		hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--accent-l) + 45%))
+		hsl(var(--accent-h), calc(var(--accent-s) - 50%), calc(var(--accent-l) + 30%))
 		/* 比主题色浅，且降低饱和度 */
 		);
 	/* 主要背景渐变 */
 	.vertical-tab-header {
 		background: linear-gradient(
 			180deg,
-			hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 40%)),
+			hsl(var(--accent-h), calc(var(--accent-s) - 50%), calc(var(--accent-l) + 30%)),
 			/* 比主题色浅,且降低饱和度 */
-			hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--accent-l) + 45%))
+			hsl(var(--accent-h), calc(var(--accent-s) - 50%), calc(var(--accent-l) + 30%))
 			/* 比主题色浅,且降低饱和度 */
 			);
 	}
@@ -1256,18 +1256,18 @@ body {
 	/* 主要背景渐变 */
 	background: linear-gradient(
 		180deg,
-		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 45%)),
+		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%)),
 		/* 比主题色深,且降降低饱和度 */
-		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 40%))
+		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%))
 		/* 比主题色深,且降降低饱和度 */
 		);
 	/* 设置栏背景渐变 */
 	.vertical-tab-header {
 		background: linear-gradient(
 			180deg,
-			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 45%)),
+			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%)),
 			/* 比主题色深,且降降低饱和度 */
-			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 40%))
+			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%))
 			/* 比主题色深,且降降低饱和度 */
 			);
 	}
