@@ -249,24 +249,24 @@ settings:
 	--color-red-8: #C62828;
 	--color-red-9: #B71C1C;
 	/* 自定义彩虹色 */
-	--rainbow-color-0: var(--color-grey-03);
-	--rainbow-color-1: var(--color-bluegrey-03);
-	--rainbow-color-2: var(--color-deeporange-03);
-	--rainbow-color-3: var(--color-orange-03);
-	--rainbow-color-4: var(--color-amber-03);
-	--rainbow-color-5: var(--color-yellow-03);
-	--rainbow-color-6: var(--color-lime-03);
-	--rainbow-color-7: var(--color-lightgreen-03);
-	--rainbow-color-8: var(--color-green-03);
-	--rainbow-color-9: var(--color-teal-03);
-	--rainbow-color-A: var(--color-cyan-03);
-	--rainbow-color-B: var(--color-lightblue-03);
-	--rainbow-color-C: var(--color-blue-03);
-	--rainbow-color-D: var(--color-indigo-03);
-	--rainbow-color-E: var(--color-deeppurple-03);
-	--rainbow-color-F: var(--color-purple-03);
-	--rainbow-color-G: var(--color-pink-03);
-	--rainbow-color-H: var(--color-red-03);
+	--rainbow-color-0: var(--color-bluegrey-05);
+	--rainbow-color-1: var(--color-deeporange-05);
+	--rainbow-color-2: var(--color-orange-05);
+	--rainbow-color-3: var(--color-amber-05);
+	--rainbow-color-4: var(--color-yellow-05);
+	--rainbow-color-5: var(--color-lime-05);
+	--rainbow-color-6: var(--color-lightgreen-05);
+	--rainbow-color-7: var(--color-green-05);
+	--rainbow-color-8: var(--color-teal-05);
+	--rainbow-color-9: var(--color-cyan-05);
+	--rainbow-color-A: var(--color-lightblue-05);
+	--rainbow-color-B: var(--color-blue-05);
+	--rainbow-color-C: var(--color-indigo-05);
+	--rainbow-color-D: var(--color-deeppurple-05);
+	--rainbow-color-E: var(--color-purple-05);
+	--rainbow-color-F: var(--color-pink-05);
+	--rainbow-color-G: var(--color-red-05);
+	--rainbow-color-H: var(--color-grey-05);
 	/* 文件列表图标颜色变量传递 */
 	--Fold0: var(--rainbow-color-0);
 	--Fold1: var(--rainbow-color-1);
@@ -335,7 +335,7 @@ settings:
 
 /* 覆盖页面默认宽度 */
 body {
-	--file-line-width: 55rem;
+	--file-line-width: 50rem;
 }
 
 /* 通过在yaml区声明CSS类来指定页面宽度 */
@@ -1026,8 +1026,156 @@ input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
 }
 
 /* ---------------------------------------- 自定义文件列表样式 ---------------------------------------- */
-/* 设置文件列表的文件夹图标样式 */
-.workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
+/* 风格一：设置文件列表的默认图标样式 */
+/* 风格一：设置文件列表的默认图标彩虹色 */
+
+.workspace-leaf-content .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold0);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold1);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold2);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold3);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold4);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold5);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold6);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold7);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold8);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold9);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldA);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldB);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldC);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldD);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldE);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldF);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldG);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldH);
+}
+
+
+/* 风格二：设置文件列表的文件夹图标样式 */
+/* .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
 .workspace-leaf-content[data-type="bookmarks"] .tree-item-icon.collapse-icon {
 	background-color: var(--icon-color);
 	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M4 9.333 4.967 7.4a1.333 1.333 0 0 1 1.193-.733h7.173m0 0a1.333 1.333 0 0 1 1.294 1.666l-1.034 4a1.333 1.333 0 0 1-1.293 1H2.667A1.333 1.333 0 0 1 1.333 12V3.333C1.333 2.6 1.933 2 2.667 2h2.62a1.333 1.333 0 0 1 1.106.6l.547.8a1.333 1.333 0 0 0 1.107.6H12a1.333 1.333 0 0 1 1.333 1.333v1.334Z'/%3e%3c/svg%3e");
@@ -1045,9 +1193,9 @@ input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
 	background-repeat: no-repeat;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
-}
+} */
 
-/* 设置文件列表的文件夹图标彩虹色 */
+/* 风格二：设置文件列表的文件夹图标彩虹色 */
 /* .workspace-leaf-content .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
 .workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
 .workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
@@ -1190,7 +1338,7 @@ input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
 .workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
 .workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon {
 	background-color: var(--FoldH);
-}  */
+}   */
 
 /* 设置文件图标 */
 .nav-folder-children .nav-file-title-content::before {
@@ -1256,18 +1404,18 @@ body {
 	/* 主要背景渐变 */
 	background: linear-gradient(
 		180deg,
-		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%)),
+		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 50%)),
 		/* 比主题色深,且降降低饱和度 */
-		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%))
+		hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 50%))
 		/* 比主题色深,且降降低饱和度 */
 		);
 	/* 设置栏背景渐变 */
 	.vertical-tab-header {
 		background: linear-gradient(
 			180deg,
-			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%)),
+			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 50%)),
 			/* 比主题色深,且降降低饱和度 */
-			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 55%))
+			hsl(var(--accent-h), calc(var(--accent-s) - 80%), calc(var(--accent-l) - 50%))
 			/* 比主题色深,且降降低饱和度 */
 			);
 	}
