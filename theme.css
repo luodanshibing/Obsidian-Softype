@@ -1,0 +1,1824 @@
+/* ==========================================================================
+   Softype 主题
+   文件结构：① 全局变量 ② 页面内容样式 ③ UI 组件样式 ④ Dataview 卡片布局
+             ⑤ 移植模块 001（Minimal 浅色界面色彩）
+             ⑥ 移植模块 002（两大色块统一 + Minimal 暗色）
+   维护约定：移植模块独立成段、带出处注释，可整段拆除；新增功能追加在文件末尾。
+   ========================================================================== */
+
+
+/* ---------------------------------------- 定义全局变量 ---------------------------------------- */
+
+:root {
+	/* 标题/强调字体（微软雅黑） */
+	--font-family-1: 微软雅黑;
+	--font-header: var(--font-family-1);
+	--font-strong: var(--font-family-1);
+	--font-header-size-1: 1.8rem;
+	--font-header-size-2: 1.4rem;
+	--font-header-size-3: 1.3rem;
+	--font-header-size-4: 1.2rem;
+	--font-header-size-5: 1.1rem;
+	--font-header-size-6: 1.0rem;
+	--font-strong-size: 1.0rem;
+	/* 自定义色彩：基础色卡（仅保留被引用的 -05 色号与灰阶；完整 Material 色卡已精简） */
+	--color-grey-05: #BDBDBD;
+	--color-grey-08: #616161;
+	--color-bluegrey-05: #78909C;
+	--color-deeporange-05: #FF7043;
+	--color-orange-05: #FFA726;
+	--color-amber-05: #FFCA28;
+	--color-yellow-05: #FFEE58;
+	--color-lime-05: #D4E157;
+	--color-lightgreen-05: #9CCC65;
+	--color-green-05: #66BB6A;
+	--color-teal-05: #26A69A;
+	--color-cyan-05: #26C6DA;
+	--color-lightblue-05: #29B6F6;
+	--color-blue-05: #42A5F5;
+	--color-indigo-05: #5C6BC0;
+	--color-deeppurple-05: #7E57C2;
+	--color-purple-05: #AB47BC;
+	--color-pink-05: #EC407A;
+	--rainbow-color-0: var(--color-bluegrey-05);
+	--rainbow-color-1: var(--color-deeporange-05);
+	--rainbow-color-2: var(--color-orange-05);
+	--rainbow-color-3: var(--color-amber-05);
+	--rainbow-color-4: var(--color-yellow-05);
+	--rainbow-color-5: var(--color-lime-05);
+	--rainbow-color-6: var(--color-lightgreen-05);
+	--rainbow-color-7: var(--color-green-05);
+	--rainbow-color-8: var(--color-teal-05);
+	--rainbow-color-9: var(--color-cyan-05);
+	--rainbow-color-A: var(--color-lightblue-05);
+	--rainbow-color-B: var(--color-blue-05);
+	--rainbow-color-C: var(--color-indigo-05);
+	--rainbow-color-D: var(--color-deeppurple-05);
+	--rainbow-color-E: var(--color-purple-05);
+	--rainbow-color-F: var(--color-pink-05);
+	--rainbow-color-G: var(--color-red-05);
+	--rainbow-color-H: var(--color-grey-05);
+	/* 文件列表图标颜色变量传递（彩虹文件夹配色在用，勿删）
+	   注：--rainbow-color-G 引用的 --color-red-05 在原版中即未定义
+	   （第 17 个文件夹颜色回落默认色），保持原样未修 */
+	--Fold0: var(--rainbow-color-0);
+	--Fold1: var(--rainbow-color-1);
+	--Fold2: var(--rainbow-color-2);
+	--Fold3: var(--rainbow-color-3);
+	--Fold4: var(--rainbow-color-4);
+	--Fold5: var(--rainbow-color-5);
+	--Fold6: var(--rainbow-color-6);
+	--Fold7: var(--rainbow-color-7);
+	--Fold8: var(--rainbow-color-8);
+	--Fold9: var(--rainbow-color-9);
+	--FoldA: var(--rainbow-color-A);
+	--FoldB: var(--rainbow-color-B);
+	--FoldC: var(--rainbow-color-C);
+	--FoldD: var(--rainbow-color-D);
+	--FoldE: var(--rainbow-color-E);
+	--FoldF: var(--rainbow-color-F);
+	--FoldG: var(--rainbow-color-G);
+	--FoldH: var(--rainbow-color-H);
+}
+
+
+/* ---------------------------------------- 自定义Page内容显示效果 ---------------------------------------- */
+
+/* ---------------------------------------- 自定义页面宽度 ---------------------------------------- */
+
+/* 覆盖页面默认宽度 */
+body {
+	--file-line-width: 50rem;
+}
+
+/* 通过在yaml区声明CSS类来指定页面宽度 */
+body .width-45 {
+	--file-line-width: 45rem;
+}
+
+body .width-50 {
+	--file-line-width: 50rem;
+}
+
+body .width-55 {
+	--file-line-width: 55rem;
+}
+
+body .width-60 {
+	--file-line-width: 60rem;
+}
+
+body .width-65 {
+	--file-line-width: 65rem;
+}
+
+body .width-70 {
+	--file-line-width: 70rem;
+}
+
+body .width-75 {
+	--file-line-width: 75rem;
+}
+
+body .width-80 {
+	--file-line-width: 80rem;
+}
+
+body .width-85 {
+	--file-line-width: 85rem;
+}
+
+body .width-90 {
+	--file-line-width: 90rem;
+}
+
+body .width-95 {
+	--file-line-width: 95rem;
+}
+
+body .width-100 {
+	--file-line-width: 100rem;
+}
+
+/* ---------------------------------------- 自定义嵌入题图组件 ---------------------------------------- */
+
+/* 通过声明CSS类(header-image)来自定义banner样式，用以制作可以随意调用的banner组件 */
+.header-image {
+	width: 100%;
+	height: 250px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+	/* 相对定位，以便在图片上添加其他元素 */
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+/* ---------------------------------------- 自定义嵌入样式 ---------------------------------------- */
+
+/* 隐藏嵌入的标题 */
+.embed-title {
+	display: none;
+}
+
+/* 隐藏默认的链接符号 */
+.markdown-preview-view .markdown-embed-link {
+	display: none;
+}
+
+/* 当鼠标悬浮时显示链接符号 */
+.markdown-preview-view .markdown-embed:hover .markdown-embed-link {
+	display: inline;
+	opacity: 0.5;
+	transition: opacity 0.3s ease;
+}
+
+/* 鼠标离开时隐藏链接符号 */
+.markdown-preview-view .markdown-embed .markdown-embed-link:hover {
+	opacity: 1;
+}
+
+/* 块嵌入：四向统一 16px。padding 用 padding-block/padding-inline + !important 写死，
+   不依赖 --embed-padding 变量，避免被 app.css 的 .inline-embed 默认值压过 */
+.markdown-embed {
+	padding-block: 16px !important;
+	padding-inline: 16px !important;
+	--embed-border-start: none;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	box-sizing: border-box !important;
+	overflow: hidden;
+}
+
+/* 内联嵌入（inline-embed）特异性提升，确保覆盖 app.css 的默认 padding: var(--embed-padding) */
+.markdown-embed.inline-embed {
+	padding-block: 16px !important;
+	padding-inline: 16px !important;
+	--embed-padding: 16px !important;
+}
+
+/* 嵌入块内部预览容器清零 padding 和 margin，防止 --file-margins 叠加造成不对称 */
+.markdown-embed .markdown-preview-view,
+.markdown-embed .markdown-preview-sizer {
+	padding: 0 !important;
+	margin: 0 !important;
+	box-sizing: border-box !important;
+}
+
+/* 嵌入块内部所有元素强制不超出容器宽度，钉死 max-width */
+.markdown-embed .markdown-preview-sizer * {
+	max-width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+/* 题图容器和图片都占满容器宽度（修复 background-image 题图超出嵌入框） */
+.markdown-embed .header-image,
+.markdown-embed .el-div,
+.markdown-embed img {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+/* 嵌入块尾部多余空白 */
+.markdown-embed .markdown-preview-sizer>div:last-child>:last-child {
+	margin-block-end: 0;
+}
+
+/* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
+
+/* 预览和编辑模式下居中附件 */
+img,
+video {
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+/* 图片容器块级化：
+   Obsidian 在编辑器和阅读模式都会把图片包进收缩尺寸的 image-embed / image-wrapper，
+   img 自身的 margin:auto 因此推不动、图片贴左。把容器改成块级撑满所在行的宽度，
+   img 自身的 display:block + margin:auto 才能真正生效。
+   排除卡片视图（.list-cards / .cards）以免破坏其自带的图片布局 */
+.markdown-source-view.mod-cm6 .image-embed,
+.markdown-source-view.mod-cm6 .image-embed > .image-wrapper,
+.markdown-preview-view:not(.list-cards):not(.cards) .internal-embed.image-embed {
+	display: block !important;
+}
+
+/* 编辑模式下将 .cm-content 容器下直接子元素居中 */
+.markdown-source-view.mod-cm6 .cm-content>* {
+	margin: auto !important;
+}
+
+/* 双模式添加图片圆角效果*/
+.markdown-source-view img,
+.markdown-preview-view img {
+	border-radius: 4px;
+}
+
+/*双模式添加视频圆角效果*/
+.markdown-source-view video,
+.markdown-preview-view video {
+	border-radius: 4px;
+}
+
+/* 将图片渲染为圆形以制作头像效果：通过在yaml区添加 cssclasses: rounded-image 来使得页面内图片都为圆形 */
+.rounded-image img {
+	border-radius: 50%;
+}
+
+/* ---------------------------------------- 自定义表格样式 ---------------------------------------- */
+
+/* 预览模式表格全宽且居中 */
+.markdown-preview-view table {
+	width: 100%;
+	margin: 0 auto;
+}
+
+/* 编辑模式下表格居中 */
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper {
+	margin: 0 auto;
+}
+
+/* 预览模式下隐藏表格边线 */
+.markdown-preview-view table th,
+.markdown-preview-view table td {
+	border: none;
+}
+
+/* 明亮主题下设置表格样式-单线样式 */
+/* 首行边线及颜色设置*/
+.theme-light .markdown-preview-view table thead tr:first-child th {
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+/*末行下边线设置*/
+.theme-light .markdown-preview-view table tbody tr:last-child td {
+	border-bottom: 1px solid #000;
+}
+
+/* 暗色主题下设置表格样式-单线样式 */
+/* 首行边线及背景色设置*/
+.theme-dark .markdown-preview-view table thead tr:first-child th {
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+
+/*末行下边线设置*/
+.theme-dark .markdown-preview-view table tbody tr:last-child td {
+	border-bottom: 1px solid #fff;
+}
+
+/* ---------------------------------------- 自定义分割线样式 ---------------------------------------- */
+
+/* 明亮主题下的分割线样式 */
+.theme-light .markdown-preview-view hr,
+.theme-light .cm-editor hr {
+	border: none;
+	border-bottom: 2px solid #000000;
+}
+
+/* 黑暗主题下的分割线样式 */
+.theme-dark .markdown-preview-view hr,
+.theme-dark .cm-editor hr {
+	border: none;
+	border-bottom: 2px solid #dadada;
+}
+
+/* ---------------------------------------- 自定义mermaid样式 ---------------------------------------- */
+
+/* mermaid图表自适应页面宽度 */
+.mermaid svg {
+	width: 80%;
+	height: auto;
+}
+
+/* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
+
+/* 编辑模式、预览模式、callout中强调样式 */
+.cm-strong,
+.markdown-preview-view strong,
+.callout strong {
+	font-family: var(--font-strong);
+	font-size: var(--font-strong-size);
+	color: var(--color-accent);
+}
+
+/* ---------------------------------------- 自定义链接样式 ---------------------------------------- */
+
+/* 删除链接下划线 */
+.theme-light,
+.theme-dark {
+	--link-decoration: none;
+	--link-decoration-hover: none;
+	--link-external-decoration: underline;
+	--link-external-decoration-hover: underline;
+}
+
+/* 去除内部链接下划线 */
+.internal-link {
+	text-decoration: none;
+}
+
+/* 去除外部链接下划线 */
+.external-link {
+	text-decoration: none;
+}
+
+/* ---------------------------------------- 自定义标题样式 ---------------------------------------- */
+
+/* 明亮模式下标题级别指示器 */
+.theme-light .HyperMD-header-2:not(.cm-formatting-header)::after,
+.theme-light h2::after {
+	content: " H2";
+	color: var(--color-grey-05);
+	font-size: 16px;
+}
+
+.theme-light .HyperMD-header-3:not(.cm-formatting-header)::after,
+.theme-light h3::after {
+	content: " H3";
+	color: var(--color-grey-05);
+	font-size: 14px;
+}
+
+.theme-light .HyperMD-header-4:not(.cm-formatting-header)::after,
+.theme-light h4::after {
+	content: " H4";
+	color: var(--color-grey-05);
+	font-size: 12px;
+}
+
+.theme-light .HyperMD-header-5:not(.cm-formatting-header)::after,
+.theme-light h5::after {
+	content: " H5";
+	color: var(--color-grey-05);
+	font-size: 10px;
+}
+
+.theme-light .HyperMD-header-6:not(.cm-formatting-header)::after,
+.theme-light h6::after {
+	content: " H6";
+	color: var(--color-grey-05);
+	font-size: 8px;
+}
+
+/* 暗黑模式下标题级别指示器 */
+.theme-dark .HyperMD-header-2:not(.cm-formatting-header)::after,
+.theme-dark h2::after {
+	content: " H2";
+	color: var(--color-grey-08);
+	font-size: 16px;
+}
+
+.theme-dark .HyperMD-header-3:not(.cm-formatting-header)::after,
+.theme-dark h3::after {
+	content: " H3";
+	color: var(--color-grey-08);
+	font-size: 14px;
+}
+
+.theme-dark .HyperMD-header-4:not(.cm-formatting-header)::after,
+.theme-dark h4::after {
+	content: " H4";
+	color: var(--color-grey-08);
+	font-size: 12px;
+}
+
+.theme-dark .HyperMD-header-5:not(.cm-formatting-header)::after,
+.theme-dark h5::after {
+	content: " H5";
+	color: var(--color-grey-08);
+	font-size: 10px;
+}
+
+.theme-dark .HyperMD-header-6:not(.cm-formatting-header)::after,
+.theme-dark h6::after {
+	content: " H6";
+	color: var(--color-grey-08);
+	font-size: 8px;
+}
+
+/* 明亮主题下标题的自定义 */
+/* 预览模式 */
+.theme-light h1,
+.theme-light .HyperMD-header-1 {
+	margin-top: 20px !important;
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-1);
+}
+
+.theme-light h2,
+.theme-light .HyperMD-header-2 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-2);
+}
+
+.theme-light h3,
+.theme-light .HyperMD-header-3 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-3);
+}
+
+.theme-light h4,
+.theme-light .HyperMD-header-4 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-4);
+}
+
+.theme-light h5,
+.theme-light .HyperMD-header-5 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-5);
+}
+
+.theme-light h6,
+.theme-light .HyperMD-header-6 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-6);
+}
+
+/* 黑暗主题下标题的自定义 */
+/* 预览模式 */
+.theme-dark h1,
+.theme-dark .HyperMD-header-1{
+	margin-top: 20px !important;
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-1);
+}
+
+.theme-dark h2,
+.theme-dark .HyperMD-header-2 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-2);
+}
+
+.theme-dark h3,
+.theme-dark .HyperMD-header-3 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-3);
+}
+
+.theme-dark h4,
+.theme-dark .HyperMD-header-4 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-4);
+}
+
+.theme-dark h5,
+.theme-dark .HyperMD-header-5 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-5);
+}
+
+.theme-dark h6,
+.theme-dark .HyperMD-header-6 {
+	font-family: var(--font-header);
+	font-size: var(--font-header-size-6);
+}
+
+/* ---------------------------------------- 自定义tags样式 ---------------------------------------- */
+/* 设置tags基本样式 */
+.tag:not(.token) {
+	padding: 4px 10px;
+	display: inline-block;
+	color: var(--tag-font-color);
+	font-family: var(--font-tag);
+	transition: all 0.5s;
+}
+
+/* 鼠标悬停样式 */
+.tag:not(.token):hover {
+	padding: 4px 16px;
+	color: var(--tag-font-color);
+	transition: all 0.5s;
+}
+
+/* ---------------------------------------- 自定义checkbox样式 ---------------------------------------- */
+
+body {
+	/* 自定义复选框颜色 */
+	--checkbox: var(--color-grey-05);
+	--checkbox-cancel: var(--color-bluegrey-05);
+	--checkbox-done: var(--color-teal-05);
+	--checkbox-wip: var(--color-green-05);
+	--checkbox-forwarded: var(--color-orange-05);
+	--checklist-done-decoration: inherit;
+	--checklist-done-color: inherit;
+}
+
+/* 推迟或取消的任务上的删除线 */
+.task-list-item[data-task=">"],
+.task-list-item[data-task="-"],
+.HyperMD-task-line[data-task=">"] span,
+.HyperMD-task-line[data-task="-"] span {
+	color: var(--checkbox-border-color);
+	text-decoration: line-through;
+}
+
+/* 复选框样式初始化 */
+input[type="checkbox"].task-list-item-checkbox:checked::after {
+	display: none;
+}
+
+input[type="checkbox"].task-list-item-checkbox:checked {
+	background-image: none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	position: relative;
+}
+
+/* “新任务”样式 */
+.task-list-item[data-task=" "] input[type="checkbox"].task-list-item-checkbox,
+input[type="checkbox"][data-task=" "].task-list-item-checkbox {
+	border-color: var(--checkbox) !important;
+}
+
+/* “已完成”样式 */
+input[type="checkbox"][data-task="x"].task-list-item-checkbox:checked,
+.task-list-item[data-task="x"] input[type="checkbox"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-done) !important;
+	background-color: var(--checkbox-done) !important;
+	background-image: url('data:image/svg+xml,<svg version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><path d="M 38.525 7.876 L 36.127 5.946 C 34.945 4.996 34.258 5.007 33.246 6.257 L 15.817 27.766 L 7.706 21.027 C 6.587 20.087 5.887 20.137 4.967 21.287 L 3.116 23.697 C 2.177 24.879 2.297 25.55 3.407 26.477 L 14.967 36.039 C 16.157 37.039 16.827 36.936 17.747 35.817 L 38.826 10.756 C 39.816 9.566 39.756 8.855 38.525 7.876 Z" style="fill: rgb(255, 255, 255);"></path></svg>');
+}
+
+/* “进行中”样式 */
+.task-list-item[data-task="/"] input[type="checkbox"].task-list-item-checkbox:checked,
+input[type="checkbox"][data-task="/"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-wip);
+	background: linear-gradient(90deg, var(--checkbox-wip) 50%, transparent 50%) !important;
+}
+
+/* “已推迟”样式 */
+.task-list-item[data-task=">"] input[type="checkbox"].task-list-item-checkbox:checked,
+input[type="checkbox"][data-task=">"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-forwarded);
+	background-color: var(--checkbox-forwarded) !important;
+	background-image: url('data:image/svg+xml,<svg version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><polygon fill-rule="evenodd" points="28.566 40.819 8.5 20.751 28.068 1.181 33.002 6.114 18.365 20.751 33.5 35.885" style="fill: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(-1, 0, 0, -1, 0, 0.000002)"></polygon></svg>');
+}
+
+/* “已取消”样式 */
+.task-list-item[data-task="-"] input[type="checkbox"].task-list-item-checkbox:checked,
+input[type="checkbox"][data-task="-"].task-list-item-checkbox:checked {
+	border-color: var(--checkbox-cancel);
+	background-color: var(--checkbox-cancel) !important;
+	background-image: url('data:image/svg+xml,<svg fill="%23000000" version="1.1" baseProfile="tiny" id="Layer_1" width="800px" height="800px" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><defs></defs><rect x="5.15" y="16.928" width="31.7" height="8.143" style="fill: rgb(255, 255, 255);"></rect></svg>');
+}
+
+/* ---------------------------------------- 自定义Callout样式 ---------------------------------------- */
+
+/* ⚠️ 移植模块 003：Obsidian 1.13 适配（2026-10-02）
+   1.13 起 --callout-color 必须是完整 CSS 颜色值（官方 OKLCH 迁移，breaking change）：
+   裸 RGB 三元组（如 64,201,75）声明即非法；核心默认色变为完整颜色后，
+   rgb(var(--callout-color), α) 会嵌套成 rgb(rgb(...),α) 同样非法，须改 color-mix。
+   本段已适配三处：bookinfo/ai 改 rgb() 完整色值，thino 改 color-mix。 */
+
+/* callout样式：书籍、电影、人物等信息卡 */
+.callout[data-callout="bookinfo"] {
+	--callout-color: rgb(64, 201, 75);
+	--callout-icon: lucide-book-open;
+}
+/* callout内部采用flex布局 */
+.callout[data-callout="bookinfo"] .callout-content {
+	display: flex;
+}
+/* callout内部第一段右边距 */
+.callout[data-callout="bookinfo"] .callout-content p:first-child {
+	margin-right: 20px;
+}
+
+/* callout样式：极简自动分栏(仅对段落有效)。背景色=核心默认色
+   （原 --callout-color: var(--callout-default) 是死引用——该变量从未定义，
+   2026-10-02 删除，颜色行为不变） */
+.callout[data-callout="multicolumns"] .callout-title {
+	display: none;
+}
+/* 隐藏标题栏显示 */
+.callout[data-callout="multicolumns"] .callout-content {
+	display: flex;
+	gap: 2rem;
+}
+/* 内部段落弹性布局且两端对齐 */
+.callout[data-callout="multicolumns"] .callout-content p {
+	flex: 1;
+	text-align: justify;
+}
+
+/* callout样式：用于创建基于页内内容的时间轴,参考thino插件 */
+.callout.callout[data-callout~=thino] {
+	--callout-icon: "clock-3";
+	--callout-padding: 0px;
+	--callout-title-padding: 10px;
+	--callout-content-padding: 12px;
+	border: unset;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	clear: both;
+}
+
+.callout.callout[data-callout~=thino] .callout-title {
+	float: left;
+	width: 9rem;
+	flex-direction: row-reverse;
+	text-align: right;
+	align-content: center;
+	align-items: center;
+	background-color: transparent;
+	padding: var(--callout-title-padding);
+}
+
+.callout.callout[data-callout~=thino]>.callout-title .callout-icon {
+	background-color: var(--background-primary);
+	margin-right: -1.25rem;
+	transform: scale(1.2);
+	border-radius: 20px;
+	z-index: 1;
+}
+
+.callout.callout[data-callout~=thino] .callout-content {
+	background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
+	padding-top: 2px;
+	border-left: 4px solid color-mix(in srgb, var(--callout-color) 70%, transparent);
+	z-index: 0;
+}
+
+.callout.callout[data-callout~=thino] .callout-content p {
+	margin-block-start: 1em;
+}
+
+
+/* callout样式：AI 生成内容标记 */
+/* 【自建，非移植】2026-09-19 立，依据《Dnotes库 AI 维护规则总纲》§2.3 N1（方案B）
+   用途：把 AI 提炼/生成的内容与原文区分开，避免日后无法分辨哪一段是原文、哪一段是 AI 写的。
+   用法：> [!ai] AI 提炼     （标题文字可自由写，建议沿用固定字样「AI 提炼」便于检索）
+   参考：同段 bookinfo / multicolumns / thino 的写法（--callout-color + --callout-icon）。
+   拆除方法：整段删除即恢复原状。 */
+.callout[data-callout="ai"] {
+	--callout-color: rgb(124, 106, 194);
+	--callout-icon: lucide-sparkles;
+}
+/* 内容区字号略缩，视觉上退到原文之后，不抢夺注意力 */
+.callout[data-callout="ai"] .callout-content {
+	font-size: 0.95em;
+}
+
+/* ---------------------------------------- 自定义UI组件设置 ---------------------------------------- */
+
+/* ---------------------------------------- 滚动条默认隐藏,鼠标悬浮时显示 ---------------------------------------- */
+::-webkit-scrollbar {
+	visibility: hidden;
+}
+/* 默认隐藏滚动条 */
+::-webkit-scrollbar-thumb {
+	visibility: hidden;
+}
+/* 默认隐藏滚动条滑块 */
+::-webkit-scrollbar:hover {
+	visibility: initial;
+}
+/* 鼠标悬浮时，显示滚动条 */
+::-webkit-scrollbar-thumb:hover {
+	visibility: initial;
+}
+/* 鼠标悬浮时，显示滚动条滑块 */
+
+/* ---------------------------------------- 自定义metadata样式 ---------------------------------------- */
+/* 阅读模式下隐藏metadata，但保留其高度 */
+/*.metadata-container {
+    visibility: hidden;
+    height: 20px; 
+}*/
+
+/* ---------------------------------------- 自定义标签页样式 ---------------------------------------- */
+/* 标签页固定按钮隐藏 */
+.workspace-tab-header-status-icon.mod-pinned {
+	display: none;
+	pointer-events: none;
+}
+
+/* 标签页关闭按钮隐藏 */
+.workspace-tab-header-inner-close-button {
+	display: none !important;
+}
+
+/* ---------------------------------------- 自定义calendar插件样式 ---------------------------------------- */
+/* calendar插件 隐藏标题等级指示器 */
+.title.svelte-1vwr9dd::after {
+	display: none;
+}
+
+/* calendar插件 缩小容器左侧空白 */
+#calendar-container.container.svelte-pcimu8 {
+	padding-left: 0;
+}
+
+/* calenda插件 给周数添加主题色 */
+#calendar-container .week-num.svelte-egt0yd {
+	color: var(--color-accent);
+}
+
+/* ---------------------------------------- 自定义文件列表样式 ---------------------------------------- */
+/* 风格一：设置文件列表的默认图标样式 */
+/* 风格一：设置文件列表的默认图标彩虹色 */
+
+.workspace-leaf-content .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+2) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold0);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+3) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold1);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+4) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold2);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+5) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold3);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+6) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold4);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+7) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold5);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+8) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold6);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+9) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold7);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+10) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold8);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+11) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--Fold9);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+12) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldA);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+13) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldB);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+14) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldC);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+15) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldD);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+16) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldE);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+17) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldF);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+18) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldG);
+}
+
+.workspace-leaf-content .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon,
+.workspace-leaf-content .tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item:nth-child(18n+19) .tree-item-icon.collapse-icon {
+	--nav-collapse-icon-color: var(--FoldH);
+}
+
+
+
+/* 设置文件图标 */
+.nav-folder-children .nav-file-title-content::before {
+	content: '📄';
+	margin-right: 4px;
+}
+
+/* 设置md文件图标 */
+.nav-folder-children .tree-item.nav-file div[data-path$='.md'] .nav-file-title-content::before {
+	content: '📑';
+	margin-right: 4px;
+}
+
+/* 设置图片文件图标 */
+.nav-folder-children .tree-item.nav-file div[data-path$='.png'] .nav-file-title-content::before,
+.nav-folder-children .tree-item.nav-file div[data-path$='.jpg'] .nav-file-title-content::before,
+.nav-folder-children .tree-item.nav-file div[data-path$='.jpeg'] .nav-file-title-content::before {
+	content: '🎨';
+	margin-right: 4px;
+}
+
+/* ---------------------------------------- 自定义UI界面(侧边栏、标题栏、设置栏等)颜色 ---------------------------------------- */
+/* ---------------------------------------- 自定义侧边导航头部样式 ---------------------------------------- */
+body .mod-sidedock .workspace-leaf .workspace-leaf-content .nav-header .nav-action-button {
+	flex-grow: 0;
+	max-width: 2px;
+	max-height: 2px;
+	overflow: hidden;
+	border-radius: 50%;
+	padding: 0px;
+	background-color: var(--text-faint);
+}
+
+body .mod-sidedock .workspace-leaf-content .nav-header:hover .nav-action-button {
+	max-width: 32px;
+	max-height: 64px;
+	opacity: 0.85;
+	flex-grow: 1;
+	background-color: transparent;
+}
+
+/* ---------------------------------------- dataview表格卡片布局显示（代码片段来自 Minimal 主题） ---------------------------------------- */
+
+/* 定义卡片布局的核心变量，用于控制卡片的尺寸、间距、背景色、边框等样式。 */
+body {
+	--cards-min-width: 180px;
+	--cards-max-width: 1fr;
+	--cards-mobile-width: 120px;
+	--cards-image-height: 400px;
+	--cards-padding: 1.2em;
+	--cards-image-fit: contain;
+	/* 图片的适应方式（默认为 contain） */
+	--cards-background: transparent;
+	--cards-border-width: 1px;
+	--cards-aspect-ratio: auto;
+	--cards-columns: repeat(auto-fit, minmax(var(--cards-min-width), var(--cards-max-width)));
+}
+
+/* 
+  == 响应式设计（小屏幕适配）==
+  当屏幕宽度小于 400pt 时，调整卡片的最小宽度为移动设备宽度。
+*/
+@media (max-width: 400pt) {
+	body {
+		--cards-min-width: var(--cards-mobile-width);
+	}
+}
+
+/* 
+  == 表格基础样式 ==
+  为卡片表格设置基础样式，包括内边距和行高。
+*/
+.cards.table-100 table.dataview tbody,
+.table-100 .cards table.dataview tbody {
+	padding: 0.25rem 0.75rem;
+}
+
+/* 
+  == 表格样式（卡片模式）==
+  定义卡片表格的样式，包括宽度、边距、网格布局等。
+*/
+.cards table.dataview {
+	--table-width: 100%;
+	--table-edge-cell-padding-first: calc(var(--cards-padding) / 2);
+	--table-edge-cell-padding-last: calc(var(--cards-padding) / 2);
+	--table-cell-padding: calc(var(--cards-padding) / 3) calc(var(--cards-padding) / 2);
+	line-height: 1.3;
+}
+
+/* 
+  == 表格主体样式（网格布局）==
+  使用 CSS Grid 布局卡片表格的主体部分。
+*/
+.cards table.dataview tbody {
+	clear: both;
+	padding: 0.5rem 0;
+	display: grid;
+	grid-template-columns: var(--cards-columns);
+	grid-column-gap: 0.75rem;
+	grid-row-gap: 0.75rem;
+}
+
+/* 
+  == 卡片样式（表格行）==
+  定义卡片的样式，包括背景色、边框、阴影、过渡效果等。
+*/
+.cards table.dataview>tbody>tr {
+	background-color: var(--cards-background);
+	border: var(--cards-border-width) solid var(--background-modifier-border);
+	display: flex;
+	/* 使用 Flexbox 布局 */
+	flex-direction: column;
+	/* Flex 方向为垂直 */
+	margin: 0;
+	padding: 0 0 calc(var(--cards-padding) / 3) 0;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: box-shadow 0.15s linear;
+	max-width: var(--cards-max-width);
+	height: auto;
+}
+
+/* 
+  == 卡片悬停效果 ==
+  定义卡片悬停时的边框和阴影效果。
+*/
+.cards table.dataview>tbody>tr:hover {
+	border: var(--cards-border-width) solid var(--background-modifier-border-hover);
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 1px rgba(0, 0, 0, 0.025);
+	transition: box-shadow 0.15s linear;
+}
+
+/* 
+  == 卡片标题单元格样式 ==
+  定义卡片标题单元格的样式，包括字体粗细和链接样式。
+*/
+.cards table.dataview tbody>tr>td:first-child {
+	font-weight: var(--bold-weight);
+	border: none;
+}
+
+.cards table.dataview tbody>tr>td:first-child a {
+	display: block;
+}
+
+/* 
+  == 卡片内容单元格样式（最后一个单元格）==
+  定义最后一个单元格的样式，包括边框和内边距。
+*/
+.cards table.dataview tbody>tr>td:last-child {
+	border: none;
+}
+
+/* 
+  == 卡片内容单元格样式（非标题单元格）==
+  定义非标题单元格的样式，包括字体大小和颜色。
+*/
+.cards table.dataview tbody>tr>td:not(:first-child) {
+	font-size: calc(var(--table-text-size) * 0.9);
+	color: var(--text-muted);
+}
+
+/* 
+  == 卡片内容单元格内元素样式 ==
+  定义单元格内元素的内边距。
+*/
+.cards table.dataview tbody>tr>td>* {
+	padding: calc(var(--cards-padding) / 3) 0;
+}
+
+/* 
+  == 卡片内容单元格样式（中间单元格）==
+  定义中间单元格的样式，包括内边距和边框。
+*/
+.cards table.dataview tbody>tr>td:not(:last-child):not(:first-child) {
+	padding: 4px 0;
+	border-bottom: 1px solid var(--background-modifier-border);
+	width: calc(100% - var(--cards-padding));
+	margin: 0 calc(var(--cards-padding) / 2);
+}
+
+/* 
+  == 卡片内链接样式 ==
+  定义卡片内链接的样式，包括无下划线。
+*/
+.cards table.dataview tbody>tr>td a {
+	text-decoration: none;
+}
+
+/* 
+  == 卡片内按钮样式 ==
+  定义卡片内按钮的样式，包括宽度和外边距。
+*/
+.cards table.dataview tbody>tr>td>button {
+	width: 100%;
+	margin: calc(var(--cards-padding) / 2) 0;
+}
+
+/* 
+  == 卡片内按钮样式（最后一个按钮）==
+  定义最后一个按钮的样式，包括底部外边距。
+*/
+.cards table.dataview tbody>tr>td:last-child>button {
+	margin-bottom: calc(var(--cards-padding) / 6);
+}
+
+/* 
+  == 卡片内列表样式 ==
+  定义卡片内列表的样式，包括宽度和内边距。
+*/
+.cards table.dataview tbody>tr>td>ul {
+	width: 100%;
+	padding: 0.25em 0 !important;
+	margin: 0 auto !important;
+}
+
+/* 
+  == 卡片内图片单元格样式 ==
+  定义包含图片的单元格的样式，包括背景色和显示方式。
+*/
+.cards table.dataview tbody>tr>td:has(img) {
+	padding: 0 !important;
+	background-color: var(--background-secondary);
+	display: block;
+	margin: 0;
+	width: 100%;
+}
+
+/* 
+  == 卡片内图片样式 ==
+  定义图片的样式，包括宽高比、对象适应方式和最大高度。
+*/
+.cards table.dataview tbody>tr>td img {
+	aspect-ratio: var(--cards-aspect-ratio);
+	width: 100%;
+	object-fit: var(--cards-image-fit);
+	max-height: var(--cards-image-height);
+	background-color: var(--background-secondary);
+	vertical-align: bottom;
+}
+
+/* 
+  == 卡片内文本样式（Markdown 源视图）==
+  定义 Markdown 源视图中卡片的文本样式，包括换行方式。
+*/
+.markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td,
+.trim-cols .cards table.dataview tbody>tr>td {
+	white-space: normal;
+}
+
+/* 
+  == 卡片内链接样式（内部链接）==
+  定义内部链接的样式，包括无下划线。
+*/
+.links-int-on .cards table {
+	--link-decoration: none;
+}
+
+/* 
+  == 编辑按钮样式（Markdown 源视图）==
+  定义编辑按钮的样式，包括位置和透明度。
+*/
+.markdown-source-view.mod-cm6.cards .edit-block-button {
+	top: -1px;
+	right: 28px;
+	opacity: 1;
+}
+
+/* 
+  == 表头样式（位置和宽度）==
+  定义表头的位置和宽度。
+*/
+.cards.table-100 table.dataview thead>tr,
+.table-100 .cards table.dataview thead>tr {
+	right: 0.75rem;
+}
+
+/* 
+  == 表头伪元素样式（前缀）==
+  定义表头伪元素的样式，包括右侧间距。
+*/
+.cards.table-100 table.dataview thead:before,
+.table-100 .cards table.dataview thead:before {
+	margin-right: 0.75rem;
+}
+
+/* 
+  == 表头样式（基础样式）==
+  定义表头的基础样式，包括选择、宽度、显示方式等。
+*/
+.cards table.dataview thead {
+	user-select: none;
+	width: 180px;
+	display: block;
+	float: right;
+	position: relative;
+	text-align: right;
+	height: 24px;
+	padding-bottom: 0;
+}
+
+/* 
+  == 表头悬停效果（伪元素）==
+  定义表头悬停时的伪元素样式，包括背景色。
+*/
+.cards table.dataview thead:hover:after,
+.cards table.dataview thead:hover:before {
+	background-color: var(--background-modifier-hover);
+}
+
+/* 
+  == 表头伪元素样式（基础样式）==
+  定义表头伪元素的样式，包括位置、宽度、高度等。
+*/
+.cards table.dataview thead:after,
+.cards table.dataview thead:before {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 10px;
+	height: 16px;
+	cursor: var(--cursor);
+	text-align: right;
+	padding: var(--size-4-1) var(--size-4-2);
+	margin-bottom: 2px;
+	border-radius: var(--radius-s);
+	font-weight: 500;
+	font-size: var(--font-adaptive-small);
+}
+
+/* 
+  == 表头伪元素样式（前缀）==
+  定义表头伪元素的样式，包括背景色和遮罩。
+*/
+.cards table.dataview thead:before {
+	background-color: var(--text-faint);
+	--webkit-mask-repeat: no-repeat;
+	--webkit-mask-size: 16px;
+	--webkit-mask-position: center center;
+	--webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="currentColor" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>');
+}
+
+/* 
+  == 表头样式（隐藏的表头行）==
+  定义表头行的样式，包括位置、显示方式等。
+*/
+.cards table.dataview thead>tr {
+	top: -1px;
+	position: absolute;
+	display: none;
+	z-index: 9;
+	border: 1px solid var(--background-modifier-border-hover);
+	background-color: var(--background-secondary);
+	box-shadow: var(--shadow-s);
+	padding: 6px;
+	border-radius: var(--radius-m);
+	flex-direction: column;
+	/* Flex 方向为垂直 */
+	margin: 24px 0 0 0;
+	width: 100%;
+}
+
+/* 
+  == 表头悬停效果（显示表头行）==
+  定义表头悬停时显示表头行。
+*/
+.cards table.dataview thead:hover>tr {
+	display: flex;
+	height: auto;
+}
+
+/* 
+  == 表头单元格样式（基础样式）==
+  定义表头单元格的样式，包括内边距、边框、字体等。
+*/
+.cards table.dataview thead>tr>th {
+	display: block;
+	padding: 3px 30px 3px 6px !important;
+	border-radius: var(--radius-s);
+	width: 100%;
+	font-weight: 400;
+	color: var(--text-normal);
+	cursor: var(--cursor);
+	border: none;
+	font-size: var(--font-ui-small);
+}
+
+/* 
+  == 表头单元格样式（排序样式）==
+  定义表头单元格的排序样式，包括文字颜色。
+*/
+.cards table.dataview thead>tr>th[sortable-style="sortable-asc"],
+.cards table.dataview thead>tr>th[sortable-style="sortable-desc"] {
+	color: var(--text-normal);
+}
+
+/* 
+  == 表头单元格悬停效果 ==
+  定义表头单元格悬停时的样式，包括背景色。
+*/
+.cards table.dataview thead>tr>th:hover {
+	color: var(--text-normal);
+	background-color: var(--background-modifier-hover);
+}
+
+/* 
+  == 列表卡片样式（Markdown 预览）==
+  定义 Markdown 预览中列表卡片的样式，包括隐藏某些元素。
+*/
+.list-cards.markdown-preview-view .list-bullet,
+.list-cards.markdown-preview-view .list-collapse-indicator,
+.list-cards.markdown-preview-view.markdown-rendered.show-indentation-guide li>ul::before {
+	display: none;
+}
+
+/* 
+  == 列表卡片样式（网格布局）==
+  定义列表卡片的网格布局样式。
+*/
+.list-cards.markdown-preview-view div>ul {
+	display: grid;
+	gap: 0.75rem;
+	grid-template-columns: var(--cards-columns);
+	padding: 0;
+	line-height: var(--line-height-tight);
+}
+
+/* 
+  == 列表卡片项样式（基础样式）==
+  定义列表卡片项的样式，包括背景色、内边距等。
+*/
+.list-cards.markdown-preview-view div>ul>li {
+	background-color: var(--cards-background);
+	padding: calc(var(--cards-padding) / 2);
+	border-radius: var(--radius-s);
+	border: var(--cards-border-width) solid var(--background-modifier-border);
+	overflow: hidden;
+}
+
+/* 
+  == 列表卡片图片样式（嵌入图片）==
+  定义嵌入图片的样式，包括背景色和圆角。
+*/
+.list-cards.markdown-preview-view div>ul .image-embed {
+	padding: 0;
+	display: block;
+	background-color: var(--background-secondary);
+	border-radius: var(--image-radius);
+}
+
+/* 
+  == 列表卡片图片样式（图片本身）==
+  定义图片的样式，包括宽高比、对象适应方式和最大高度。
+*/
+.list-cards.markdown-preview-view div>ul .image-embed img {
+	aspect-ratio: var(--cards-aspect-ratio);
+	object-fit: var(--cards-image-fit);
+	max-height: var(--cards-image-height);
+	background-color: var(--background-secondary);
+	vertical-align: bottom;
+}
+
+/* 
+  == 列表卡片链接样式（标题链接）==
+  定义标题链接的样式，包括无下划线和字体粗细。
+*/
+.list-cards.markdown-preview-view div>ul>li>a {
+	--link-decoration: none;
+	--link-external-decoration: none;
+	font-weight: var(--bold-weight);
+}
+
+/* 
+  == 列表卡片悬停效果 ==
+  定义列表卡片悬停时的边框色。
+*/
+.list-cards.markdown-preview-view div ul>li:hover {
+	border-color: var(--background-modifier-border-hover);
+}
+
+/* 
+  == 嵌套列表样式（基础样式）==
+  定义嵌套列表的样式，包括宽度、颜色和字体大小。
+*/
+.list-cards.markdown-preview-view div ul ul {
+	display: block;
+	width: 100%;
+	color: var(--text-muted);
+	font-size: var(--font-smallest);
+	margin: calc(var(--cards-padding) / -4) 0;
+	padding: calc(var(--cards-padding) / 2) 0;
+}
+
+/* 
+  == 嵌套列表样式（多级嵌套）==
+  定义多级嵌套列表的样式，包括底部内边距。
+*/
+.list-cards.markdown-preview-view div ul ul ul {
+	padding-bottom: calc(var(--cards-padding) / 4);
+}
+
+/* 
+  == 嵌套列表项样式（显示方式）==
+  定义嵌套列表项的显示方式。
+*/
+.list-cards.markdown-preview-view div ul ul>li {
+	display: block;
+}
+
+/* 
+  == 宽高比预设样式（16:9）==
+  定义宽高比为 16:9 的样式。
+*/
+.cards.cards-16-9,
+.list-cards.cards-16-9 {
+	--cards-aspect-ratio: 16/9;
+}
+
+/* 
+  == 宽高比预设样式（1:1）==
+  定义宽高比为 1:1 的样式。
+*/
+.cards.cards-1-1,
+.list-cards.cards-1-1 {
+	--cards-aspect-ratio: 1/1;
+}
+
+/* 
+  == 宽高比预设样式（2:1）==
+  定义宽高比为 2:1 的样式。
+*/
+.cards.cards-2-1,
+.list-cards.cards-2-1 {
+	--cards-aspect-ratio: 2/1;
+}
+
+/* 
+  == 宽高比预设样式（2:3）==
+  定义宽高比为 2:3 的样式。
+*/
+.cards.cards-2-3,
+.list-cards.cards-2-3 {
+	--cards-aspect-ratio: 2/3;
+}
+
+/* 
+  == 列数预设样式（1 列）==
+  定义 1 列布局的样式。
+*/
+.cards.cards-cols-1,
+.list-cards.cards-cols-1 {
+	--cards-columns: repeat(1, minmax(0, 1fr));
+	/* 1 列布局 */
+}
+
+/* 
+  == 列数预设样式（2 列）==
+  定义 2 列布局的样式。
+*/
+.cards.cards-cols-2,
+.list-cards.cards-cols-2 {
+	--cards-columns: repeat(2, minmax(0, 1fr));
+	/* 2 列布局 */
+}
+
+/* 
+  == 图片适应方式预设样式（cover）==
+  定义图片适应方式为 cover 的样式。
+*/
+.cards.cards-cover,
+.list-cards.cards-cover {
+	--cards-image-fit: cover;
+}
+
+/* 
+  == 内容对齐方式预设样式（底部对齐）==
+  定义内容底部对齐的样式。
+*/
+.cards.cards-align-bottom table.dataview tbody>tr>td:last-child,
+.list-cards.cards-align-bottom table.dataview tbody>tr>td:last-child {
+	margin-top: auto;
+}
+
+/* 
+  == 响应式设计（小屏幕适配）==
+  当屏幕宽度小于 400pt 时，调整非标题单元格的字体大小。
+*/
+@media (max-width: 400pt) {
+	.cards table.dataview tbody>tr>td:not(:first-child) {
+		font-size: 80%;
+	}
+}
+
+/* 
+  == 响应式设计（大屏幕适配）==
+  当屏幕宽度大于 400pt 时，定义多列布局的样式。
+*/
+@media (min-width: 400pt) {
+	.cards-cols-3 {
+		--cards-columns: repeat(3, minmax(0, 1fr));
+		/* 3 列布局 */
+	}
+
+	.cards-cols-4 {
+		--cards-columns: repeat(4, minmax(0, 1fr));
+		/* 4 列布局 */
+	}
+
+	.cards-cols-5 {
+		--cards-columns: repeat(5, minmax(0, 1fr));
+		/* 5 列布局 */
+	}
+
+	.cards-cols-6 {
+		--cards-columns: repeat(6, minmax(0, 1fr));
+		/* 6 列布局 */
+	}
+
+	.cards-cols-7 {
+		--cards-columns: repeat(7, minmax(0, 1fr));
+		/* 7 列布局 */
+	}
+
+	.cards-cols-8 {
+		--cards-columns: repeat(8, minmax(0, 1fr));
+		/* 8 列布局 */
+	}
+}
+
+
+/* ==========================================================================
+   ███ 移植模块 001：Minimal 界面色彩（浅色模式） ███
+   来源：Minimal 8.2.2 theme.css
+     - 基础参数：第 163-170 行（--base-h/s/l）
+     - 调色板：  第 192-278 行（.theme-light 的 bg/ui/tx 定义）
+     - 语义映射：第 431-557 行（Map colors to semantic Obsidian names）
+     - 标签页：  第 1145-1173 行（无边框窗口标签页规则，已简化）
+   提取日期：2026-09-16
+   作用：左栏浅灰 #F5F5F5；编辑区/标签页区/右栏白色；边框、图标、文字用 Minimal 的柔和灰阶。
+   范围限定：仅浅色模式；未移植 accent 强调色与 8 色彩色系——链接色、
+             bookinfo/thino 卡片配色（走核心 --accent-h/s/l）保持原样不受影响。
+   拆除方法：整段删除（从本注释至「移植模块 001 完」）即恢复原状。
+   ========================================================================== */
+
+body {
+	/* Minimal 基础参数（驱动下方 bg/ui/tx 的 HSL 计算） */
+	--base-h: 0;
+	--base-s: 0%;
+	--base-l: 96%;
+}
+
+.theme-light {
+	--mono100: black;
+	--mono0: white;
+	--sp1: white;
+
+	/* 调色板：bg 背景 / ui 边框 / tx 文字 */
+	--bg1: white;
+	--bg2: hsl(var(--base-h), var(--base-s), var(--base-l));
+	--bg3: hsla(var(--base-h), var(--base-s), calc(var(--base-l) - 50%), 0.12);
+	--ui1: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 6%));
+	--ui2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 12%));
+	--ui3: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 20%));
+	--tx1: hsl(var(--base-h), calc(var(--base-s) - 90%), calc(var(--base-l) - 90%));
+	--tx2: hsl(var(--base-h), calc(var(--base-s) - 20%), calc(var(--base-l) - 50%));
+	--tx3: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) - 25%));
+	--tx4: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) - 60%));
+
+	/* 语义映射（剔除 accent/高亮/选区相关行后的完整映射） */
+	--bases-table-group-background: transparent;
+	--background-modifier-border: var(--ui1);
+	--background-modifier-border-hover: var(--ui2);
+	--background-modifier-border-focus: var(--ui3);
+	--mobile-sidebar-background: var(--bg1);
+	--background-modifier-form-field: var(--bg1);
+	--background-modifier-form-field-highlighted: var(--bg1);
+	--background-modifier-hover: var(--bg3);
+	--background-modifier-active-hover: var(--bg3);
+	--background-primary: var(--bg1);
+	--background-primary-alt: var(--bg2);
+	--background-secondary: var(--bg2);
+	--background-secondary-alt: var(--bg1);
+	--background-table-rows: var(--bg2);
+	--code-normal: var(--tx1);
+	--divider-color: var(--ui1);
+	--frame-divider-color: var(--ui1);
+	--icon-color: var(--tx2);
+	--icon-color-active: var(--tx1);
+	--icon-color-focused: var(--tx1);
+	--icon-color-hover: var(--tx2);
+	--icon-hex: var(--mono0);
+	--interactive-normal: var(--ui1);
+	--interactive-hover: var(--ui1);
+	--list-marker-color: var(--tx3);
+	--nav-item-background-active: var(--bg3);
+	--nav-item-background-hover: var(--bg3);
+	--nav-item-color: var(--tx2);
+	--nav-item-color-active: var(--tx1);
+	--nav-item-color-hover: var(--tx1);
+	--nav-item-color-selected: var(--tx1);
+	--nav-collapse-icon-color: var(--tx2);
+	--nav-collapse-icon-color-collapsed: var(--tx2);
+	--nav-indentation-guide-color: var(--ui1);
+	--prompt-border-color: var(--ui3);
+	--quote-opening-modifier: var(--ui2);
+	--ribbon-background: var(--bg2);
+	--search-result-background: var(--bg1);
+	--tab-text-color-focused-active: var(--tx1);
+	--tab-outline-color: var(--ui1);
+	--text-blockquote: var(--tx2);
+	--text-bold: var(--tx1);
+	--text-code: var(--tx4);
+	--text-faint: var(--tx3);
+	--text-formatting: var(--tx3);
+	--text-italic: var(--tx1);
+	--text-muted: var(--tx2);
+	--text-normal: var(--tx1);
+	--text-on-accent: var(--sp1);
+	--title-color: var(--tx1);
+	--title-color-inactive: var(--tx2);
+	--titlebar-background: var(--bg2);
+	--titlebar-background-focused: var(--bg2);
+	--titlebar-text-color-focused: var(--tx1);
+	--vault-profile-color: var(--tx1);
+	--vault-profile-color-hover: var(--tx1);
+	--workspace-background-translucent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.7);
+
+	/* 浅色补充（遮罩/阴影/活动行） */
+	--active-line-bg: rgba(0, 0, 0, 0.035);
+	--background-modifier-cover: hsla(var(--base-h), calc(var(--base-s) - 70%), calc(var(--base-l) - 20%), 0.5);
+	--text-highlight-bg-active: rgba(0, 0, 0, 0.1);
+	--shadow-color: rgba(0, 0, 0, 0.1);
+	--btn-shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 无边框窗口（Windows 隐藏标题栏）：顶部标签页区白、左栏标签容器灰 */
+.is-hidden-frameless.theme-light .workspace-tabs.mod-top {
+	--titlebar-background: var(--bg1);
+	--titlebar-background-focused: var(--bg1);
+}
+/* Obsidian 1.13 适配（2026-10-02）：左栏底色统一提升到 .mod-left-split 级。
+   原规则只覆盖 .mod-top 下的 tab-header-container，1.13 侧栏 DOM 变化后左栏顶部
+   容器不再吃该变量、底色回落成白色。现改为：栏内任何吃这两个变量的容器自动并入
+   bg2（--background-modifier-form-field 覆盖新版侧栏输入框），新容器若透明则由
+   split 自身底色兜底。 */
+.theme-light .mod-left-split {
+	--tab-container-background: var(--background-secondary);
+	--background-modifier-form-field: var(--background-secondary);
+	background-color: var(--background-secondary);
+}
+/* 白块补丁（2026-10-02 CDP 实测）：核心 app.css 在 .workspace-tabs.mod-top 元素自身上
+   定义 --tab-container-background: var(--titlebar-background)，比上面 .mod-left-split 级
+   的变量离标签头更近而胜出；左栏顶部标签头因此吃到 --titlebar-background（白）形成白块。
+   在 mod-top 级把三个变量指回 bg2 即可，明暗同理。 */
+.theme-light .mod-left-split .workspace-tabs.mod-top,
+.theme-dark .mod-left-split .workspace-tabs.mod-top {
+	--titlebar-background: var(--background-secondary);
+	--titlebar-background-focused: var(--background-secondary);
+	--tab-container-background: var(--background-secondary);
+}
+
+/* 两大色块修正（2026-09-16 用户明确）：左侧栏灰、其余区域全白。
+   右栏默认吃 --background-secondary(灰)，实测 #F5F5F5，覆盖为 bg1 白色。 */
+.theme-light .workspace-split.mod-right-split {
+	background-color: var(--bg1);
+}
+.theme-light .mod-right-split .workspace-tab-header-container {
+	--tab-container-background: var(--bg1);
+}
+
+/* 移植模块 001 完 */
+
+
+/* ==========================================================================
+   ███ 移植模块 002：两大色块统一（右栏并入主区色）+ Minimal 暗色模式 ███
+   背景：模块 001 只做了浅色，且右栏仍是 --background-secondary（#F5F5F5 灰），
+        用户明确要求「左栏一个色，其他全部区域一个色」两大色块，明暗都要。
+   来源：Minimal 8.2.2 theme.css
+     - 暗色基础参数与调色板：第 282-375 行（--base-l:15% 驱动的 bg/ui/tx）
+     - 暗色语义映射：第 437-440、445-514 行（与浅色同一张映射表）
+     - 暗色补充：第 546-557 行（遮罩/阴影/活动行）
+     - 无边框窗口标签页：第 1144-1158 行（已简化）
+   提取日期：2026-09-16
+   作用：浅色 + 暗色都形成两大色块——左栏（ribbon+左侧栏）= bg2，
+         其余全部区域（编辑区/标签页/标题栏/右侧栏）= bg1。
+   实现：右栏用「作用域变量覆盖」——在 .mod-right-split 上把
+         --background-secondary 等变量改指 bg1，栏内所有子元素自动跟随。
+   边界：与模块 001 一致，不移植 accent 强调色与高亮/选区色（保护 bookinfo/
+         thino 卡片配色）。
+   拆除方法：整段删除（从本注释至「移植模块 002 完」）即恢复原状。
+   ========================================================================== */
+
+/* ---- 两大色块：右栏并入主区色（明暗通用） ---- */
+.theme-light .mod-right-split,
+.theme-dark .mod-right-split {
+	--background-secondary: var(--bg1);
+	--background-secondary-alt: var(--bg1);
+	--tab-container-background: var(--bg1);
+	background-color: var(--bg1);
+}
+/* 无边框窗口下右栏标签头同样并入 */
+.is-hidden-frameless.theme-light .mod-right-split .mod-top .workspace-tab-header-container,
+.is-hidden-frameless.theme-dark .mod-right-split .mod-top .workspace-tab-header-container {
+	--tab-container-background: var(--bg1);
+}
+
+/* ---- Minimal 暗色模式：基础参数 + 调色板 ---- */
+.theme-dark {
+	--mono100: white;
+	--mono0: black;
+	--sp1: white;
+	--base-l: 15%;
+
+	--bg1: hsl(var(--base-h), var(--base-s), var(--base-l));
+	--bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 2%));
+	--bg3: hsla(var(--base-h), var(--base-s), calc(var(--base-l) + 40%), 0.12);
+	--ui1: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 6%));
+	--ui2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 12%));
+	--ui3: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 20%));
+	--tx1: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) + 67%));
+	--tx2: hsl(var(--base-h), calc(var(--base-s) - 20%), calc(var(--base-l) + 45%));
+	--tx3: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) + 20%));
+	--tx4: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) + 50%));
+
+	/* 语义映射（剔除 accent/高亮/选区相关行，同模块 001 口径） */
+	--bases-table-group-background: transparent;
+	--background-modifier-border: var(--ui1);
+	--background-modifier-border-hover: var(--ui2);
+	--background-modifier-border-focus: var(--ui3);
+	--mobile-sidebar-background: var(--bg1);
+	--background-modifier-form-field: var(--bg1);
+	--background-modifier-form-field-highlighted: var(--bg1);
+	--background-modifier-hover: var(--bg3);
+	--background-modifier-active-hover: var(--bg3);
+	--background-primary: var(--bg1);
+	--background-primary-alt: var(--bg2);
+	--background-secondary: var(--bg2);
+	--background-secondary-alt: var(--bg1);
+	--background-table-rows: var(--bg2);
+	--code-normal: var(--tx1);
+	--divider-color: var(--ui1);
+	--frame-divider-color: var(--ui1);
+	--icon-color: var(--tx2);
+	--icon-color-active: var(--tx1);
+	--icon-color-focused: var(--tx1);
+	--icon-color-hover: var(--tx2);
+	--icon-hex: var(--mono0);
+	--interactive-normal: var(--bg3);
+	--interactive-hover: var(--ui1);
+	--list-marker-color: var(--tx3);
+	--nav-item-background-active: var(--bg3);
+	--nav-item-background-hover: var(--bg3);
+	--nav-item-color: var(--tx2);
+	--nav-item-color-active: var(--tx1);
+	--nav-item-color-hover: var(--tx1);
+	--nav-item-color-selected: var(--tx1);
+	--nav-collapse-icon-color: var(--tx2);
+	--nav-collapse-icon-color-collapsed: var(--tx2);
+	--nav-indentation-guide-color: var(--ui1);
+	--prompt-border-color: var(--ui3);
+	--quote-opening-modifier: var(--ui2);
+	--ribbon-background: var(--bg2);
+	--search-result-background: var(--bg1);
+	--tab-outline-color: var(--ui1);
+	--text-blockquote: var(--tx2);
+	--text-bold: var(--tx1);
+	--text-code: var(--tx4);
+	--text-faint: var(--tx3);
+	--text-formatting: var(--tx3);
+	--text-italic: var(--tx1);
+	--text-muted: var(--tx2);
+	--text-normal: var(--tx1);
+	--text-on-accent: var(--sp1);
+	--title-color: var(--tx1);
+	--title-color-inactive: var(--tx2);
+	--titlebar-background: var(--bg2);
+	--titlebar-background-focused: var(--bg2);
+	--titlebar-text-color-focused: var(--tx1);
+	--vault-profile-color: var(--tx1);
+	--vault-profile-color-hover: var(--tx1);
+	--workspace-background-translucent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.7);
+
+	/* 暗色补充（遮罩/阴影/活动行/模态框边框） */
+	--active-line-bg: rgba(255, 255, 255, 0.04);
+	--background-modifier-cover: hsla(var(--base-h), var(--base-s), calc(var(--base-l) - 12%), 0.5);
+	--text-highlight-bg-active: rgba(255, 255, 255, 0.1);
+	--background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
+	--shadow-color: rgba(0, 0, 0, 0.3);
+	--btn-shadow-color: rgba(0, 0, 0, 0.2);
+	--modal-border-color: var(--ui2);
+}
+
+/* 无边框窗口（暗色）：顶部标签页区 = bg1 主区色，左栏标签容器 = bg2 */
+.is-hidden-frameless.theme-dark .workspace-tabs.mod-top {
+	--titlebar-background: var(--bg1);
+	--titlebar-background-focused: var(--bg1);
+}
+/* Obsidian 1.13 适配（2026-10-02）：同浅色规则，见模块 001 末尾说明 */
+.theme-dark .mod-left-split {
+	--tab-container-background: var(--background-secondary);
+	--background-modifier-form-field: var(--background-secondary);
+	background-color: var(--background-secondary);
+}
+
+/* 窗口控制按钮（最小化/还原/关闭）容器底色透明，融入标题栏主区色
+   （Minimal 8.2.2 第 1140-1142 行，2026-09-16 用户验收时补移植） */
+.titlebar-button-container.mod-right {
+	background-color: transparent !important;
+}
+
+/* 移植模块 002 完 */
