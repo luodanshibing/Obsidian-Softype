@@ -24,12 +24,12 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 | 默认 · 灰 (default) | neutral grey, no extra CSS |
 | 浅灰 (`softype-mist`) | soft grey |
 | 纯白 / 纯黑 (`softype-pure`) | pure white / pure black |
-| 纸张 · 暖黄 (`softype-paper`) | warm paper, amber accent |
-| 竹青 · 淡绿 (`softype-bamboo`) | pale green, bamboo accent |
-| 索拉 · 暖阳 (`softype-solarized`) | Solarized palette |
-| 常青 · 护眼 (`softype-everforest`) | Everforest greens |
-| 北欧 · 冷灰 (`softype-nord`) | Nord cool greys |
-| 拿铁 · 淡彩 (`softype-latte`) | Catppuccin Latte |
+| 月白 · 蓝 (`softype-yuebai`) | moon-white blue, barely tinted |
+| 天缥 · 青 (`softype-tianpiao`) | pale cyan, barely tinted |
+| 山岚 · 绿 (`softype-shanlan`) | misty green, barely tinted |
+| 凝脂 · 玉 (`softype-ningzhi`) | warm jade-white, barely tinted |
+| 昌荣 · 紫 (`softype-changrong`) | pale purple, barely tinted |
+| 退红 · 粉 (`softype-tuihong`) | fading pink, barely tinted |
 
 ### Install
 
@@ -45,7 +45,7 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 ### Known limits
 
 - If you set a custom color in **Settings → Appearance → Accent color**, it overrides the preset's accent — Obsidian applies it inline on `body`.
-- The six new color presets are based on very light tints of Chinese traditional colors from [cncolor.art](https://cncolor.art/colors). The sidebar (g2) is mixed with 70% white, and the main note area (g1) stays pure white, so the overall feel stays pastel and eye-friendly. Dark variants remain low-saturation greys of the same hue.
+- The six new color presets are based on very light tints of Chinese traditional colors from [cncolor.art](https://cncolor.art/colors). The sidebar (bg2) is mixed with 70% white, and the main note area (bg1) stays pure white, so the overall feel stays pastel and eye-friendly. Dark variants remain low-saturation greys of the same hue.
 
 ### License
 
@@ -75,12 +75,12 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 | 默认 · 灰 | 中性灰，不附加任何规则 |
 | 浅灰（`softype-mist`） | 柔和浅灰 |
 | 纯白 / 纯黑（`softype-pure`） | 纯白底 / 纯黑底 |
-| 纸张 · 暖黄（`softype-paper`） | 暖纸色，琥珀强调色 |
-| 竹青 · 淡绿（`softype-bamboo`） | 淡青绿，竹青强调色 |
-| 索拉 · 暖阳（`softype-solarized`） | Solarized 配色 |
-| 常青 · 护眼（`softype-everforest`） | Everforest 绿系 |
-| 北欧 · 冷灰（`softype-nord`） | Nord 冷灰 |
-| 拿铁 · 淡彩（`softype-latte`） | Catppuccin Latte |
+| 月白 · 蓝（`softype-yuebai`） | 月白 #D4E5EF 混入 70% 白，主区纯白 |
+| 天缥 · 青（`softype-tianpiao`） | 天缥 #D5EBE1 混入 70% 白，主区纯白 |
+| 山岚 · 绿（`softype-shanlan`） | 山岚 #BED2BB 混入 70% 白，主区纯白 |
+| 凝脂 · 玉（`softype-ningzhi`） | 凝脂 #F5F2E9 直接用，主区纯白 |
+| 昌荣 · 紫（`softype-changrong`） | 昌荣 #DCC7E1 混入 70% 白，主区纯白 |
+| 退红 · 粉（`softype-tuihong`） | 退红 #F0CFE3 混入 70% 白，主区纯白 |
 
 ### 安装
 
