@@ -1827,31 +1827,32 @@ body {
 
 
 /* ==========================================================================
-   ███ 功能模块 004：Style Settings 配色预设（自建，2026-10-04；v4 重构 2026-10-05）███
-   作用：配合 Style Settings 插件，在「设置 → Style Settings → Softype」里
-         一键切换整体配色。共 9 个预设：默认·灰 / 浅灰 / 纯白·纯黑（中性色，
-         保留）+ 月白·蓝 / 天缥·青 / 山岚·绿 / 凝脂·玉 / 暮山·紫 / 桃夭·粉
-         （中国传统色，v4 新建）。每个预设同时适配亮色与暗色模式；
-         「左栏 = bg2、其余区域 = bg1」的两大色块结构保持不变。
-   v4 设计原则（用户 2026-10-05 定「简约 + 护眼」，否决前版索拉/常青的强色感）：
-         ① 亮色模式主区 = 极浅色系白（明度 ≥96%），不抢视线；
-         ② 左栏 = 色韵网站收录的浅传统色原值，承担色相与分色；
-         ③ 暗色模式 = 同色相低饱和深灰（饱和度 ≤12%），不做高饱和深色；
-         ④ 强调色取该色系中间调（ muted、可读），不取高饱和色。
-   色值来源：色韵 cncolor.art（中国传统色大全 384 色，2026-10-05 逐色取 HEX）——
-         月白 #D4E5EF / 天缥 #D5EBE1 / 山岚 #BED2BB / 玉色 #EAE4D1 /
-         昌荣 #DCC7E1 / 桃夭 #F6BEC8；强调色：监德 #6F94CD / 天水碧 #5AA4AE /
-         伽罗 #6D5C3D / 紫苑 #757CBB / 美人祭 #C35C6A 等。
-   原理：模块 001/002 的全部颜色都由 --base-h/s/l 三个 HSL 参数推导，
-         预设只覆盖这几个参数，另显式覆盖 --bg1（与需要精确还原传统色的
-         --bg2）。双类选择器 .theme-light.softype-xxx（优先级 0,2,0）高于
-         模块 001/002 的 .theme-light（0,1,0）与 body（0,0,1），天然胜出。
+   ███ 功能模块 004：Style Settings 配色预设（v5 淡彩修正 2026-10-05）███
+   作用：配合 Style Settings 插件一键切换整体配色。共 9 个预设：默认·灰 /
+         浅灰 / 纯白·纯黑（保留）+ 月白·蓝 / 天缥·青 / 山岚·绿 / 凝脂·玉 /
+         昌荣·紫 / 退红·粉（v5 全部按「淡彩」标准重建）。
+   v5 设计原则（2026-10-05 用户反馈「还要浅 50% 才算淡彩」后修正）：
+         ① 亮色模式主区 = 纯白 #FFFFFF，把颜色压到最低；
+         ② 左栏 = cncolor.art 浅色传统色混入 70% 白色后的极淡色（L* ≥94、
+            C*ab ≤7），只留一丝色相，承担左右分色；
+         ③ 强调色仍用同色系网站原色，但只取中间 muted 调，保证在纯白主区上
+            可读；
+         ④ 暗色模式 = 同色相低饱和深灰（S ≤10%、L ≈15%），继续保持护眼。
+   色值来源：色韵 cncolor.art（2026-10-05 逐色取 HEX）。
+   左栏推导（70% 白混合，sRGB 线性插值）：
+     月白 #D4E5EF → #F2F7FA   天缥 #D5EBE1 → #F2F9F6
+     山岚 #BED2BB → #EBF1EA   凝脂 #F5F2E9 → #F5F2E9（已够淡，直接用）
+     昌荣 #DCC7E1 → #F4EEF6   退红 #F0CFE3 → #FAF0F6
+   强调色（网站原值）：监德 #6F94CD / 天水碧 #5AA4AE / 庭芜绿 #68945C /
+                       伽罗 #6D5C3D / 紫苑 #757CBB / 美人祭 #C35C6A。
+   原理：模块 001/002 颜色由 --base-h/s/l 推导，预设覆盖这三个参数，并显式
+         设置 --bg1/--bg2。双类选择器 .theme-light.softype-xxx（0,2,0）高于
+         模块 001/002 默认规则，天然胜出。强调色必须重声明 --color-accent
+         及 -1/-2（原因见 v1 注释）。
    边界：只动底色 / 边框 / 文字灰阶与强调色；callout 卡片、彩虹文件夹图标等
-         固定色不变。强调色重声明 --color-accent 的理由见 v1 注释
-         （CSS 自定义属性在「被设置的元素」上即完成计算，必须连公式一起覆盖）。
-         注意：「设置 → 外观 → 强调色」手动指定过颜色时（当前为 #789696），
-         那是 body 内联样式，会盖住各预设的强调色（底色不受影响）。
-   拆除方法：整段删除（从本注释至「功能模块 004 完」）即恢复原状。
+         固定色不变。若用户在「设置 → 外观 → 强调色」手动指定过颜色，该内联
+         样式仍会盖住各预设的强调色（底色不受影响）。
+   拆除方法：从本注释到「功能模块 004 完」整段删除即恢复原状。
    ========================================================================== */
 
 /* @settings
@@ -1870,7 +1871,7 @@ settings:
 		id: softype-color-preset
 		title: 配色风格
 		title.en: Color scheme
-		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为浅传统色（色韵 cncolor.art）。
+		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
 		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
 		type: class-select
 		allowEmpty: false
@@ -1898,19 +1899,17 @@ settings:
 				label: 凝脂 · 玉
 				value: softype-ningzhi
 			-
-				label: 暮山 · 紫
-				value: softype-mushan
+				label: 昌荣 · 紫
+				value: softype-changrong
 			-
-				label: 桃夭 · 粉
-				value: softype-taoyao
+				label: 退红 · 粉
+				value: softype-tuihong
 
 */
 
-/* ---- 预设：默认 · 灰 softype-default ----
-   无任何 CSS 规则：选中即恢复模块 001/002 的原始 Minimal 灰调。 */
+/* ---- 预设：默认 · 灰 softype-default ---- */
 
-/* ---- 预设：浅灰 softype-mist ----
-   亮色：主区 #F7F7F7、左栏 #EBEBEB；暗色：主区 18% 灰、左栏 16%。 */
+/* ---- 预设：浅灰 softype-mist ---- */
 .theme-light.softype-mist {
 	--base-l: 92%;
 	--bg1: hsl(0, 0%, 97%);
@@ -1919,8 +1918,7 @@ settings:
 	--base-l: 18%;
 }
 
-/* ---- 预设：纯白 / 纯黑 softype-pure ----
-   亮色：主区纯白 #FFFFFF、左栏 #F0F0F0；暗色：主区 5% 近纯黑、左栏 3%。 */
+/* ---- 预设：纯白 / 纯黑 softype-pure ---- */
 .theme-light.softype-pure {
 	--base-l: 94%;
 	--bg1: hsl(0, 0%, 100%);
@@ -1930,14 +1928,14 @@ settings:
 }
 
 /* ---- 预设：月白 · 蓝 softype-yuebai ----
-   亮色：主区 #F7FAFC 蓝白、左栏 #D4E5EF 月白（小雪）；强调色监德 #6F94CD 系。
-   暗色：蓝灰黑底 + 浅雾蓝强调。 */
+   来源色：月白 #D4E5EF（小雪）；左栏 = 混入 70% 白后的 #F2F7FA。
+   强调色：监德 #6F94CD（立秋）。 */
 .theme-light.softype-yuebai {
 	--base-h: 205;
-	--base-s: 30%;
-	--base-l: 89%;
-	--bg1: #F7FAFC;
-	--bg2: #D4E5EF;
+	--base-s: 16%;
+	--base-l: 96%;
+	--bg1: #FFFFFF;
+	--bg2: #F2F7FA;
 	--accent-h: 216;
 	--accent-s: 45%;
 	--accent-l: 52%;
@@ -1946,9 +1944,9 @@ settings:
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 .theme-dark.softype-yuebai {
-	--base-h: 218;
-	--base-s: 12%;
-	--base-l: 14%;
+	--base-h: 215;
+	--base-s: 8%;
+	--base-l: 15%;
 	--accent-h: 216;
 	--accent-s: 40%;
 	--accent-l: 68%;
@@ -1958,15 +1956,14 @@ settings:
 }
 
 /* ---- 预设：天缥 · 青 softype-tianpiao ----
-   亮色：主区 #F5FAF8 青白、左栏 #D5EBE1 天缥（立春）；强调色天水碧 #5AA4AE 系
-        （与用户手设的 #789696 同族）。
-   暗色：青灰黑底 + 浅天碧强调。 */
+   来源色：天缥 #D5EBE1（立春）；左栏 = 混入 70% 白后的 #F2F9F6。
+   强调色：天水碧 #5AA4AE（处暑）。 */
 .theme-light.softype-tianpiao {
 	--base-h: 160;
-	--base-s: 25%;
-	--base-l: 90%;
-	--bg1: #F5FAF8;
-	--bg2: #D5EBE1;
+	--base-s: 18%;
+	--base-l: 97%;
+	--bg1: #FFFFFF;
+	--bg2: #F2F9F6;
 	--accent-h: 186;
 	--accent-s: 32%;
 	--accent-l: 48%;
@@ -1976,8 +1973,8 @@ settings:
 }
 .theme-dark.softype-tianpiao {
 	--base-h: 170;
-	--base-s: 8%;
-	--base-l: 14%;
+	--base-s: 6%;
+	--base-l: 15%;
 	--accent-h: 180;
 	--accent-s: 30%;
 	--accent-l: 65%;
@@ -1987,42 +1984,42 @@ settings:
 }
 
 /* ---- 预设：山岚 · 绿 softype-shanlan ----
-   亮色：主区 #F7FAF6 绿白、左栏 #BED2BB 山岚（大暑）；强调色竹绿。
-   暗色：绿灰黑底 + 浅竹绿强调。 */
+   来源色：山岚 #BED2BB（大暑）；左栏 = 混入 70% 白后的 #EBF1EA。
+   强调色：庭芜绿 #68945C（谷雨）。 */
 .theme-light.softype-shanlan {
 	--base-h: 110;
-	--base-s: 18%;
-	--base-l: 88%;
-	--bg1: #F7FAF6;
-	--bg2: #BED2BB;
-	--accent-h: 115;
-	--accent-s: 25%;
+	--base-s: 14%;
+	--base-l: 95%;
+	--bg1: #FFFFFF;
+	--bg2: #EBF1EA;
+	--accent-h: 110;
+	--accent-s: 24%;
 	--accent-l: 42%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 .theme-dark.softype-shanlan {
-	--base-h: 120;
-	--base-s: 7%;
-	--base-l: 14%;
+	--base-h: 115;
+	--base-s: 6%;
+	--base-l: 15%;
 	--accent-h: 110;
-	--accent-s: 25%;
-	--accent-l: 65%;
+	--accent-s: 24%;
+	--accent-l: 62%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 
 /* ---- 预设：凝脂 · 玉 softype-ningzhi ----
-   亮色：主区 #FAF8F2 玉白、左栏 #EAE4D1 玉色（白露）；强调色伽罗 #6D5C3D 系褐。
-   暗色：暖灰黑底 + 浅秋香强调。 */
+   来源色：凝脂 #F5F2E9（白露）；左栏直接使用（L* 已 ≈95.5，C*ab 4.7）。
+   强调色：伽罗 #6D5C3D（立冬）。 */
 .theme-light.softype-ningzhi {
 	--base-h: 45;
-	--base-s: 25%;
-	--base-l: 90%;
-	--bg1: #FAF8F2;
-	--bg2: #EAE4D1;
+	--base-s: 16%;
+	--base-l: 96%;
+	--bg1: #FFFFFF;
+	--bg2: #F5F2E9;
 	--accent-h: 38;
 	--accent-s: 28%;
 	--accent-l: 35%;
@@ -2032,25 +2029,25 @@ settings:
 }
 .theme-dark.softype-ningzhi {
 	--base-h: 40;
-	--base-s: 10%;
-	--base-l: 14%;
-	--accent-h: 45;
-	--accent-s: 45%;
-	--accent-l: 60%;
+	--base-s: 7%;
+	--base-l: 15%;
+	--accent-h: 40;
+	--accent-s: 28%;
+	--accent-l: 55%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 
-/* ---- 预设：暮山 · 紫 softype-mushan ----
-   亮色：主区 #F9F8FB 紫白、左栏 #DCC7E1 昌荣（谷雨）；强调色紫苑 #757CBB 系。
-   暗色：紫灰黑底 + 浅烟紫强调。 */
-.theme-light.softype-mushan {
-	--base-h: 270;
-	--base-s: 20%;
-	--base-l: 89%;
-	--bg1: #F9F8FB;
-	--bg2: #DCC7E1;
+/* ---- 预设：昌荣 · 紫 softype-changrong ----
+   来源色：昌荣 #DCC7E1（谷雨）；左栏 = 混入 70% 白后的 #F4EEF6。
+   强调色：紫苑 #757CBB（大雪）。 */
+.theme-light.softype-changrong {
+	--base-h: 280;
+	--base-s: 15%;
+	--base-l: 95%;
+	--bg1: #FFFFFF;
+	--bg2: #F4EEF6;
 	--accent-h: 235;
 	--accent-s: 32%;
 	--accent-l: 56%;
@@ -2058,11 +2055,11 @@ settings:
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-mushan {
-	--base-h: 250;
-	--base-s: 9%;
-	--base-l: 14%;
-	--accent-h: 240;
+.theme-dark.softype-changrong {
+	--base-h: 270;
+	--base-s: 7%;
+	--base-l: 15%;
+	--accent-h: 235;
 	--accent-s: 30%;
 	--accent-l: 68%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
@@ -2070,15 +2067,15 @@ settings:
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 
-/* ---- 预设：桃夭 · 粉 softype-taoyao ----
-   亮色：主区 #FCF7F8 粉白、左栏 #F6BEC8 桃夭（惊蛰）；强调色美人祭 #C35C6A 系。
-   暗色：粉灰黑底 + 浅桃粉强调。 */
-.theme-light.softype-taoyao {
-	--base-h: 345;
-	--base-s: 20%;
-	--base-l: 89%;
-	--bg1: #FCF7F8;
-	--bg2: #F6BEC8;
+/* ---- 预设：退红 · 粉 softype-tuihong ----
+   来源色：退红 #F0CFE3（处暑）；左栏 = 混入 70% 白后的 #FAF0F6。
+   强调色：美人祭 #C35C6A（大雪）。 */
+.theme-light.softype-tuihong {
+	--base-h: 330;
+	--base-s: 16%;
+	--base-l: 96%;
+	--bg1: #FFFFFF;
+	--bg2: #FAF0F6;
 	--accent-h: 352;
 	--accent-s: 45%;
 	--accent-l: 52%;
@@ -2086,10 +2083,10 @@ settings:
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-taoyao {
-	--base-h: 340;
-	--base-s: 8%;
-	--base-l: 14%;
+.theme-dark.softype-tuihong {
+	--base-h: 330;
+	--base-s: 6%;
+	--base-l: 15%;
 	--accent-h: 350;
 	--accent-s: 35%;
 	--accent-l: 68%;
