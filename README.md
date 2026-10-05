@@ -1,4 +1,4 @@
-# Softype
+﻿# Softype
 
 [English](#english) · [简体中文](#简体中文)
 
@@ -45,7 +45,7 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 ### Known limits
 
 - If you set a custom color in **Settings → Appearance → Accent color**, it overrides the preset's accent — Obsidian applies it inline on `body`.
-- In dark mode, Solarized / Everforest / Nord keep a slightly lighter sidebar than the main area. That is how those palettes are designed, not a bug.
+- The six new color presets are based on light tints of Chinese traditional colors from [cncolor.art](https://cncolor.art/colors); their dark variants are low-saturation greys of the same hue to stay eye-friendly.
 
 ### License
 
@@ -96,7 +96,7 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 ### 已知边界
 
 - 如果你在 **设置 → 外观 → 强调色** 里手动指定过颜色，它会盖住预设的强调色（Obsidian 把该颜色写在内联样式里，作用在 `body` 上）。
-- 暗色模式下，索拉 / 常青 / 北欧这三套的**左侧栏比主区略亮** —— 那是原配色方案本来的面貌，不是写反了。
+- 新增的六套配色以 [色韵·中国传统色大全](https://cncolor.art/colors) 的浅色传统色为基底；暗色版按同色相低饱和深灰推导，避免刺眼。
 
 ### 主题为什么叫 Softype
 

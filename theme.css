@@ -1827,26 +1827,30 @@ body {
 
 
 /* ==========================================================================
-   ███ 功能模块 004：Style Settings 配色预设（自建，2026-10-04）███
+   ███ 功能模块 004：Style Settings 配色预设（自建，2026-10-04；v4 重构 2026-10-05）███
    作用：配合 Style Settings 插件，在「设置 → Style Settings → Softype」里
-         一键切换整体配色。共 9 个预设：默认·灰 / 浅灰 / 纯白·纯黑 / 纸张·暖黄 /
-         竹青·淡绿 / 索拉·暖阳 / 常青·护眼 / 北欧·冷灰 / 拿铁·淡彩；每个预设
-         同时给出亮色与暗色两套取值，随 Obsidian 外观模式自动生效；
+         一键切换整体配色。共 9 个预设：默认·灰 / 浅灰 / 纯白·纯黑（中性色，
+         保留）+ 月白·蓝 / 天缥·青 / 山岚·绿 / 凝脂·玉 / 暮山·紫 / 桃夭·粉
+         （中国传统色，v4 新建）。每个预设同时适配亮色与暗色模式；
          「左栏 = bg2、其余区域 = bg1」的两大色块结构保持不变。
+   v4 设计原则（用户 2026-10-05 定「简约 + 护眼」，否决前版索拉/常青的强色感）：
+         ① 亮色模式主区 = 极浅色系白（明度 ≥96%），不抢视线；
+         ② 左栏 = 色韵网站收录的浅传统色原值，承担色相与分色；
+         ③ 暗色模式 = 同色相低饱和深灰（饱和度 ≤12%），不做高饱和深色；
+         ④ 强调色取该色系中间调（ muted、可读），不取高饱和色。
+   色值来源：色韵 cncolor.art（中国传统色大全 384 色，2026-10-05 逐色取 HEX）——
+         月白 #D4E5EF / 天缥 #D5EBE1 / 山岚 #BED2BB / 玉色 #EAE4D1 /
+         昌荣 #DCC7E1 / 桃夭 #F6BEC8；强调色：监德 #6F94CD / 天水碧 #5AA4AE /
+         伽罗 #6D5C3D / 紫苑 #757CBB / 美人祭 #C35C6A 等。
    原理：模块 001/002 的全部颜色都由 --base-h/s/l 三个 HSL 参数推导，
-         预设只覆盖这几个参数，另显式覆盖 --bg1（与需要精确还原社区配色的
+         预设只覆盖这几个参数，另显式覆盖 --bg1（与需要精确还原传统色的
          --bg2）。双类选择器 .theme-light.softype-xxx（优先级 0,2,0）高于
          模块 001/002 的 .theme-light（0,1,0）与 body（0,0,1），天然胜出。
-   社区色值来源（v3 新增 4 套，均为低饱和护眼向）：
-         索拉 = Solarized（#FDF6E3/#002B36）、常青 = Everforest（绿米/墨绿）、
-         北欧 = Nord（#ECEFF4/#2E3440）、拿铁 = Catppuccin Latte（淡彩灰）；
-         色值取自 Minimal 8.2.2 内置方案，按本主题的 --base 公式做了柔化。
    边界：只动底色 / 边框 / 文字灰阶与强调色；callout 卡片、彩虹文件夹图标等
-         固定色不变。注意：「设置 → 外观 → 强调色」手动指定过颜色时（当前为
-         #789696），那是 body 内联样式，会盖住各预设的强调色（底色不受影响）。
-   注意：暗色的索拉 / 常青 / 北欧三款，左栏比主区略亮是原方案的本来面貌
-         （Solarized base02、Everforest bg1、Nord polar night 均如此），
-         不是写反了。
+         固定色不变。强调色重声明 --color-accent 的理由见 v1 注释
+         （CSS 自定义属性在「被设置的元素」上即完成计算，必须连公式一起覆盖）。
+         注意：「设置 → 外观 → 强调色」手动指定过颜色时（当前为 #789696），
+         那是 body 内联样式，会盖住各预设的强调色（底色不受影响）。
    拆除方法：整段删除（从本注释至「功能模块 004 完」）即恢复原状。
    ========================================================================== */
 
@@ -1866,7 +1870,7 @@ settings:
 		id: softype-color-preset
 		title: 配色风格
 		title.en: Color scheme
-		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色。
+		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为浅传统色（色韵 cncolor.art）。
 		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
 		type: class-select
 		allowEmpty: false
@@ -1882,23 +1886,23 @@ settings:
 				label: 纯白 / 纯黑
 				value: softype-pure
 			-
-				label: 纸张 · 暖黄
-				value: softype-paper
+				label: 月白 · 蓝
+				value: softype-yuebai
 			-
-				label: 竹青 · 淡绿
-				value: softype-bamboo
+				label: 天缥 · 青
+				value: softype-tianpiao
 			-
-				label: 索拉 · 暖阳
-				value: softype-solarized
+				label: 山岚 · 绿
+				value: softype-shanlan
 			-
-				label: 常青 · 护眼
-				value: softype-everforest
+				label: 凝脂 · 玉
+				value: softype-ningzhi
 			-
-				label: 北欧 · 冷灰
-				value: softype-nord
+				label: 暮山 · 紫
+				value: softype-mushan
 			-
-				label: 拿铁 · 淡彩
-				value: softype-latte
+				label: 桃夭 · 粉
+				value: softype-taoyao
 
 */
 
@@ -1925,177 +1929,169 @@ settings:
 	--base-l: 5%;
 }
 
-/* ---- 预设：纸张 · 暖黄 softype-paper（v3 调浅：底色更白、强调更柔） ----
-   亮色：主区 #FBF8F2 暖白纸、左栏 #F3EDE2 浅米；强调色柔琥珀。
-   暗色：暖棕黑底（减淡棕调）+ 柔琥珀强调。 */
-.theme-light.softype-paper {
-	--base-h: 42;
+/* ---- 预设：月白 · 蓝 softype-yuebai ----
+   亮色：主区 #F7FAFC 蓝白、左栏 #D4E5EF 月白（小雪）；强调色监德 #6F94CD 系。
+   暗色：蓝灰黑底 + 浅雾蓝强调。 */
+.theme-light.softype-yuebai {
+	--base-h: 205;
 	--base-s: 30%;
-	--base-l: 93%;
-	--bg1: hsl(42, 40%, 97%);
-	--accent-h: 35;
-	--accent-s: 58%;
-	--accent-l: 45%;
-	/* 强调色必须连同 --color-accent 一起重声明：CSS 自定义属性在「被设置的那个
-	   元素」上就完成计算，只覆盖 --accent-h 时上层已算好的 --color-accent 不会
-	   重算。下游 --link-color / --interactive-accent 设在 body 上，自动跟随。 */
+	--base-l: 89%;
+	--bg1: #F7FAFC;
+	--bg2: #D4E5EF;
+	--accent-h: 216;
+	--accent-s: 45%;
+	--accent-l: 52%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-paper {
-	--base-h: 35;
-	--base-s: 10%;
-	--base-l: 15%;
-	--accent-h: 35;
-	--accent-s: 50%;
-	--accent-l: 63%;
+.theme-dark.softype-yuebai {
+	--base-h: 218;
+	--base-s: 12%;
+	--base-l: 14%;
+	--accent-h: 216;
+	--accent-s: 40%;
+	--accent-l: 68%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 
-/* ---- 预设：竹青 · 淡绿 softype-bamboo（v3 调浅：绿调更淡、强调更浅） ----
-   亮色：主区 #FAFCFA 近白微绿、左栏 #EDF3EC 淡竹；强调色浅竹青。
-   暗色：青灰黑底（减淡青调）+ 浅竹绿强调。 */
-.theme-light.softype-bamboo {
-	--base-h: 110;
-	--base-s: 16%;
-	--base-l: 94%;
-	--bg1: hsl(110, 22%, 98%);
-	--accent-h: 158;
-	--accent-s: 28%;
-	--accent-l: 44%;
+/* ---- 预设：天缥 · 青 softype-tianpiao ----
+   亮色：主区 #F5FAF8 青白、左栏 #D5EBE1 天缥（立春）；强调色天水碧 #5AA4AE 系
+        （与用户手设的 #789696 同族）。
+   暗色：青灰黑底 + 浅天碧强调。 */
+.theme-light.softype-tianpiao {
+	--base-h: 160;
+	--base-s: 25%;
+	--base-l: 90%;
+	--bg1: #F5FAF8;
+	--bg2: #D5EBE1;
+	--accent-h: 186;
+	--accent-s: 32%;
+	--accent-l: 48%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-bamboo {
-	--base-h: 130;
-	--base-s: 7%;
+.theme-dark.softype-tianpiao {
+	--base-h: 170;
+	--base-s: 8%;
 	--base-l: 14%;
-	--accent-h: 155;
-	--accent-s: 26%;
+	--accent-h: 180;
+	--accent-s: 30%;
 	--accent-l: 65%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 
-/* ---- 预设：索拉 · 暖阳 softype-solarized（v3 新增，源自 Solarized） ----
-   亮色：主区 #FDF6E3 羊皮纸、左栏 #EEE8D5；强调色索拉蓝。
-   暗色：主区 #002B36、左栏 #073642（原案左栏即略亮）；强调色浅索拉蓝。 */
-.theme-light.softype-solarized {
-	--base-h: 44;
-	--base-s: 35%;
+/* ---- 预设：山岚 · 绿 softype-shanlan ----
+   亮色：主区 #F7FAF6 绿白、左栏 #BED2BB 山岚（大暑）；强调色竹绿。
+   暗色：绿灰黑底 + 浅竹绿强调。 */
+.theme-light.softype-shanlan {
+	--base-h: 110;
+	--base-s: 18%;
 	--base-l: 88%;
-	--bg1: #FDF6E3;
-	--bg2: #EEE8D5;
-	--accent-h: 205;
-	--accent-s: 65%;
-	--accent-l: 45%;
+	--bg1: #F7FAF6;
+	--bg2: #BED2BB;
+	--accent-h: 115;
+	--accent-s: 25%;
+	--accent-l: 42%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-solarized {
-	--base-h: 193;
-	--base-s: 40%;
-	--base-l: 12%;
-	--bg1: #002B36;
-	--bg2: #073642;
-	--accent-h: 205;
-	--accent-s: 60%;
-	--accent-l: 58%;
-	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
-	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
-}
-
-/* ---- 预设：常青 · 护眼 softype-everforest（v3 新增，源自 Everforest） ----
-   亮色：主区 #FBF7E8 绿米白、左栏 #EFEBD4；强调色常青绿。
-   暗色：主区 #2D353B 墨绿灰、左栏 #343F44（原案左栏即略亮）；强调色浅常青绿。 */
-.theme-light.softype-everforest {
-	--base-h: 60;
-	--base-s: 30%;
-	--base-l: 89%;
-	--bg1: #FBF7E8;
-	--bg2: #EFEBD4;
-	--accent-h: 83;
-	--accent-s: 36%;
-	--accent-l: 45%;
-	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
-	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
-}
-.theme-dark.softype-everforest {
-	--base-h: 200;
-	--base-s: 14%;
-	--base-l: 18%;
-	--bg1: #2D353B;
-	--bg2: #343F44;
-	--accent-h: 81;
-	--accent-s: 30%;
-	--accent-l: 62%;
+.theme-dark.softype-shanlan {
+	--base-h: 120;
+	--base-s: 7%;
+	--base-l: 14%;
+	--accent-h: 110;
+	--accent-s: 25%;
+	--accent-l: 65%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
 
-/* ---- 预设：北欧 · 冷灰 softype-nord（v3 新增，源自 Nord） ----
-   亮色：主区纯白、左栏 #ECEFF4 极地灰蓝；强调色雾蓝。
-   暗色：主区 #2E3440、左栏 #3B4252（原案左栏即略亮）；强调色浅雾蓝。 */
-.theme-light.softype-nord {
-	--base-h: 220;
+/* ---- 预设：凝脂 · 玉 softype-ningzhi ----
+   亮色：主区 #FAF8F2 玉白、左栏 #EAE4D1 玉色（白露）；强调色伽罗 #6D5C3D 系褐。
+   暗色：暖灰黑底 + 浅秋香强调。 */
+.theme-light.softype-ningzhi {
+	--base-h: 45;
 	--base-s: 25%;
-	--base-l: 93%;
-	--bg1: #FFFFFF;
-	--bg2: #ECEFF4;
-	--accent-h: 213;
-	--accent-s: 32%;
-	--accent-l: 52%;
+	--base-l: 90%;
+	--bg1: #FAF8F2;
+	--bg2: #EAE4D1;
+	--accent-h: 38;
+	--accent-s: 28%;
+	--accent-l: 35%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-nord {
-	--base-h: 220;
-	--base-s: 16%;
-	--base-l: 22%;
-	--bg1: #2E3440;
-	--bg2: #3B4252;
-	--accent-h: 213;
-	--accent-s: 35%;
-	--accent-l: 62%;
-	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
-	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
-}
-
-/* ---- 预设：拿铁 · 淡彩 softype-latte（v3 新增，源自 Catppuccin Latte） ----
-   亮色：主区 #F0F1F5 淡灰蓝、左栏 #DCE0E8；强调色柔桃。
-   暗色：主区 #24273A、左栏 #1E2030；强调色浅桃。 */
-.theme-light.softype-latte {
-	--base-h: 228;
-	--base-s: 20%;
-	--base-l: 93%;
-	--bg1: #F0F1F5;
-	--bg2: #DCE0E8;
-	--accent-h: 11;
-	--accent-s: 55%;
+.theme-dark.softype-ningzhi {
+	--base-h: 40;
+	--base-s: 10%;
+	--base-l: 14%;
+	--accent-h: 45;
+	--accent-s: 45%;
 	--accent-l: 60%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
 	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
 }
-.theme-dark.softype-latte {
-	--base-h: 229;
-	--base-s: 19%;
-	--base-l: 20%;
-	--bg1: #24273A;
-	--bg2: #1E2030;
-	--accent-h: 11;
-	--accent-s: 55%;
+
+/* ---- 预设：暮山 · 紫 softype-mushan ----
+   亮色：主区 #F9F8FB 紫白、左栏 #DCC7E1 昌荣（谷雨）；强调色紫苑 #757CBB 系。
+   暗色：紫灰黑底 + 浅烟紫强调。 */
+.theme-light.softype-mushan {
+	--base-h: 270;
+	--base-s: 20%;
+	--base-l: 89%;
+	--bg1: #F9F8FB;
+	--bg2: #DCC7E1;
+	--accent-h: 235;
+	--accent-s: 32%;
+	--accent-l: 56%;
+	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
+	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
+}
+.theme-dark.softype-mushan {
+	--base-h: 250;
+	--base-s: 9%;
+	--base-l: 14%;
+	--accent-h: 240;
+	--accent-s: 30%;
+	--accent-l: 68%;
+	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
+	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
+}
+
+/* ---- 预设：桃夭 · 粉 softype-taoyao ----
+   亮色：主区 #FCF7F8 粉白、左栏 #F6BEC8 桃夭（惊蛰）；强调色美人祭 #C35C6A 系。
+   暗色：粉灰黑底 + 浅桃粉强调。 */
+.theme-light.softype-taoyao {
+	--base-h: 345;
+	--base-s: 20%;
+	--base-l: 89%;
+	--bg1: #FCF7F8;
+	--bg2: #F6BEC8;
+	--accent-h: 352;
+	--accent-s: 45%;
+	--accent-l: 52%;
+	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
+	--color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
+}
+.theme-dark.softype-taoyao {
+	--base-h: 340;
+	--base-s: 8%;
+	--base-l: 14%;
+	--accent-h: 350;
+	--accent-s: 35%;
 	--accent-l: 68%;
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
