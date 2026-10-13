@@ -45,6 +45,7 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 ### Known limits
 
 - If you set a custom color in **Settings → Appearance → Accent color**, it overrides the preset's accent — Obsidian applies it inline on `body`.
+- **Bold color toggle** (requires Style Settings): by default, bold text uses the normal text color. Enable *Softype → 加粗使用强调色* to make bold text use the theme accent color instead.
 - The six new color presets are based on very light tints of Chinese traditional colors from [cncolor.art](https://cncolor.art/colors). The sidebar (bg2) is mixed with 70% white, and the main note area (bg1) stays pure white, so the overall feel stays pastel and eye-friendly. Dark variants remain low-saturation greys of the same hue.
 
 ### License
@@ -96,6 +97,7 @@ A soft, minimal Obsidian theme made for long writing sessions — pastel palette
 ### 已知边界
 
 - 如果你在 **设置 → 外观 → 强调色** 里手动指定过颜色，它会盖住预设的强调色（Obsidian 把该颜色写在内联样式里，作用在 `body` 上）。
+- **加粗颜色切换**（需 Style Settings）：默认加粗文字使用正文颜色；开启 *Softype → 加粗使用强调色* 后，加粗文字会使用主题强调色。
 - 新增的六套配色以 [色韵·中国传统色大全](https://cncolor.art/colors) 的浅色传统色为基底，左栏（bg2）是来源色混入 70% 白色后的极淡色，主区（bg1）保持纯白，整体呈淡彩感；暗色版按同色相低饱和深灰推导，避免刺眼。
 
 ### 主题为什么叫 Softype

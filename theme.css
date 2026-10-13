@@ -339,13 +339,14 @@ video {
 
 /* ---------------------------------------- 自定义强调样式 ---------------------------------------- */
 
-/* 编辑模式、预览模式、callout中强调样式 */
+/* 编辑模式、预览模式、callout中强调样式（2026-10-13 默认改为正文色，模块 006 提供开关恢复强调色） */
 .cm-strong,
 .markdown-preview-view strong,
+.markdown-rendered strong,
 .callout strong {
 	font-family: var(--font-strong);
 	font-size: var(--font-strong-size);
-	color: var(--color-accent);
+	color: var(--text-normal);
 }
 
 /* ---------------------------------------- 自定义链接样式 ---------------------------------------- */
@@ -2129,3 +2130,43 @@ settings:
 }
 
 /* 功能模块 005 完 */
+/* ==========================================================================
+   ███ 功能模块 006：加粗颜色切换开关（2026-10-13）███
+   作用：在 Style Settings → Softype 里新增一个开关，让用户选择加粗文字是
+         使用正文颜色（默认）还是主题强调色。
+   设计：
+     ① 默认（开关关闭 / 无 Style Settings）加粗 = var(--text-normal)，即跟随
+        普通正文颜色（亮色黑、暗色白），避免长期看彩色加粗产生审美疲劳；
+     ② 开关开启后，body 会被加上 .softype-bold-accent，模块 006 用更高特异
+        性的选择器把 .cm-strong / strong / .callout strong 重新设为
+        var(--color-accent)，恢复之前的彩色加粗效果。
+   依赖：模块 001/002 中已把加粗默认颜色改为 var(--text-normal)。
+   拆除方法：删除本段即可，删除后加粗保持正文色。
+   ========================================================================== */
+
+/* @settings
+
+name: Softype
+id: softype
+settings:
+	-
+		id: softype-bold-accent
+		title: 加粗使用强调色
+		title.en: Bold uses accent color
+		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
+		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
+		type: class-toggle
+		default: false
+
+*/
+
+/* 开关开启：恢复加粗为强调色 */
+.softype-bold-accent .cm-strong,
+.softype-bold-accent .markdown-preview-view strong,
+.softype-bold-accent .markdown-rendered strong,
+.softype-bold-accent .callout strong {
+	color: var(--color-accent) !important;
+}
+
+/* 功能模块 006 完 */
+
