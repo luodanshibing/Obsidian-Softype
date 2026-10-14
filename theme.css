@@ -248,14 +248,20 @@ video {
 	display: block !important;
 }
 
-/* 实时预览/编辑模式下把图片居中（2026-10-14 修正）：
-   上面把容器设为 block 后，再用 text-align:center 让 inline-block 的
-   .image-wrapper 居中，避免纯 margin:auto 在 live preview 里失效。 */
-.markdown-source-view.mod-cm6 .image-embed {
+/* 实时预览/编辑模式下把图片居中（2026-10-14 修正 v2）：
+   live preview 中 .image-embed 默认 inline-block/收缩，margin:auto 推不动。
+   把 .image-embed 改为 fit-content 宽度 + margin:auto 居中，同时保留
+   .image-wrapper 的 inline-block 让图片与 caption 正常堆叠。 */
+.markdown-source-view .image-embed,
+.markdown-source-view .internal-embed.image-embed {
 	display: block !important;
-	text-align: center !important;
+	width: fit-content !important;
+	min-width: 0 !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
-.markdown-source-view.mod-cm6 .image-embed > .image-wrapper {
+.markdown-source-view .image-embed > .image-wrapper,
+.markdown-source-view .internal-embed.image-embed > .image-wrapper {
 	display: inline-block !important;
 }
 
