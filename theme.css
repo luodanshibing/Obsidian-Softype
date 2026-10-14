@@ -248,6 +248,17 @@ video {
 	display: block !important;
 }
 
+/* 实时预览/编辑模式下把图片居中（2026-10-14 修正）：
+   上面把容器设为 block 后，再用 text-align:center 让 inline-block 的
+   .image-wrapper 居中，避免纯 margin:auto 在 live preview 里失效。 */
+.markdown-source-view.mod-cm6 .image-embed {
+	display: block !important;
+	text-align: center !important;
+}
+.markdown-source-view.mod-cm6 .image-embed > .image-wrapper {
+	display: inline-block !important;
+}
+
 /* 编辑模式下将 .cm-content 容器下直接子元素居中 */
 .markdown-source-view.mod-cm6 .cm-content>* {
 	margin: auto !important;
