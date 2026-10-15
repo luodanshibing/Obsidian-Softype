@@ -1873,57 +1873,7 @@ body {
    拆除方法：从本注释到「功能模块 004 完」整段删除即恢复原状。
    ========================================================================== */
 
-/* @settings
 
-name: Softype
-id: softype
-settings:
-	-
-		id: softype-color-presets
-		title: 配色预设
-		title.en: Color Presets
-		type: heading
-		level: 1
-		collapsed: false
-	-
-		id: softype-color-preset
-		title: 配色风格
-		title.en: Color scheme
-		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
-		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
-		type: class-select
-		allowEmpty: false
-		default: softype-default
-		options:
-			-
-				label: 默认 · 灰
-				value: softype-default
-			-
-				label: 浅灰
-				value: softype-mist
-			-
-				label: 纯白 / 纯黑
-				value: softype-pure
-			-
-				label: 月白 · 蓝
-				value: softype-yuebai
-			-
-				label: 天缥 · 青
-				value: softype-tianpiao
-			-
-				label: 山岚 · 绿
-				value: softype-shanlan
-			-
-				label: 凝脂 · 玉
-				value: softype-ningzhi
-			-
-				label: 昌荣 · 紫
-				value: softype-changrong
-			-
-				label: 退红 · 粉
-				value: softype-tuihong
-
-*/
 
 /* ---- 预设：默认 · 灰 softype-default ---- */
 
@@ -2161,21 +2111,7 @@ settings:
    拆除方法：删除本段即可，删除后加粗保持正文色。
    ========================================================================== */
 
-/* @settings
 
-name: Softype
-id: softype
-settings:
-	-
-		id: softype-bold-accent
-		title: 加粗使用强调色
-		title.en: Bold uses accent color
-		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
-		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
-		type: class-toggle
-		default: false
-
-*/
 
 /* 开关开启：恢复加粗为强调色 */
 .softype-bold-accent .cm-strong,
@@ -2194,63 +2130,7 @@ settings:
  */
 
 /* ---------- Style Settings 配置 ---------- */
-/* @settings
-name: Softype
-id: softype
-settings:
-  - id: marginus-enabled
-    title: Enable Marginus contrast theme
-    title.zh: 启用 Marginus 对比色
-    description: Independent color branch, unaffected by light/dark mode
-    description.zh: 独立配色分支，不受亮/暗模式影响
-    type: class-toggle
-    default: false
-    addCommand: true
-  - id: marginus-sidebar
-    title: Sidebar dark color
-    title.zh: 左侧栏暗色
-    type: class-select
-    allowEmpty: false
-    default: marginus-sidebar-black
-    options:
-      - label: Ink Black
-        label.zh: 墨黑
-        value: marginus-sidebar-black
-      - label: Deep Gray
-        label.zh: 深灰
-        value: marginus-sidebar-gray
-      - label: Navy
-        label.zh: 藏青
-        value: marginus-sidebar-navy
-      - label: Indigo
-        label.zh: 靛蓝
-        value: marginus-sidebar-indigo
-      - label: Teal
-        label.zh: 苍绿
-        value: marginus-sidebar-teal
-      - label: Slate
-        label.zh: 铁青
-        value: marginus-sidebar-slate
-  - id: marginus-workspace
-    title: Workspace white
-    title.zh: 工作区白色
-    type: class-select
-    allowEmpty: false
-    default: marginus-workspace-white
-    options:
-      - label: Pure White
-        label.zh: 纯白
-        value: marginus-workspace-white
-      - label: Warm White
-        label.zh: 暖白
-        value: marginus-workspace-warm
-      - label: Cool White
-        label.zh: 冷白
-        value: marginus-workspace-cool
-      - label: Beige
-        label.zh: 米白
-        value: marginus-workspace-beige
-*/
+
 
 /* ---------- 基础覆盖：启用 Marginus 时屏蔽亮/暗变量 ---------- */
 body.marginus {
@@ -2313,30 +2193,169 @@ body.marginus-workspace-beige {
 body.marginus {
 	background-color: var(--workspace-background) !important;
 }
+
+/* 左侧栏容器 */
 body.marginus .workspace-split.mod-left-split,
 body.marginus .workspace-split.mod-right-split,
 body.marginus .workspace-ribbon,
-body.marginus .nav-folder-title,
-body.marginus .nav-file-title {
+body.marginus .side-dock-ribbon,
+body.marginus .workspace-tabs.mod-top.mod-top-left-space,
+body.marginus .workspace-tabs.mod-top.mod-top-right-space {
 	background-color: var(--sidebar-background) !important;
+}
+
+/* 左侧栏内文件列表、标题等 */
+body.marginus .nav-files-container,
+body.marginus .nav-folder-title,
+body.marginus .nav-file-title,
+body.marginus .tree-item-self,
+body.marginus .search-result-container,
+body.marginus .backlink-pane,
+body.marginus .outgoing-link-pane,
+body.marginus .tag-pane {
+	background-color: transparent !important;
 	color: var(--sidebar-text) !important;
 }
+
+/* 工作区主区域 */
 body.marginus .workspace-split.mod-vertical > .workspace-leaf,
 body.marginus .mod-root .workspace-leaf,
 body.marginus .view-content,
 body.marginus .markdown-preview-view,
-body.marginus .markdown-source-view {
+body.marginus .markdown-source-view,
+body.marginus .cm-editor,
+body.marginus .cm-scroller {
 	background-color: var(--workspace-background) !important;
 }
+
+/* 标签页 */
+body.marginus .workspace-tab-header-container {
+	background-color: var(--workspace-surface) !important;
+}
+
+/* 设置、弹出框、菜单 */
 body.marginus .modal-container,
 body.marginus .modal,
 body.marginus .prompt,
 body.marginus .suggestion-container,
-body.marginus .menu {
+body.marginus .menu,
+body.marginus .dropdown {
 	background-color: var(--workspace-surface) !important;
 	color: var(--text-normal) !important;
 }
 
+
 /* 功能模块 007 完 */
 
-
+/* @settings
+name: Softype
+id: softype
+settings:
+	-
+		id: softype-color-presets
+		title: 配色预设
+		title.en: Color Presets
+		type: heading
+		level: 1
+		collapsed: false
+	-
+		id: softype-color-preset
+		title: 配色风格
+		title.en: Color scheme
+		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
+		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
+		type: class-select
+		allowEmpty: false
+		default: softype-default
+		options:
+			-
+				label: 默认 · 灰
+				value: softype-default
+			-
+				label: 浅灰
+				value: softype-mist
+			-
+				label: 纯白 / 纯黑
+				value: softype-pure
+			-
+				label: 月白 · 蓝
+				value: softype-yuebai
+			-
+				label: 天缥 · 青
+				value: softype-tianpiao
+			-
+				label: 山岚 · 绿
+				value: softype-shanlan
+			-
+				label: 凝脂 · 玉
+				value: softype-ningzhi
+			-
+				label: 昌荣 · 紫
+				value: softype-changrong
+			-
+				label: 退红 · 粉
+				value: softype-tuihong
+	-
+		id: softype-bold-accent
+		title: 加粗使用强调色
+		title.en: Bold uses accent color
+		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
+		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
+		type: class-toggle
+		default: false
+	-
+		id: marginus-enabled
+		title: 启用 Marginus 对比色
+		title.en: Enable Marginus contrast theme
+		description: 独立配色分支，不受亮/暗模式影响
+		description.en: Independent color branch, unaffected by light/dark mode
+		type: class-toggle
+		default: false
+		addCommand: true
+	-
+		id: marginus-sidebar
+		title: 左侧栏暗色
+		title.en: Sidebar dark color
+		type: class-select
+		allowEmpty: false
+		default: marginus-sidebar-black
+		options:
+			-
+				label: 墨黑
+				value: marginus-sidebar-black
+			-
+				label: 深灰
+				value: marginus-sidebar-gray
+			-
+				label: 藏青
+				value: marginus-sidebar-navy
+			-
+				label: 靛蓝
+				value: marginus-sidebar-indigo
+			-
+				label: 苍绿
+				value: marginus-sidebar-teal
+			-
+				label: 铁青
+				value: marginus-sidebar-slate
+	-
+		id: marginus-workspace
+		title: 工作区白色
+		title.en: Workspace white
+		type: class-select
+		allowEmpty: false
+		default: marginus-workspace-white
+		options:
+			-
+				label: 纯白
+				value: marginus-workspace-white
+			-
+				label: 暖白
+				value: marginus-workspace-warm
+			-
+				label: 冷白
+				value: marginus-workspace-cool
+			-
+				label: 米白
+				value: marginus-workspace-beige
+*/
