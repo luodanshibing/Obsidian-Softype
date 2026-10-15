@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    Softype 主题
    文件结构：① 全局变量 ② 页面内容样式 ③ UI 组件样式 ④ Dataview 卡片布局
              ⑤ 移植模块 001（Minimal 浅色界面色彩）
@@ -1873,7 +1873,57 @@ body {
    拆除方法：从本注释到「功能模块 004 完」整段删除即恢复原状。
    ========================================================================== */
 
+/* @settings
 
+name: Softype
+id: softype
+settings:
+	-
+		id: softype-color-presets
+		title: 配色预设
+		title.en: Color Presets
+		type: heading
+		level: 1
+		collapsed: false
+	-
+		id: softype-color-preset
+		title: 配色风格
+		title.en: Color scheme
+		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
+		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
+		type: class-select
+		allowEmpty: false
+		default: softype-default
+		options:
+			-
+				label: 默认 · 灰
+				value: softype-default
+			-
+				label: 浅灰
+				value: softype-mist
+			-
+				label: 纯白 / 纯黑
+				value: softype-pure
+			-
+				label: 月白 · 蓝
+				value: softype-yuebai
+			-
+				label: 天缥 · 青
+				value: softype-tianpiao
+			-
+				label: 山岚 · 绿
+				value: softype-shanlan
+			-
+				label: 凝脂 · 玉
+				value: softype-ningzhi
+			-
+				label: 昌荣 · 紫
+				value: softype-changrong
+			-
+				label: 退红 · 粉
+				value: softype-tuihong
+
+*/
 
 /* ---- 预设：默认 · 灰 softype-default ---- */
 
@@ -2111,7 +2161,21 @@ body {
    拆除方法：删除本段即可，删除后加粗保持正文色。
    ========================================================================== */
 
+/* @settings
 
+name: Softype
+id: softype
+settings:
+	-
+		id: softype-bold-accent
+		title: 加粗使用强调色
+		title.en: Bold uses accent color
+		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
+		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
+		type: class-toggle
+		default: false
+
+*/
 
 /* 开关开启：恢复加粗为强调色 */
 .softype-bold-accent .cm-strong,
@@ -2123,219 +2187,3 @@ body {
 
 /* 功能模块 006 完 */
 
-/* ███ 功能模块 007：Marginus 独立对比色分支 ███
- * 说明：完全独立的配色体系，不跟随系统亮/暗模式。
- * 启用后 body 加上 .marginus，所有样式用 !important 覆盖亮/暗变量。
- * 左侧栏 6 套冷暗系 + 工作区 4 套白色，自由组合。
- */
-
-/* ---------- Style Settings 配置 ---------- */
-
-
-/* ---------- 基础覆盖：启用 Marginus 时覆盖原生变量 ---------- */
-body.marginus {
-	--text-muted: #666666 !important;
-	--text-faint: #999999 !important;
-	--text-on-accent: #ffffff !important;
-	--text-highlight-bg: rgba(255, 200, 0, 0.3) !important;
-	--interactive-normal: #f0f0f0 !important;
-	--interactive-hover: #e0e0e0 !important;
-}
-
-/* ---------- 左侧栏冷暗系：覆盖 --background-secondary ---------- */
-body.marginus-sidebar-black {
-	--background-secondary: #0d0d0d !important;
-	--background-secondary-alt: #1a1a1a !important;
-}
-body.marginus-sidebar-gray {
-	--background-secondary: #2a2a2a !important;
-	--background-secondary-alt: #333333 !important;
-}
-body.marginus-sidebar-navy {
-	--background-secondary: #1a1f2e !important;
-	--background-secondary-alt: #232a3d !important;
-}
-body.marginus-sidebar-indigo {
-	--background-secondary: #1a1a3e !important;
-	--background-secondary-alt: #24244d !important;
-}
-body.marginus-sidebar-teal {
-	--background-secondary: #0f2e2e !important;
-	--background-secondary-alt: #1a3d3d !important;
-}
-body.marginus-sidebar-slate {
-	--background-secondary: #1e293b !important;
-	--background-secondary-alt: #27354d !important;
-}
-
-/* 左侧栏文字色单独设置（不覆盖全局 --text-normal） */
-body.marginus .workspace-split.mod-left-split .nav-file-title,
-body.marginus .workspace-split.mod-left-split .nav-folder-title,
-body.marginus .workspace-split.mod-left-split .tree-item-self,
-body.marginus .workspace-split.mod-left-split .search-result-file-title,
-body.marginus .workspace-split.mod-left-split .search-result-file-matches,
-body.marginus .workspace-split.mod-left-split .workspace-tab-header,
-body.marginus .workspace-split.mod-left-split .sidebar-toggle-button,
-body.marginus .workspace-ribbon .sidebar-toggle-button,
-body.marginus .workspace-ribbon .workspace-ribbon-collapse-btn {
-	color: #e0e0e0 !important;
-}
-
-/* 左侧栏次要文字 */
-body.marginus .workspace-split.mod-left-split .nav-file-title-content,
-body.marginus .workspace-split.mod-left-split .nav-folder-title-content,
-body.marginus .workspace-split.mod-left-split .tree-item-flair,
-body.marginus .workspace-split.mod-left-split .search-result-file-title .search-result-file-matches {
-	color: #999999 !important;
-}
-
-/* ---------- 工作区白色：覆盖 --background-primary ---------- */
-body.marginus-workspace-white {
-	--background-primary: #ffffff !important;
-	--background-primary-alt: #f5f5f5 !important;
-}
-body.marginus-workspace-warm {
-	--background-primary: #faf8f5 !important;
-	--background-primary-alt: #f2ede6 !important;
-}
-body.marginus-workspace-cool {
-	--background-primary: #f5f7fa !important;
-	--background-primary-alt: #e8ecf2 !important;
-}
-body.marginus-workspace-beige {
-	--background-primary: #f7f5f0 !important;
-	--background-primary-alt: #edeae3 !important;
-}
-
-/* 工作区文字保持深色 */
-body.marginus .markdown-preview-view,
-body.marginus .markdown-source-view,
-body.marginus .cm-editor,
-body.marginus .view-content {
-	--text-normal: #1a1a1a !important;
-}
-
-/* ---------- 弹出框、菜单跟随工作区 ---------- */
-body.marginus .modal-container,
-body.marginus .modal,
-body.marginus .prompt,
-body.marginus .suggestion-container,
-body.marginus .menu,
-body.marginus .dropdown {
-	--background-primary: var(--workspace-background) !important;
-}
-
-/* 功能模块 007 完 */
-
-/* @settings
-name: Softype
-id: softype
-settings:
-	-
-		id: softype-color-presets
-		title: 配色预设
-		title.en: Color Presets
-		type: heading
-		level: 1
-		collapsed: false
-	-
-		id: softype-color-preset
-		title: 配色风格
-		title.en: Color scheme
-		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
-		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
-		type: class-select
-		allowEmpty: false
-		default: softype-default
-		options:
-			-
-				label: 默认 · 灰
-				value: softype-default
-			-
-				label: 浅灰
-				value: softype-mist
-			-
-				label: 纯白 / 纯黑
-				value: softype-pure
-			-
-				label: 月白 · 蓝
-				value: softype-yuebai
-			-
-				label: 天缥 · 青
-				value: softype-tianpiao
-			-
-				label: 山岚 · 绿
-				value: softype-shanlan
-			-
-				label: 凝脂 · 玉
-				value: softype-ningzhi
-			-
-				label: 昌荣 · 紫
-				value: softype-changrong
-			-
-				label: 退红 · 粉
-				value: softype-tuihong
-	-
-		id: softype-bold-accent
-		title: 加粗使用强调色
-		title.en: Bold uses accent color
-		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
-		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
-		type: class-toggle
-		default: false
-	-
-		id: marginus-enabled
-		title: 启用 Marginus 对比色
-		title.en: Enable Marginus contrast theme
-		description: 独立配色分支，不受亮/暗模式影响
-		description.en: Independent color branch, unaffected by light/dark mode
-		type: class-toggle
-		default: false
-		addCommand: true
-	-
-		id: marginus-sidebar
-		title: 左侧栏暗色
-		title.en: Sidebar dark color
-		type: class-select
-		allowEmpty: false
-		default: marginus-sidebar-black
-		options:
-			-
-				label: 墨黑
-				value: marginus-sidebar-black
-			-
-				label: 深灰
-				value: marginus-sidebar-gray
-			-
-				label: 藏青
-				value: marginus-sidebar-navy
-			-
-				label: 靛蓝
-				value: marginus-sidebar-indigo
-			-
-				label: 苍绿
-				value: marginus-sidebar-teal
-			-
-				label: 铁青
-				value: marginus-sidebar-slate
-	-
-		id: marginus-workspace
-		title: 工作区白色
-		title.en: Workspace white
-		type: class-select
-		allowEmpty: false
-		default: marginus-workspace-white
-		options:
-			-
-				label: 纯白
-				value: marginus-workspace-white
-			-
-				label: 暖白
-				value: marginus-workspace-warm
-			-
-				label: 冷白
-				value: marginus-workspace-cool
-			-
-				label: 米白
-				value: marginus-workspace-beige
-*/
