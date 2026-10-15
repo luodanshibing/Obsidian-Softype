@@ -2134,7 +2134,6 @@ body {
 
 /* ---------- 基础覆盖：启用 Marginus 时覆盖原生变量 ---------- */
 body.marginus {
-	--text-normal: #1a1a1a !important;
 	--text-muted: #666666 !important;
 	--text-faint: #999999 !important;
 	--text-on-accent: #ffffff !important;
@@ -2147,44 +2146,47 @@ body.marginus {
 body.marginus-sidebar-black {
 	--background-secondary: #0d0d0d !important;
 	--background-secondary-alt: #1a1a1a !important;
-	--text-normal: #e0e0e0 !important;
-	--text-muted: #999999 !important;
-	--text-faint: #666666 !important;
 }
 body.marginus-sidebar-gray {
 	--background-secondary: #2a2a2a !important;
 	--background-secondary-alt: #333333 !important;
-	--text-normal: #e0e0e0 !important;
-	--text-muted: #999999 !important;
-	--text-faint: #666666 !important;
 }
 body.marginus-sidebar-navy {
 	--background-secondary: #1a1f2e !important;
 	--background-secondary-alt: #232a3d !important;
-	--text-normal: #c8d4e0 !important;
-	--text-muted: #7a8fa8 !important;
-	--text-faint: #4a5a6e !important;
 }
 body.marginus-sidebar-indigo {
 	--background-secondary: #1a1a3e !important;
 	--background-secondary-alt: #24244d !important;
-	--text-normal: #c8c8e0 !important;
-	--text-muted: #8888a8 !important;
-	--text-faint: #585878 !important;
 }
 body.marginus-sidebar-teal {
 	--background-secondary: #0f2e2e !important;
 	--background-secondary-alt: #1a3d3d !important;
-	--text-normal: #c8e0e0 !important;
-	--text-muted: #78a8a8 !important;
-	--text-faint: #487878 !important;
 }
 body.marginus-sidebar-slate {
 	--background-secondary: #1e293b !important;
 	--background-secondary-alt: #27354d !important;
-	--text-normal: #cbd5e1 !important;
-	--text-muted: #7a8fa8 !important;
-	--text-faint: #4a5a6e !important;
+}
+
+/* 左侧栏文字色单独设置（不覆盖全局 --text-normal） */
+body.marginus .workspace-split.mod-left-split .nav-file-title,
+body.marginus .workspace-split.mod-left-split .nav-folder-title,
+body.marginus .workspace-split.mod-left-split .tree-item-self,
+body.marginus .workspace-split.mod-left-split .search-result-file-title,
+body.marginus .workspace-split.mod-left-split .search-result-file-matches,
+body.marginus .workspace-split.mod-left-split .workspace-tab-header,
+body.marginus .workspace-split.mod-left-split .sidebar-toggle-button,
+body.marginus .workspace-ribbon .sidebar-toggle-button,
+body.marginus .workspace-ribbon .workspace-ribbon-collapse-btn {
+	color: #e0e0e0 !important;
+}
+
+/* 左侧栏次要文字 */
+body.marginus .workspace-split.mod-left-split .nav-file-title-content,
+body.marginus .workspace-split.mod-left-split .nav-folder-title-content,
+body.marginus .workspace-split.mod-left-split .tree-item-flair,
+body.marginus .workspace-split.mod-left-split .search-result-file-title .search-result-file-matches {
+	color: #999999 !important;
 }
 
 /* ---------- 工作区白色：覆盖 --background-primary ---------- */
@@ -2203,6 +2205,14 @@ body.marginus-workspace-cool {
 body.marginus-workspace-beige {
 	--background-primary: #f7f5f0 !important;
 	--background-primary-alt: #edeae3 !important;
+}
+
+/* 工作区文字保持深色 */
+body.marginus .markdown-preview-view,
+body.marginus .markdown-source-view,
+body.marginus .cm-editor,
+body.marginus .view-content {
+	--text-normal: #1a1a1a !important;
 }
 
 /* ---------- 弹出框、菜单跟随工作区 ---------- */
