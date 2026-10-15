@@ -2187,3 +2187,156 @@ settings:
 
 /* 功能模块 006 完 */
 
+/* ███ 功能模块 007：Marginus 独立对比色分支 ███
+ * 说明：完全独立的配色体系，不跟随系统亮/暗模式。
+ * 启用后 body 加上 .marginus，所有样式用 !important 覆盖亮/暗变量。
+ * 左侧栏 6 套冷暗系 + 工作区 4 套白色，自由组合。
+ */
+
+/* ---------- Style Settings 配置 ---------- */
+/* @settings
+name: Softype
+id: softype
+settings:
+  - id: marginus-enabled
+    title: Enable Marginus contrast theme
+    title.zh: 启用 Marginus 对比色
+    description: Independent color branch, unaffected by light/dark mode
+    description.zh: 独立配色分支，不受亮/暗模式影响
+    type: class-toggle
+    default: false
+    addCommand: true
+  - id: marginus-sidebar
+    title: Sidebar dark color
+    title.zh: 左侧栏暗色
+    type: class-select
+    allowEmpty: false
+    default: marginus-sidebar-black
+    options:
+      - label: Ink Black
+        label.zh: 墨黑
+        value: marginus-sidebar-black
+      - label: Deep Gray
+        label.zh: 深灰
+        value: marginus-sidebar-gray
+      - label: Navy
+        label.zh: 藏青
+        value: marginus-sidebar-navy
+      - label: Indigo
+        label.zh: 靛蓝
+        value: marginus-sidebar-indigo
+      - label: Teal
+        label.zh: 苍绿
+        value: marginus-sidebar-teal
+      - label: Slate
+        label.zh: 铁青
+        value: marginus-sidebar-slate
+  - id: marginus-workspace
+    title: Workspace white
+    title.zh: 工作区白色
+    type: class-select
+    allowEmpty: false
+    default: marginus-workspace-white
+    options:
+      - label: Pure White
+        label.zh: 纯白
+        value: marginus-workspace-white
+      - label: Warm White
+        label.zh: 暖白
+        value: marginus-workspace-warm
+      - label: Cool White
+        label.zh: 冷白
+        value: marginus-workspace-cool
+      - label: Beige
+        label.zh: 米白
+        value: marginus-workspace-beige
+*/
+
+/* ---------- 基础覆盖：启用 Marginus 时屏蔽亮/暗变量 ---------- */
+body.marginus {
+	--text-normal: #1a1a1a !important;
+	--text-muted: #666666 !important;
+	--text-faint: #999999 !important;
+	--text-on-accent: #ffffff !important;
+	--text-highlight-bg: rgba(255, 200, 0, 0.3) !important;
+
+	--interactive-normal: #f0f0f0 !important;
+	--interactive-hover: #e0e0e0 !important;
+	/* 强调色跟随系统现有 accent，不覆盖 */
+}
+
+/* ---------- 左侧栏冷暗系 ---------- */
+body.marginus-sidebar-black {
+	--sidebar-background: #0d0d0d;
+	--sidebar-text: #e0e0e0;
+}
+body.marginus-sidebar-gray {
+	--sidebar-background: #2a2a2a;
+	--sidebar-text: #e0e0e0;
+}
+body.marginus-sidebar-navy {
+	--sidebar-background: #1a1f2e;
+	--sidebar-text: #c8d4e0;
+}
+body.marginus-sidebar-indigo {
+	--sidebar-background: #1a1a3e;
+	--sidebar-text: #c8c8e0;
+}
+body.marginus-sidebar-teal {
+	--sidebar-background: #0f2e2e;
+	--sidebar-text: #c8e0e0;
+}
+body.marginus-sidebar-slate {
+	--sidebar-background: #1e293b;
+	--sidebar-text: #cbd5e1;
+}
+
+/* ---------- 工作区白色 ---------- */
+body.marginus-workspace-white {
+	--workspace-background: #ffffff;
+	--workspace-surface: #f5f5f5;
+}
+body.marginus-workspace-warm {
+	--workspace-background: #faf8f5;
+	--workspace-surface: #f2ede6;
+}
+body.marginus-workspace-cool {
+	--workspace-background: #f5f7fa;
+	--workspace-surface: #e8ecf2;
+}
+body.marginus-workspace-beige {
+	--workspace-background: #f7f5f0;
+	--workspace-surface: #edeae3;
+}
+
+/* ---------- 应用变量到具体元素 ---------- */
+body.marginus {
+	background-color: var(--workspace-background) !important;
+}
+body.marginus .workspace-split.mod-left-split,
+body.marginus .workspace-split.mod-right-split,
+body.marginus .workspace-ribbon,
+body.marginus .nav-folder-title,
+body.marginus .nav-file-title {
+	background-color: var(--sidebar-background) !important;
+	color: var(--sidebar-text) !important;
+}
+body.marginus .workspace-split.mod-vertical > .workspace-leaf,
+body.marginus .mod-root .workspace-leaf,
+body.marginus .view-content,
+body.marginus .markdown-preview-view,
+body.marginus .markdown-source-view {
+	background-color: var(--workspace-background) !important;
+}
+body.marginus .modal-container,
+body.marginus .modal,
+body.marginus .prompt,
+body.marginus .suggestion-container,
+body.marginus .menu {
+	background-color: var(--workspace-surface) !important;
+	color: var(--text-normal) !important;
+}
+
+/* 功能模块 007 完 */
+
+
