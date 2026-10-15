@@ -248,6 +248,23 @@ video {
 	display: block !important;
 }
 
+/* 实时预览/编辑模式下把图片居中（2026-10-14 修正 v2）：
+   live preview 中 .image-embed 默认 inline-block/收缩，margin:auto 推不动。
+   把 .image-embed 改为 fit-content 宽度 + margin:auto 居中，同时保留
+   .image-wrapper 的 inline-block 让图片与 caption 正常堆叠。 */
+.markdown-source-view .image-embed,
+.markdown-source-view .internal-embed.image-embed {
+	display: block !important;
+	width: fit-content !important;
+	min-width: 0 !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.markdown-source-view .image-embed > .image-wrapper,
+.markdown-source-view .internal-embed.image-embed > .image-wrapper {
+	display: inline-block !important;
+}
+
 /* 编辑模式下将 .cm-content 容器下直接子元素居中 */
 .markdown-source-view.mod-cm6 .cm-content>* {
 	margin: auto !important;
@@ -1856,57 +1873,7 @@ body {
    拆除方法：从本注释到「功能模块 004 完」整段删除即恢复原状。
    ========================================================================== */
 
-/* @settings
 
-name: Softype
-id: softype
-settings:
-	-
-		id: softype-color-presets
-		title: 配色预设
-		title.en: Color Presets
-		type: heading
-		level: 1
-		collapsed: false
-	-
-		id: softype-color-preset
-		title: 配色风格
-		title.en: Color scheme
-		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
-		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
-		type: class-select
-		allowEmpty: false
-		default: softype-default
-		options:
-			-
-				label: 默认 · 灰
-				value: softype-default
-			-
-				label: 浅灰
-				value: softype-mist
-			-
-				label: 纯白 / 纯黑
-				value: softype-pure
-			-
-				label: 月白 · 蓝
-				value: softype-yuebai
-			-
-				label: 天缥 · 青
-				value: softype-tianpiao
-			-
-				label: 山岚 · 绿
-				value: softype-shanlan
-			-
-				label: 凝脂 · 玉
-				value: softype-ningzhi
-			-
-				label: 昌荣 · 紫
-				value: softype-changrong
-			-
-				label: 退红 · 粉
-				value: softype-tuihong
-
-*/
 
 /* ---- 预设：默认 · 灰 softype-default ---- */
 
@@ -2144,21 +2111,7 @@ settings:
    拆除方法：删除本段即可，删除后加粗保持正文色。
    ========================================================================== */
 
-/* @settings
 
-name: Softype
-id: softype
-settings:
-	-
-		id: softype-bold-accent
-		title: 加粗使用强调色
-		title.en: Bold uses accent color
-		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
-		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
-		type: class-toggle
-		default: false
-
-*/
 
 /* 开关开启：恢复加粗为强调色 */
 .softype-bold-accent .cm-strong,
@@ -2170,3 +2123,99 @@ settings:
 
 /* 功能模块 006 完 */
 
+/* ===== 1.14 左栏配色链修复（2026-10-15） =====
+   根因：Obsidian 1.14 在左栏内部元素级重定义了背景变量（light-dark 机制），
+         body 级 --bg2 的继承链被遮蔽，模块 004 预设与模块 005 补丁全部失效。
+   修法：在 .mod-left-split 作用域内用 !important 重定义全部相关变量
+         （同模块 002 右栏「作用域变量覆盖」技术），并对内层已知容器
+         直接设置背景色，双保险。变量值统一指向 var(--bg2)，
+         预设切换时自动跟随。 */
+.theme-light .mod-left-split,
+.theme-dark .mod-left-split {
+	--background-secondary: var(--bg2) !important;
+	--background-secondary-alt: var(--bg2) !important;
+	--tab-container-background: var(--bg2) !important;
+	--titlebar-background: var(--bg2) !important;
+	--titlebar-background-focused: var(--bg2) !important;
+	--background-modifier-form-field: var(--bg2) !important;
+	background-color: var(--bg2) !important;
+}
+.theme-light .mod-left-split .workspace-tabs,
+.theme-light .mod-left-split .workspace-tab-header-container,
+.theme-light .mod-left-split .workspace-tab-container,
+.theme-light .mod-left-split .workspace-leaf,
+.theme-light .mod-left-split .workspace-leaf-content,
+.theme-light .mod-left-split .nav-files-container,
+.theme-light .mod-left-split .nav-header,
+.theme-light .mod-left-split .workspace-sidedock-vault-profile,
+.theme-dark .mod-left-split .workspace-tabs,
+.theme-dark .mod-left-split .workspace-tab-header-container,
+.theme-dark .mod-left-split .workspace-tab-container,
+.theme-dark .mod-left-split .workspace-leaf,
+.theme-dark .mod-left-split .workspace-leaf-content,
+.theme-dark .mod-left-split .nav-files-container,
+.theme-dark .mod-left-split .nav-header,
+.theme-dark .mod-left-split .workspace-sidedock-vault-profile {
+	background-color: var(--bg2) !important;
+}
+/* ===== 1.14 修复结束 ===== */
+
+
+/* @settings
+
+name: Softype
+id: softype
+settings:
+	-
+		id: softype-color-presets
+		title: 配色预设
+		title.en: Color Presets
+		type: heading
+		level: 1
+		collapsed: false
+	-
+		id: softype-color-preset
+		title: 配色风格
+		title.en: Color scheme
+		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
+		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
+		type: class-select
+		allowEmpty: false
+		default: softype-default
+		options:
+			-
+				label: 默认 · 灰
+				value: softype-default
+			-
+				label: 浅灰
+				value: softype-mist
+			-
+				label: 纯白 / 纯黑
+				value: softype-pure
+			-
+				label: 月白 · 蓝
+				value: softype-yuebai
+			-
+				label: 天缥 · 青
+				value: softype-tianpiao
+			-
+				label: 山岚 · 绿
+				value: softype-shanlan
+			-
+				label: 凝脂 · 玉
+				value: softype-ningzhi
+			-
+				label: 昌荣 · 紫
+				value: softype-changrong
+			-
+				label: 退红 · 粉
+				value: softype-tuihong
+	-
+		id: softype-bold-accent
+		title: 加粗使用强调色
+		title.en: Bold uses accent color
+		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
+		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
+		type: class-toggle
+		default: false
+*/
