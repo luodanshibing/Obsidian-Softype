@@ -2161,6 +2161,44 @@ body {
 /* ===== 1.14 修复结束 ===== */
 
 
+/* ███ 功能模块 008：Border 风格表格切换（2026-10-17）███
+   需求：用户认为 Border 主题表格（斜纹表头 + Obsidian 原生网格线）最美观，
+        要求做成可切换项，默认保留 Softype 三线式，不删原样式。
+   纹理来源：Border theme.css --background-alt-light / --background-alt-dark
+        （4×4 SVG 斜纹，黑/白 12% 透明度）。
+   开关：Style Settings → Softype → 「Border 风格表格」（class-toggle）。
+        关闭（默认）= Softype 三线式；开启 = Border 风格。
+   拆除方法：删除本段，并在统一 @settings 块中删除 softype-border-table 项。 */
+
+/* ---------- 表头斜纹纹理（按亮/暗取色） ---------- */
+body.softype-border-table.theme-light {
+	--softype-table-header-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+body.softype-border-table.theme-dark {
+	--softype-table-header-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* ---------- 表头背景条（阅读 / 渲染 / 实时预览三容器全覆盖） ---------- */
+body.softype-border-table .markdown-preview-view table thead tr,
+body.softype-border-table .markdown-rendered table thead tr,
+body.softype-border-table .markdown-source-view.mod-cm6 .cm-table-widget table thead tr {
+	background: var(--softype-table-header-bg) !important;
+}
+
+/* ---------- 恢复 Obsidian 原生网格线（覆盖三线式 border:none 与 #000/#fff 硬线） ---------- */
+body.softype-border-table .markdown-preview-view table th,
+body.softype-border-table .markdown-preview-view table td,
+body.softype-border-table .markdown-rendered table th,
+body.softype-border-table .markdown-rendered table td,
+body.softype-border-table .markdown-source-view.mod-cm6 .cm-table-widget table th,
+body.softype-border-table .markdown-source-view.mod-cm6 .cm-table-widget table td {
+	border: var(--table-border-width, 1px) solid var(--table-border-color, var(--background-modifier-border)) !important;
+}
+
+/* 功能模块 008 完 */
+
+
+
 /* @settings
 
 name: Softype
@@ -2216,6 +2254,14 @@ settings:
 		title.en: Bold uses accent color
 		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
 		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
+		type: class-toggle
+		default: false
+	-
+		id: softype-border-table
+		title: Border 风格表格
+		title.en: Border-style tables
+		description: 开启后表格切换为 Border 主题风格（斜纹表头 + Obsidian 原生网格线）；关闭保持 Softype 三线式。
+		description.en: Switch tables to Border theme style (hatched header + native grid); off keeps Softype three-line style.
 		type: class-toggle
 		default: false
 */
