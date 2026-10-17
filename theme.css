@@ -2198,6 +2198,69 @@ body.softype-border-table .markdown-source-view.mod-cm6 .cm-table-widget table t
 /* 功能模块 008 完 */
 
 
+/* ███ 功能模块 009：Border 风格引用切换（2026-10-17）███
+   需求：用户喜欢 Border 主题的引用风格（强调色圆角竖条 + 斜纹背景 + 正体），
+        要求做成可切换项，默认保留 Softype 原生引用样式。
+   纹理来源：Border theme.css --background-alt-light / dark（与模块 008 表头同款）。
+   竖条颜色：var(--color-accent)，随传统色预设强调色联动。
+   开关：Style Settings → Softype → 「Border 风格引用」（class-toggle）。
+        关闭（默认）= Obsidian 原生引用；开启 = Border 风格。
+   拆除方法：删除本段，并在统一 @settings 块中删除 softype-border-quote 项。 */
+
+/* ---------- 变量与纹理（按亮/暗取色） ---------- */
+body.softype-border-quote.theme-light {
+	--softype-quote-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+body.softype-border-quote.theme-dark {
+	--softype-quote-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+body.softype-border-quote {
+	--blockquote-border-thickness: 3px;
+	--blockquote-border-color: var(--color-accent);
+	--blockquote-font-style: normal;
+	--blockquote-padding: 8px;
+}
+
+/* ---------- 阅读 / 渲染模式：斜纹背景 + 圆角 + ::before 强调色竖条 ---------- */
+body.softype-border-quote .markdown-rendered blockquote {
+	position: relative;
+	border-radius: var(--radius-s);
+	border-inline-start: none;
+	background: var(--softype-quote-bg);
+	padding-inline: calc(16px + var(--blockquote-border-thickness) + var(--blockquote-padding)) var(--blockquote-padding);
+	padding-block: var(--blockquote-padding);
+}
+body.softype-border-quote .markdown-rendered blockquote::before {
+	position: absolute;
+	top: var(--blockquote-padding);
+	bottom: var(--blockquote-padding);
+	inset-inline-start: var(--blockquote-padding);
+	border-radius: var(--radius-s);
+	background-color: var(--blockquote-border-color);
+	width: var(--blockquote-border-thickness);
+	pointer-events: none;
+	content: "";
+}
+/* 嵌套引用：内层竖条贴内层左缘 */
+body.softype-border-quote .markdown-rendered blockquote > blockquote {
+	padding-inline-start: calc(16px + var(--blockquote-border-thickness));
+	padding-block: 0;
+}
+body.softype-border-quote .markdown-rendered blockquote > blockquote::before {
+	top: 0;
+	bottom: 0;
+	inset-inline-start: 0;
+}
+
+/* ---------- 实时预览 / 编辑模式：逐行铺斜纹背景（竖线沿用原生，取强调色 3px） ---------- */
+body.softype-border-quote .markdown-source-view .cm-scroller .cm-line.HyperMD-quote {
+	background: var(--softype-quote-bg);
+}
+
+/* 功能模块 009 完 */
+
+
+
 
 /* @settings
 
@@ -2262,6 +2325,14 @@ settings:
 		title.en: Border-style tables
 		description: 开启后表格切换为 Border 主题风格（斜纹表头 + Obsidian 原生网格线）；关闭保持 Softype 三线式。
 		description.en: Switch tables to Border theme style (hatched header + native grid); off keeps Softype three-line style.
+		type: class-toggle
+		default: false
+	-
+		id: softype-border-quote
+		title: Border 风格引用
+		title.en: Border-style quotes
+		description: 开启后引用切换为 Border 主题风格（强调色圆角竖条 + 斜纹背景 + 正体文字）；关闭保持默认样式。
+		description.en: Switch blockquotes to Border theme style (accent rounded bar + hatched background); off keeps default.
 		type: class-toggle
 		default: false
 */
