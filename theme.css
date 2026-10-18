@@ -2257,6 +2257,29 @@ body.softype-border-quote .markdown-source-view .cm-scroller .cm-line.HyperMD-qu
 	background: var(--softype-quote-bg);
 }
 
+/* 实时预览完整移植 Border HyperMD 方案（2026-10-18 修正）：透明 border 撑出
+   斜纹背景内边距、去原生竖线、首尾行圆角拼接（多行引用视觉连续）。 */
+body.softype-border-quote .HyperMD-quote {
+	background: var(--softype-quote-bg);
+	border: solid transparent;
+	border-width: 0 var(--blockquote-padding) 0 var(--blockquote-padding);
+}
+body.softype-border-quote .HyperMD-quote::before {
+	width: 0;
+}
+body.softype-border-quote .cm-sizer > div > div > .HyperMD-quote:first-child,
+body.softype-border-quote .cm-sizer > div > div > *:not(.HyperMD-quote) + .HyperMD-quote {
+	border-top-width: var(--blockquote-padding);
+	border-start-start-radius: var(--radius-s);
+	border-start-end-radius: var(--radius-s);
+}
+body.softype-border-quote .cm-sizer > div > div > .HyperMD-quote:last-child,
+body.softype-border-quote .cm-sizer > div > div > .HyperMD-quote:has(+ *:not(.HyperMD-quote)) {
+	border-bottom-width: var(--blockquote-padding);
+	border-end-start-radius: var(--radius-s);
+	border-end-end-radius: var(--radius-s);
+}
+
 /* 功能模块 009 完 */
 
 
@@ -2300,17 +2323,18 @@ body.softype-colorful-nav {
 	--FoldH: #e0e0e0;
 }
 
-/* ---------- ② 标签纯色化（Minimal 风格） ---------- */
+/* ---------- ② 标签纯色化（Minimal 风格，两态均保留胶囊形） ---------- */
 body.softype-minimal-tags .tag:not(.token) {
 	background: transparent;
-	border: none;
-	padding: 0 2px;
+	border: 1px solid var(--background-modifier-border);
+	padding: 4px 10px;
 	color: var(--text-muted);
 	box-shadow: none;
 }
 body.softype-minimal-tags .tag:not(.token):hover {
-	padding: 0 2px;
+	padding: 4px 10px;
 	color: var(--color-accent);
+	border-color: var(--color-accent);
 }
 
 /* ---------- ③ 浅色分割线（Minimal 风格） ---------- */
@@ -2338,6 +2362,25 @@ body.softype-light-divider .theme-dark .markdown-rendered table thead tr:first-c
 body.softype-light-divider .theme-dark .markdown-preview-view table tbody tr:last-child td,
 body.softype-light-divider .theme-dark .markdown-rendered table tbody tr:last-child td {
 	border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+
+/* 彩虹折叠箭头 v2（2026-10-18 修正）：放弃断链的 --FoldX/--nav-collapse-icon-color
+   变量链（1.14 下不生效），改用直接 color 着色 5 色循环，全覆盖无死角（svg 用
+   currentColor 自动跟随）。emoji 图标恢复逻辑不变。 */
+body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+1) .tree-item-icon.collapse-icon {
+	color: #90caf9;
+}
+body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+2) .tree-item-icon.collapse-icon {
+	color: #a5d6a7;
+}
+body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+3) .tree-item-icon.collapse-icon {
+	color: #ffcc80;
+}
+body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+4) .tree-item-icon.collapse-icon {
+	color: #ce93d8;
+}
+body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+5) .tree-item-icon.collapse-icon {
+	color: #ef9a9a;
 }
 
 /* 功能模块 010 完 */
@@ -2429,8 +2472,8 @@ settings:
 		id: softype-minimal-tags
 		title: 标签纯色化（Minimal 风格）
 		title.en: Minimal flat tags
-		description: 开启后标签去底色块变为纯文字灰色，hover 显示强调色；关闭保持默认带底色样式。
-		description.en: Remove tag background chips; off keeps default chip style.
+		description: 开启后标签为透明底细边框胶囊（两态均保留胶囊形），文字灰色 hover 显强调色；关闭保持默认底色胶囊。
+		description.en: Transparent pill tags with thin border; off keeps default filled pills.
 		type: class-toggle
 		default: false
 	-
