@@ -2260,6 +2260,90 @@ body.softype-border-quote .markdown-source-view .cm-scroller .cm-line.HyperMD-qu
 /* 功能模块 009 完 */
 
 
+/* ███ 功能模块 010：简约风格三开关（2026-10-18）███
+   需求：用户要求三项独立开关，只改这三项，设置项合并进统一 @settings 块。
+   ① softype-colorful-nav   多彩文件列表图标：关=纯色（隐藏 emoji、箭头单色），开=彩虹箭头+emoji。
+      注：原彩虹规则引用的 --color-*-05 从未定义（断链），故本模块开启时直接定义 18 个
+      --FoldX 实际色值，让既有 nth-child 彩虹规则生效，不改原规则。
+   ② softype-minimal-tags   标签纯色化：关=默认底色块，开=Minimal 纯文字。
+   ③ softype-light-divider  浅色分割线：关=深黑(白) hr 与三线表线，开=淡灰细线。
+   拆除方法：删除本段，并在统一 @settings 块中删除对应三项。 */
+
+/* ---------- ① 多彩文件列表图标 ---------- */
+/* 默认（关）= 纯色：隐藏彩色 emoji 文件图标（📄📑🎨） */
+body:not(.softype-colorful-nav) .nav-folder-children .nav-file-title-content::before,
+body:not(.softype-colorful-nav) .nav-folder-children .tree-item.nav-file div[data-path$='.md'] .nav-file-title-content::before,
+body:not(.softype-colorful-nav) .nav-folder-children .tree-item.nav-file div[data-path$='.png'] .nav-file-title-content::before,
+body:not(.softype-colorful-nav) .nav-folder-children .tree-item.nav-file div[data-path$='.jpg'] .nav-file-title-content::before,
+body:not(.softype-colorful-nav) .nav-folder-children .tree-item.nav-file div[data-path$='.jpeg'] .nav-file-title-content::before {
+	content: none;
+}
+/* 开启（多彩）：补全彩虹变量链（Material 200 级淡彩，18 色循环），既有 nth-child 规则自动生效 */
+body.softype-colorful-nav {
+	--Fold0: #b0bec5;
+	--Fold1: #ffab91;
+	--Fold2: #ffcc80;
+	--Fold3: #ffe082;
+	--Fold4: #fff59d;
+	--Fold5: #e6ee9c;
+	--Fold6: #c5e1a5;
+	--Fold7: #a5d6a7;
+	--Fold8: #80cbc4;
+	--Fold9: #80deea;
+	--FoldA: #81d4fa;
+	--FoldB: #90caf9;
+	--FoldC: #9fa8da;
+	--FoldD: #b39ddb;
+	--FoldE: #ce93d8;
+	--FoldF: #f48fb1;
+	--FoldG: #ef9a9a;
+	--FoldH: #e0e0e0;
+}
+
+/* ---------- ② 标签纯色化（Minimal 风格） ---------- */
+body.softype-minimal-tags .tag:not(.token) {
+	background: transparent;
+	border: none;
+	padding: 0 2px;
+	color: var(--text-muted);
+	box-shadow: none;
+}
+body.softype-minimal-tags .tag:not(.token):hover {
+	padding: 0 2px;
+	color: var(--color-accent);
+}
+
+/* ---------- ③ 浅色分割线（Minimal 风格） ---------- */
+/* hr 水平线：深黑白 → 1px 淡灰 */
+body.softype-light-divider .markdown-preview-view hr,
+body.softype-light-divider .cm-editor hr {
+	border: none;
+	border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+/* 表格三线：#000/#fff → 淡灰 */
+body.softype-light-divider .theme-light .markdown-preview-view table thead tr:first-child th,
+body.softype-light-divider .theme-light .markdown-rendered table thead tr:first-child th {
+	border-top: 1px solid var(--background-modifier-border) !important;
+	border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+body.softype-light-divider .theme-light .markdown-preview-view table tbody tr:last-child td,
+body.softype-light-divider .theme-light .markdown-rendered table tbody tr:last-child td {
+	border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+body.softype-light-divider .theme-dark .markdown-preview-view table thead tr:first-child th,
+body.softype-light-divider .theme-dark .markdown-rendered table thead tr:first-child th {
+	border-top: 1px solid var(--background-modifier-border) !important;
+	border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+body.softype-light-divider .theme-dark .markdown-preview-view table tbody tr:last-child td,
+body.softype-light-divider .theme-dark .markdown-rendered table tbody tr:last-child td {
+	border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+
+/* 功能模块 010 完 */
+
+
+
 
 
 /* @settings
@@ -2333,6 +2417,28 @@ settings:
 		title.en: Border-style quotes
 		description: 开启后引用切换为 Border 主题风格（强调色圆角竖条 + 斜纹背景 + 正体文字）；关闭保持默认样式。
 		description.en: Switch blockquotes to Border theme style (accent rounded bar + hatched background); off keeps default.
+	-
+		id: softype-colorful-nav
+		title: 多彩文件列表图标
+		title.en: Colorful file explorer icons
+		description: 开启后文件夹折叠箭头显示彩虹淡彩色并恢复彩色 emoji 图标；关闭为纯色简约风格（默认）。
+		description.en: Rainbow collapse arrows and colored emoji icons; off keeps monochrome minimal look.
+		type: class-toggle
+		default: false
+	-
+		id: softype-minimal-tags
+		title: 标签纯色化（Minimal 风格）
+		title.en: Minimal flat tags
+		description: 开启后标签去底色块变为纯文字灰色，hover 显示强调色；关闭保持默认带底色样式。
+		description.en: Remove tag background chips; off keeps default chip style.
+		type: class-toggle
+		default: false
+	-
+		id: softype-light-divider
+		title: 浅色分割线（Minimal 风格）
+		title.en: Light dividers (Minimal style)
+		description: 开启后水平分割线与表格三线改为浅灰细线；关闭保持默认深黑(白)色。
+		description.en: Use light gray hr and table rules; off keeps dark black/white.
 		type: class-toggle
 		default: false
 */
