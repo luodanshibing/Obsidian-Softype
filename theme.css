@@ -2349,9 +2349,12 @@ body.softype-light-divider .theme-dark .markdown-rendered table tbody tr:last-ch
 }
 
 /* 默认（关）= Obsidian 原生纯色：压制彩虹着色，折叠箭头回灰色（emoji 已由上方规则隐藏）。
-   原彩虹规则特异性 (0,5,0)，此处 (0,5,1) + !important 确保压制。 */
-body:not(.softype-colorful-nav) .workspace-leaf-content .tree-item .tree-item-icon.collapse-icon {
+   关键：彩虹变量经 svg 的 fill 生效（fill 不看 color），压制必须同时命中元素与其 svg
+   的 fill 才有效；!important 确保盖过原彩虹规则。 */
+body:not(.softype-colorful-nav) .tree-item-icon.collapse-icon,
+body:not(.softype-colorful-nav) .tree-item-icon.collapse-icon svg {
 	color: var(--text-faint) !important;
+	fill: var(--text-faint) !important;
 }
 
 /* 功能模块 010 完 */
@@ -2365,13 +2368,6 @@ body:not(.softype-colorful-nav) .workspace-leaf-content .tree-item .tree-item-ic
 name: Softype
 id: softype
 settings:
-	-
-		id: softype-color-presets
-		title: 配色预设
-		title.en: Color Presets
-		type: heading
-		level: 1
-		collapsed: false
 	-
 		id: softype-color-preset
 		title: 配色风格
