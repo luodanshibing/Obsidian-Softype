@@ -2349,12 +2349,18 @@ body.softype-light-divider .theme-dark .markdown-rendered table tbody tr:last-ch
 }
 
 /* 默认（关）= Obsidian 原生纯色：压制彩虹着色，折叠箭头回灰色（emoji 已由上方规则隐藏）。
-   关键：彩虹变量经 svg 的 fill 生效（fill 不看 color），压制必须同时命中元素与其 svg
-   的 fill 才有效；!important 确保盖过原彩虹规则。 */
-body:not(.softype-colorful-nav) .tree-item-icon.collapse-icon,
-body:not(.softype-colorful-nav) .tree-item-icon.collapse-icon svg {
+   注意：原生箭头图标 right-triangle 的 path（M3 8L12 17L21 8）是开放折线，
+   fill 会让它闭合成实心三角——渲染参数必须与 app.css 原生一致：
+   10x10 + stroke 4px + fill none，颜色用 --nav-collapse-icon-color 体系。 */
+body:not(.softype-colorful-nav) .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon,
+body:not(.softype-colorful-nav) .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon svg {
 	color: var(--text-faint) !important;
-	fill: var(--text-faint) !important;
+	fill: none !important;
+}
+body:not(.softype-colorful-nav) .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon svg {
+	width: 10px !important;
+	height: 10px !important;
+	stroke-width: 4px !important;
 }
 
 /* 功能模块 010 完 */
