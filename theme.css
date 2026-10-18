@@ -88,12 +88,16 @@
 
 /* ---------------------------------------- 自定义页面宽度 ---------------------------------------- */
 
-/* 覆盖页面默认宽度 */
+/* 覆盖页面默认宽度（2026-10-18 对齐 Obsidian 默认主题：50rem -> 40rem） */
 body {
-	--file-line-width: 50rem;
+	--file-line-width: 40rem;
 }
 
-/* 通过在yaml区声明CSS类来指定页面宽度 */
+/* 通过在yaml区声明CSS类来指定页面宽度（40-100，5rem 步进） */
+body .width-40 {
+	--file-line-width: 40rem;
+}
+
 body .width-45 {
 	--file-line-width: 45rem;
 }
@@ -2483,6 +2487,57 @@ body.softype-folder-icons.softype-colorful-nav .workspace-leaf-content[data-type
 /* 功能模块 011 完 */
 
 
+/* ███ 功能模块 012：全局页面宽度下拉（2026-10-18）███
+   默认宽度已对齐 Obsidian 默认主题（40rem，见"自定义页面宽度"区域）。
+   本模块提供 Style Settings 全局宽度下拉（body 级），作用于未写 cssclass 的页面。
+   优先级保证：yaml 声明的 width-xx 类定义在笔记视图层（自身定义），
+   全局下拉定义在 body 层（继承来源）——CSS 变量"自身定义优先于继承"，
+   故写了 cssclass width-xx 的页面天然不受全局下拉影响（超宽表格/聚合页场景）。 */
+
+body.softype-width-40 {
+	--file-line-width: 40rem;
+}
+body.softype-width-45 {
+	--file-line-width: 45rem;
+}
+body.softype-width-50 {
+	--file-line-width: 50rem;
+}
+body.softype-width-55 {
+	--file-line-width: 55rem;
+}
+body.softype-width-60 {
+	--file-line-width: 60rem;
+}
+body.softype-width-65 {
+	--file-line-width: 65rem;
+}
+body.softype-width-70 {
+	--file-line-width: 70rem;
+}
+body.softype-width-75 {
+	--file-line-width: 75rem;
+}
+body.softype-width-80 {
+	--file-line-width: 80rem;
+}
+body.softype-width-85 {
+	--file-line-width: 85rem;
+}
+body.softype-width-90 {
+	--file-line-width: 90rem;
+}
+body.softype-width-95 {
+	--file-line-width: 95rem;
+}
+body.softype-width-100 {
+	--file-line-width: 100rem;
+}
+
+/* 功能模块 012 完 */
+
+
+
 
 
 
@@ -2585,4 +2640,53 @@ settings:
 		description.en: Folder/file shape icons instead of chevrons; off keeps native arrows. Independent from the color toggle.
 		type: class-toggle
 		default: false
+	-
+		id: softype-page-width
+		title: 页面宽度（全局）
+		title.en: Global page width
+		description: 全库默认文档内容宽度。写了 cssclass width-xx 的页面不受此设置影响（单篇 yaml 优先），适合超宽表格、聚合页单独加宽。
+		description.en: Global content width; pages with cssclass width-xx keep their own width.
+		type: class-select
+		allowEmpty: false
+		default: softype-width-40
+		options:
+	-
+			label: 默认 · 40rem（对齐默认主题）
+			value: softype-width-40
+	-
+			label: 45rem
+			value: softype-width-45
+	-
+			label: 50rem
+			value: softype-width-50
+	-
+			label: 55rem
+			value: softype-width-55
+	-
+			label: 60rem
+			value: softype-width-60
+	-
+			label: 65rem
+			value: softype-width-65
+	-
+			label: 70rem
+			value: softype-width-70
+	-
+			label: 75rem
+			value: softype-width-75
+	-
+			label: 80rem
+			value: softype-width-80
+	-
+			label: 85rem
+			value: softype-width-85
+	-
+			label: 90rem
+			value: softype-width-90
+	-
+			label: 95rem
+			value: softype-width-95
+	-
+			label: 100rem
+			value: softype-width-100
 */
