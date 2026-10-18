@@ -2547,146 +2547,146 @@ body.softype-width-100 {
 name: Softype
 id: softype
 settings:
-	-
-		id: softype-color-preset
-		title: 配色风格
-		title.en: Color scheme
-		description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
-		description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
-		type: class-select
-		allowEmpty: false
-		default: softype-default
-		options:
-			-
-				label: 默认 · 灰
-				value: softype-default
-			-
-				label: 浅灰
-				value: softype-mist
-			-
-				label: 纯白 / 纯黑
-				value: softype-pure
-			-
-				label: 月白 · 蓝
-				value: softype-yuebai
-			-
-				label: 天缥 · 青
-				value: softype-tianpiao
-			-
-				label: 山岚 · 绿
-				value: softype-shanlan
-			-
-				label: 凝脂 · 玉
-				value: softype-ningzhi
-			-
-				label: 昌荣 · 紫
-				value: softype-changrong
-			-
-				label: 退红 · 粉
-				value: softype-tuihong
-	-
-		id: softype-bold-accent
-		title: 加粗使用强调色
-		title.en: Bold uses accent color
-		description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
-		description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
-		type: class-toggle
-		default: false
-	-
-		id: softype-border-table
-		title: 表格 · 网格线风格
-		title.en: Border-style tables
-		description: 开启后表格为斜纹表头 + 原生网格线风格；关闭保持三线式。
-		description.en: Switch tables to Border theme style (hatched header + native grid); off keeps Softype three-line style.
-		type: class-toggle
-		default: false
-	-
-		id: softype-border-quote
-		title: 引用 · 竖条卡片风格
-		title.en: Border-style quotes
-		description: 开启后引用为强调色圆角竖条 + 斜纹背景卡片，文字正体；关闭保持默认样式。
-		description.en: Switch blockquotes to Border theme style (accent rounded bar + hatched background); off keeps default.
-		type: class-toggle
-		default: false
-	-
-		id: softype-colorful-nav
-		title: 多彩文件列表图标
-		title.en: Colorful file explorer icons
-		description: 开启后文件夹折叠箭头显示彩虹淡彩色并恢复彩色 emoji 图标；关闭为纯色简约风格（默认）。
-		description.en: Rainbow collapse arrows and colored emoji icons; off keeps monochrome minimal look.
-		type: class-toggle
-		default: false
-	-
-		id: softype-minimal-tags
-		title: 标签 · 描边胶囊
-		title.en: Flat pill tags
-		description: 开启后标签为透明底细边框胶囊（两态均保留胶囊形），文字灰色 hover 显强调色；关闭保持默认底色胶囊。
-		description.en: Transparent pill tags with thin border; off keeps default filled pills.
-		type: class-toggle
-		default: false
-	-
-		id: softype-light-divider
-		title: 分割线 · 浅色细线
-		title.en: Light thin dividers
-		description: 开启后水平分割线与表格三线改为浅灰细线；关闭保持默认深黑(白)色。
-		description.en: Use light gray hr and table rules; off keeps dark black/white.
-		type: class-toggle
-		default: false
-	-
-		id: softype-folder-icons
-		title: 文件列表 · 文件夹图标
-		title.en: Folder icons in file explorer
-		description: 开启后文件列表以文件夹/文件形状图标显示（替代箭头）；关闭为默认箭头。与多彩颜色开关独立组合。
-		description.en: Folder/file shape icons instead of chevrons; off keeps native arrows. Independent from the color toggle.
-		type: class-toggle
-		default: false
-	-
-		id: softype-page-width
-		title: 页面宽度（全局）
-		title.en: Global page width
-		description: 全库默认文档内容宽度。写了 cssclass width-xx 的页面不受此设置影响（单篇 yaml 优先），适合超宽表格、聚合页单独加宽。
-		description.en: Global content width; pages with cssclass width-xx keep their own width.
-		type: class-select
-		allowEmpty: false
-		default: softype-width-40
-		options:
-	-
-			label: 默认 · 40rem（对齐默认主题）
-			value: softype-width-40
-	-
-			label: 45rem
-			value: softype-width-45
-	-
-			label: 50rem
-			value: softype-width-50
-	-
-			label: 55rem
-			value: softype-width-55
-	-
-			label: 60rem
-			value: softype-width-60
-	-
-			label: 65rem
-			value: softype-width-65
-	-
-			label: 70rem
-			value: softype-width-70
-	-
-			label: 75rem
-			value: softype-width-75
-	-
-			label: 80rem
-			value: softype-width-80
-	-
-			label: 85rem
-			value: softype-width-85
-	-
-			label: 90rem
-			value: softype-width-90
-	-
-			label: 95rem
-			value: softype-width-95
-	-
-			label: 100rem
-			value: softype-width-100
+  -
+    id: softype-color-preset
+    title: 配色风格
+    title.en: Color scheme
+    description: 一键切换整体配色；每个预设同时适配亮色与暗色模式（随外观模式自动生效）。「默认·灰」为 Softype 原始配色；后六套为淡彩中国传统色（色韵 cncolor.art）。
+    description.en: One-click color schemes. Each preset adapts to both light and dark mode automatically.
+    type: class-select
+    allowEmpty: false
+    default: softype-default
+    options:
+      -
+        label: 默认 · 灰
+        value: softype-default
+      -
+        label: 浅灰
+        value: softype-mist
+      -
+        label: 纯白 / 纯黑
+        value: softype-pure
+      -
+        label: 月白 · 蓝
+        value: softype-yuebai
+      -
+        label: 天缥 · 青
+        value: softype-tianpiao
+      -
+        label: 山岚 · 绿
+        value: softype-shanlan
+      -
+        label: 凝脂 · 玉
+        value: softype-ningzhi
+      -
+        label: 昌荣 · 紫
+        value: softype-changrong
+      -
+        label: 退红 · 粉
+        value: softype-tuihong
+  -
+    id: softype-bold-accent
+    title: 加粗使用强调色
+    title.en: Bold uses accent color
+    description: 开启后，编辑器与预览模式中的加粗文字会显示为主题强调色；关闭则使用正文颜色。
+    description.en: When enabled, bold text uses the theme accent color; otherwise it uses the normal text color.
+    type: class-toggle
+    default: false
+  -
+    id: softype-border-table
+    title: 表格 · 网格线风格
+    title.en: Border-style tables
+    description: 开启后表格为斜纹表头 + 原生网格线风格；关闭保持三线式。
+    description.en: Switch tables to Border theme style (hatched header + native grid); off keeps Softype three-line style.
+    type: class-toggle
+    default: false
+  -
+    id: softype-border-quote
+    title: 引用 · 竖条卡片风格
+    title.en: Border-style quotes
+    description: 开启后引用为强调色圆角竖条 + 斜纹背景卡片，文字正体；关闭保持默认样式。
+    description.en: Switch blockquotes to Border theme style (accent rounded bar + hatched background); off keeps default.
+    type: class-toggle
+    default: false
+  -
+    id: softype-colorful-nav
+    title: 多彩文件列表图标
+    title.en: Colorful file explorer icons
+    description: 开启后文件夹折叠箭头显示彩虹淡彩色并恢复彩色 emoji 图标；关闭为纯色简约风格（默认）。
+    description.en: Rainbow collapse arrows and colored emoji icons; off keeps monochrome minimal look.
+    type: class-toggle
+    default: false
+  -
+    id: softype-minimal-tags
+    title: 标签 · 描边胶囊
+    title.en: Flat pill tags
+    description: 开启后标签为透明底细边框胶囊（两态均保留胶囊形），文字灰色 hover 显强调色；关闭保持默认底色胶囊。
+    description.en: Transparent pill tags with thin border; off keeps default filled pills.
+    type: class-toggle
+    default: false
+  -
+    id: softype-light-divider
+    title: 分割线 · 浅色细线
+    title.en: Light thin dividers
+    description: 开启后水平分割线与表格三线改为浅灰细线；关闭保持默认深黑(白)色。
+    description.en: Use light gray hr and table rules; off keeps dark black/white.
+    type: class-toggle
+    default: false
+  -
+    id: softype-folder-icons
+    title: 文件列表 · 文件夹图标
+    title.en: Folder icons in file explorer
+    description: 开启后文件列表以文件夹/文件形状图标显示（替代箭头）；关闭为默认箭头。与多彩颜色开关独立组合。
+    description.en: Folder/file shape icons instead of chevrons; off keeps native arrows. Independent from the color toggle.
+    type: class-toggle
+    default: false
+  -
+    id: softype-page-width
+    title: 页面宽度（全局）
+    title.en: Global page width
+    description: 全库默认文档内容宽度。写了 cssclass width-xx 的页面不受此设置影响（单篇 yaml 优先），适合超宽表格、聚合页单独加宽。
+    description.en: Global content width; pages with cssclass width-xx keep their own width.
+    type: class-select
+    allowEmpty: false
+    default: softype-width-40
+    options:
+      -
+        label: 默认 · 40rem（对齐默认主题）
+        value: softype-width-40
+      -
+        label: 45rem
+        value: softype-width-45
+      -
+        label: 50rem
+        value: softype-width-50
+      -
+        label: 55rem
+        value: softype-width-55
+      -
+        label: 60rem
+        value: softype-width-60
+      -
+        label: 65rem
+        value: softype-width-65
+      -
+        label: 70rem
+        value: softype-width-70
+      -
+        label: 75rem
+        value: softype-width-75
+      -
+        label: 80rem
+        value: softype-width-80
+      -
+        label: 85rem
+        value: softype-width-85
+      -
+        label: 90rem
+        value: softype-width-90
+      -
+        label: 95rem
+        value: softype-width-95
+      -
+        label: 100rem
+        value: softype-width-100
 */
