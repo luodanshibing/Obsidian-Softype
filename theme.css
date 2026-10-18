@@ -2360,6 +2360,124 @@ body:not(.softype-colorful-nav) .tree-item-icon.collapse-icon svg {
 /* 功能模块 010 完 */
 
 
+/* ███ 功能模块 011：文件列表文件夹图标形状（2026-10-18）███
+   来源：Border 主题 file-icon 套件提取（mask 方案：箭头 svg 隐形，元素以
+         currentColor 填充 + mask 显示形状；展开/收起两套文件夹图形；
+         文件按扩展名配图标）。
+   开关：softype-folder-icons（默认关 = Obsidian 原生箭头，轻量）。
+   与颜色开关 softype-colorful-nav 正交：
+     箭头 + 多彩 = 原 18 色彩虹箭头 + emoji；
+     文件夹 + 多彩 = mask 图标 8 色循环（emoji 让位）。
+   开启本形状时隐藏 Softype 的 emoji 文件图标（同占 content::before 位）。
+   拆除方法：删除本段，并在统一 @settings 块中删除 softype-folder-icons 项。 */
+
+/* ---------- 箭头 svg 隐形，元素变图标载体 ---------- */
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon svg.svg-icon {
+	color: transparent;
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon {
+	background-color: currentColor;
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M4 9.333 4.967 7.4a1.333 1.333 0 0 1 1.193-.733h7.173m0 0a1.333 1.333 0 0 1 1.294 1.666l-1.034 4a1.333 1.333 0 0 1-1.293 1H2.667A1.333 1.333 0 0 1 1.333 12V3.333C1.333 2.6 1.933 2 2.667 2h2.62a1.333 1.333 0 0 1 1.106.6l.547.8a1.333 1.333 0 0 0 1.107.6H12a1.333 1.333 0 0 1 1.333 1.333v1.334Z'/%3e%3c/svg%3e");
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	-webkit-mask-size: contain;
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M4 9.333 4.967 7.4a1.333 1.333 0 0 1 1.193-.733h7.173m0 0a1.333 1.333 0 0 1 1.294 1.666l-1.034 4a1.333 1.333 0 0 1-1.293 1H2.667A1.333 1.333 0 0 1 1.333 12V3.333C1.333 2.6 1.933 2 2.667 2h2.62a1.333 1.333 0 0 1 1.106.6l.547.8a1.333 1.333 0 0 0 1.107.6H12a1.333 1.333 0 0 1 1.333 1.333v1.334Z'/%3e%3c/svg%3e");
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+}
+/* 收起态：闭合文件夹 */
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .is-collapsed .tree-item-icon.collapse-icon {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M2.667 13.333h10.666A1.333 1.333 0 0 0 14.667 12V5.333A1.333 1.333 0 0 0 13.333 4H8.047a1.333 1.333 0 0 1-1.107-.6l-.547-.8A1.333 1.333 0 0 0 5.287 2h-2.62a1.333 1.333 0 0 0-1.334 1.333V12c0 .733.6 1.333 1.334 1.333Z'/%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M2.667 13.333h10.666A1.333 1.333 0 0 0 14.667 12V5.333A1.333 1.333 0 0 0 13.333 4H8.047a1.333 1.333 0 0 1-1.107-.6l-.547-.8A1.333 1.333 0 0 0 5.287 2h-2.62a1.333 1.333 0 0 0-1.334 1.333V12c0 .733.6 1.333 1.334 1.333Z'/%3e%3c/svg%3e");
+}
+
+/* ---------- 根目录行图标 ---------- */
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] :is(.nav-file-title, .nav-folder.mod-root > .nav-folder-title)::before {
+	content: " ";
+	position: absolute;
+	margin-left: calc(-1 * var(--size-4-5));
+	width: var(--size-4-4);
+	height: var(--size-4-4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: currentColor;
+	flex: 0 0 auto;
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .nav-folder.mod-root > .nav-folder-title::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M14 12.8V3.2c0-.884-.264-1.2-1-1.2H3c-.736 0-1 .316-1 1.2v9.6c0 .884.264 1.2 1 1.2h10c.736 0 1-.316 1-1.2Z'/%3e%3cpath d='M9.978 7.04a2 2 0 1 1-3.956.587 2 2 0 0 1 3.956-.587ZM8 9.333v2m6-6.666h1m-1 6h1'/%3e%3c/g%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M14 12.8V3.2c0-.884-.264-1.2-1-1.2H3c-.736 0-1 .316-1 1.2v9.6c0 .884.264 1.2 1 1.2h10c.736 0 1-.316 1-1.2Z'/%3e%3cpath d='M9.978 7.04a2 2 0 1 1-3.956.587 2 2 0 0 1 3.956-.587ZM8 9.333v2m6-6.666h1m-1 6h1'/%3e%3c/g%3e%3c/svg%3e");
+}
+
+/* ---------- 文件图标（按扩展名） ---------- */
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .nav-file-title::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v10.666A1.333 1.333 0 0 0 4 14.667h8a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333Z'/%3e%3cpath d='M9.333 1.333v4h4'/%3e%3c/g%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v10.666A1.333 1.333 0 0 0 4 14.667h8a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333Z'/%3e%3cpath d='M9.333 1.333v4h4'/%3e%3c/g%3e%3c/svg%3e");
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".canvas"]::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M6 2H2.667A.667.667 0 0 0 2 2.667v4.666c0 .369.298.667.667.667H6a.667.667 0 0 0 .667-.667V2.667A.667.667 0 0 0 6 2Zm7.333 0H10a.667.667 0 0 0-.667.667v2c0 .368.299.666.667.666h3.333A.667.667 0 0 0 14 4.667v-2A.667.667 0 0 0 13.333 2Zm0 6H10a.667.667 0 0 0-.667.667v4.666c0 .368.299.667.667.667h3.333a.667.667 0 0 0 .667-.667V8.667A.667.667 0 0 0 13.333 8ZM6 10.667H2.667a.667.667 0 0 0-.667.666v2c0 .368.298.667.667.667H6a.667.667 0 0 0 .667-.667v-2A.667.667 0 0 0 6 10.667Z'/%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M6 2H2.667A.667.667 0 0 0 2 2.667v4.666c0 .369.298.667.667.667H6a.667.667 0 0 0 .667-.667V2.667A.667.667 0 0 0 6 2Zm7.333 0H10a.667.667 0 0 0-.667.667v2c0 .368.299.666.667.666h3.333A.667.667 0 0 0 14 4.667v-2A.667.667 0 0 0 13.333 2Zm0 6H10a.667.667 0 0 0-.667.667v4.666c0 .368.299.667.667.667h3.333a.667.667 0 0 0 .667-.667V8.667A.667.667 0 0 0 13.333 8ZM6 10.667H2.667a.667.667 0 0 0-.667.666v2c0 .368.298.667.667.667H6a.667.667 0 0 0 .667-.667v-2A.667.667 0 0 0 6 10.667Z'/%3e%3c/svg%3e");
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".base"]::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M6 2H2.667A.667.667 0 0 0 2 2.667V6c0 .368.298.667.667.667H6A.667.667 0 0 0 6.667 6V2.667A.667.667 0 0 0 6 2Zm0 7.333H2.667A.667.667 0 0 0 2 10v3.333c0 .368.298.667.667.667H6a.667.667 0 0 0 .667-.667V10A.667.667 0 0 0 6 9.333Zm3.333-6.666H14M9.333 6H14m-4.667 4H14m-4.667 3.333H14'/%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M6 2H2.667A.667.667 0 0 0 2 2.667V6c0 .368.298.667.667.667H6A.667.667 0 0 0 6.667 6V2.667A.667.667 0 0 0 6 2Zm0 7.333H2.667A.667.667 0 0 0 2 10v3.333c0 .368.298.667.667.667H6a.667.667 0 0 0 .667-.667V10A.667.667 0 0 0 6 9.333Zm3.333-6.666H14M9.333 6H14m-4.667 4H14m-4.667 3.333H14'/%3e%3c/svg%3e");
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .is-unsupported.nav-file-title::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v10.666A1.333 1.333 0 0 0 4 14.667h8a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333Z'/%3e%3cpath d='M6.667 6.867c.133-.267.333-.534.6-.667A1.4 1.4 0 0 1 9 6.467c.2.266.333.533.333.866C9.333 8.2 8 8.667 8 8.667m0 2.666h.007'/%3e%3c/g%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v10.666A1.333 1.333 0 0 0 4 14.667h8a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333Z'/%3e%3cpath d='M6.667 6.867c.133-.267.333-.534.6-.667A1.4 1.4 0 0 1 9 6.467c.2.266.333.533.333.866C9.333 8.2 8 8.667 8 8.667m0 2.666h.007'/%3e%3c/g%3e%3c/svg%3e");
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".svg"], [data-path$=".bmp"], [data-path$=".jpeg"], [data-path$=".jpg"], [data-path$=".png"], [data-path$=".gif"])::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M12.667 2H3.333C2.597 2 2 2.597 2 3.333v9.334C2 13.403 2.597 14 3.333 14h9.334c.736 0 1.333-.597 1.333-1.333V3.333C14 2.597 13.403 2 12.667 2Z'/%3e%3cpath d='M6 7.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666ZM14 10l-2.057-2.057a1.333 1.333 0 0 0-1.886 0L4 14'/%3e%3c/g%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M12.667 2H3.333C2.597 2 2 2.597 2 3.333v9.334C2 13.403 2.597 14 3.333 14h9.334c.736 0 1.333-.597 1.333-1.333V3.333C14 2.597 13.403 2 12.667 2Z'/%3e%3cpath d='M6 7.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666ZM14 10l-2.057-2.057a1.333 1.333 0 0 0-1.886 0L4 14'/%3e%3c/g%3e%3c/svg%3e");
+}
+body.softype-folder-icons .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".pdf"]::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v10.666A1.333 1.333 0 0 0 4 14.667h8a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333Z'/%3e%3cpath d='M9.333 1.333v4h4m-2.666 3.334H5.333m5.334 2.666H5.333M6.667 6H5.333'/%3e%3c/svg%3e");
+	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='M9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v10.666A1.333 1.333 0 0 0 4 14.667h8a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333Z'/%3e%3cpath d='M9.333 1.333v4h4m-2.666 3.334H5.333m5.334 2.666H5.333M6.667 6H5.333'/%3e%3c/svg%3e");
+}
+
+/* ---------- 形状开启时隐藏 emoji 图标（让位 ::before） ---------- */
+body.softype-folder-icons .nav-folder-children .nav-file-title-content::before,
+body.softype-folder-icons .nav-folder-children .tree-item.nav-file div[data-path$='.md'] .nav-file-title-content::before,
+body.softype-folder-icons .nav-folder-children .tree-item.nav-file div[data-path$='.png'] .nav-file-title-content::before,
+body.softype-folder-icons .nav-folder-children .tree-item.nav-file div[data-path$='.jpg'] .nav-file-title-content::before,
+body.softype-folder-icons .nav-folder-children .tree-item.nav-file div[data-path$='.jpeg'] .nav-file-title-content::before {
+	content: none;
+}
+
+/* ---------- 与多彩开关联动：mask 图标 8 色循环（文件夹彩、文件灰） ---------- */
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+2) {
+	--colorful-folder-color: var(--color-red);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+3) {
+	--colorful-folder-color: var(--color-orange);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+4) {
+	--colorful-folder-color: var(--color-yellow);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+5) {
+	--colorful-folder-color: var(--color-green);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+6) {
+	--colorful-folder-color: var(--color-cyan);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+7) {
+	--colorful-folder-color: var(--color-blue);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+8) {
+	--colorful-folder-color: var(--color-purple);
+}
+body.softype-folder-icons.softype-colorful-nav .nav-folder:nth-child(8n+9) {
+	--colorful-folder-color: var(--color-pink);
+}
+body.softype-folder-icons.softype-colorful-nav .workspace-leaf-content[data-type="file-explorer"] .tree-item-icon.collapse-icon {
+	background-color: var(--colorful-folder-color);
+}
+
+/* 功能模块 011 完 */
+
+
+
 
 
 
@@ -2415,17 +2533,17 @@ settings:
 		default: false
 	-
 		id: softype-border-table
-		title: Border 风格表格
+		title: 表格 · 网格线风格
 		title.en: Border-style tables
-		description: 开启后表格切换为 Border 主题风格（斜纹表头 + Obsidian 原生网格线）；关闭保持 Softype 三线式。
+		description: 开启后表格为斜纹表头 + 原生网格线风格；关闭保持三线式。
 		description.en: Switch tables to Border theme style (hatched header + native grid); off keeps Softype three-line style.
 		type: class-toggle
 		default: false
 	-
 		id: softype-border-quote
-		title: Border 风格引用
+		title: 引用 · 竖条卡片风格
 		title.en: Border-style quotes
-		description: 开启后引用切换为 Border 主题风格（强调色圆角竖条 + 斜纹背景 + 正体文字）；关闭保持默认样式。
+		description: 开启后引用为强调色圆角竖条 + 斜纹背景卡片，文字正体；关闭保持默认样式。
 		description.en: Switch blockquotes to Border theme style (accent rounded bar + hatched background); off keeps default.
 		type: class-toggle
 		default: false
@@ -2439,18 +2557,26 @@ settings:
 		default: false
 	-
 		id: softype-minimal-tags
-		title: 标签纯色化（Minimal 风格）
-		title.en: Minimal flat tags
+		title: 标签 · 描边胶囊
+		title.en: Flat pill tags
 		description: 开启后标签为透明底细边框胶囊（两态均保留胶囊形），文字灰色 hover 显强调色；关闭保持默认底色胶囊。
 		description.en: Transparent pill tags with thin border; off keeps default filled pills.
 		type: class-toggle
 		default: false
 	-
 		id: softype-light-divider
-		title: 浅色分割线（Minimal 风格）
-		title.en: Light dividers (Minimal style)
+		title: 分割线 · 浅色细线
+		title.en: Light thin dividers
 		description: 开启后水平分割线与表格三线改为浅灰细线；关闭保持默认深黑(白)色。
 		description.en: Use light gray hr and table rules; off keeps dark black/white.
+		type: class-toggle
+		default: false
+	-
+		id: softype-folder-icons
+		title: 文件列表 · 文件夹图标
+		title.en: Folder icons in file explorer
+		description: 开启后文件列表以文件夹/文件形状图标显示（替代箭头）；关闭为默认箭头。与多彩颜色开关独立组合。
+		description.en: Folder/file shape icons instead of chevrons; off keeps native arrows. Independent from the color toggle.
 		type: class-toggle
 		default: false
 */
