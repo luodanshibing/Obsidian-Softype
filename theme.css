@@ -2301,26 +2301,10 @@ body:not(.softype-colorful-nav) .nav-folder-children .tree-item.nav-file div[dat
 body:not(.softype-colorful-nav) .nav-folder-children .tree-item.nav-file div[data-path$='.jpeg'] .nav-file-title-content::before {
 	content: none;
 }
-/* 开启（多彩）：补全彩虹变量链（Material 200 级淡彩，18 色循环），既有 nth-child 规则自动生效 */
+/* 开启（多彩）：仅补原 18 色彩虹规则中唯一断链的 --color-red-05，
+   其余 17 色本有定义，原 nth-child 彩虹规则随即完整生效；emoji 图标自动恢复。 */
 body.softype-colorful-nav {
-	--Fold0: #b0bec5;
-	--Fold1: #ffab91;
-	--Fold2: #ffcc80;
-	--Fold3: #ffe082;
-	--Fold4: #fff59d;
-	--Fold5: #e6ee9c;
-	--Fold6: #c5e1a5;
-	--Fold7: #a5d6a7;
-	--Fold8: #80cbc4;
-	--Fold9: #80deea;
-	--FoldA: #81d4fa;
-	--FoldB: #90caf9;
-	--FoldC: #9fa8da;
-	--FoldD: #b39ddb;
-	--FoldE: #ce93d8;
-	--FoldF: #f48fb1;
-	--FoldG: #ef9a9a;
-	--FoldH: #e0e0e0;
+	--color-red-05: #ef9a9a;
 }
 
 /* ---------- ② 标签纯色化（Minimal 风格，两态均保留胶囊形） ---------- */
@@ -2364,23 +2348,10 @@ body.softype-light-divider .theme-dark .markdown-rendered table tbody tr:last-ch
 	border-bottom: 1px solid var(--background-modifier-border) !important;
 }
 
-/* 彩虹折叠箭头 v2（2026-10-18 修正）：放弃断链的 --FoldX/--nav-collapse-icon-color
-   变量链（1.14 下不生效），改用直接 color 着色 5 色循环，全覆盖无死角（svg 用
-   currentColor 自动跟随）。emoji 图标恢复逻辑不变。 */
-body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+1) .tree-item-icon.collapse-icon {
-	color: #90caf9;
-}
-body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+2) .tree-item-icon.collapse-icon {
-	color: #a5d6a7;
-}
-body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+3) .tree-item-icon.collapse-icon {
-	color: #ffcc80;
-}
-body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+4) .tree-item-icon.collapse-icon {
-	color: #ce93d8;
-}
-body.softype-colorful-nav .workspace-leaf-content .tree-item:nth-child(5n+5) .tree-item-icon.collapse-icon {
-	color: #ef9a9a;
+/* 默认（关）= Obsidian 原生纯色：压制彩虹着色，折叠箭头回灰色（emoji 已由上方规则隐藏）。
+   原彩虹规则特异性 (0,5,0)，此处 (0,5,1) + !important 确保压制。 */
+body:not(.softype-colorful-nav) .workspace-leaf-content .tree-item .tree-item-icon.collapse-icon {
+	color: var(--text-faint) !important;
 }
 
 /* 功能模块 010 完 */
@@ -2460,6 +2431,8 @@ settings:
 		title.en: Border-style quotes
 		description: 开启后引用切换为 Border 主题风格（强调色圆角竖条 + 斜纹背景 + 正体文字）；关闭保持默认样式。
 		description.en: Switch blockquotes to Border theme style (accent rounded bar + hatched background); off keeps default.
+		type: class-toggle
+		default: false
 	-
 		id: softype-colorful-nav
 		title: 多彩文件列表图标
