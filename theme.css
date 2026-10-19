@@ -146,21 +146,6 @@ body .width-100 {
 	--file-line-width: 100rem;
 }
 
-/* ---------------------------------------- 自定义嵌入题图组件 ---------------------------------------- */
-
-/* 通过声明CSS类(header-image)来自定义banner样式，用以制作可以随意调用的banner组件 */
-.header-image {
-	width: 100%;
-	height: 250px;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-	/* 相对定位，以便在图片上添加其他元素 */
-	border-radius: 8px;
-	overflow: hidden;
-}
-
 /* ---------------------------------------- 自定义嵌入样式 ---------------------------------------- */
 
 /* 隐藏嵌入的标题 */
@@ -168,40 +153,22 @@ body .width-100 {
 	display: none;
 }
 
-/* 隐藏默认的链接符号 */
-.markdown-preview-view .markdown-embed-link {
+/* 嵌入：去掉左竖线（2026-10-19 用户指定），其余回归 Obsidian 原生形态 */
+/* （原生 = 无四边框圆角底色、原生 padding、右上角链接图标常驻显示） */
+.markdown-embed {
+	--embed-border-start: none;
+}
+
+/* 嵌入链接图标：默认隐藏，悬浮嵌入块时显示（2026-10-19 用户指定，避免界面杂乱） */
+.markdown-embed-link {
 	display: none;
 }
 
-/* 当鼠标悬浮时显示链接符号 */
-.markdown-preview-view .markdown-embed:hover .markdown-embed-link {
+.markdown-embed:hover .markdown-embed-link,
+.markdown-embed .markdown-embed-link:hover {
 	display: inline;
 	opacity: 0.5;
 	transition: opacity 0.3s ease;
-}
-
-/* 鼠标离开时隐藏链接符号 */
-.markdown-preview-view .markdown-embed .markdown-embed-link:hover {
-	opacity: 1;
-}
-
-/* 块嵌入：四向统一 16px。padding 用 padding-block/padding-inline + !important 写死，
-   不依赖 --embed-padding 变量，避免被 app.css 的 .inline-embed 默认值压过 */
-.markdown-embed {
-	padding-block: 16px !important;
-	padding-inline: 16px !important;
-	--embed-border-start: none;
-	border: 1px solid var(--background-modifier-border);
-	border-radius: 8px;
-	box-sizing: border-box !important;
-	overflow: hidden;
-}
-
-/* 内联嵌入（inline-embed）特异性提升，确保覆盖 app.css 的默认 padding: var(--embed-padding) */
-.markdown-embed.inline-embed {
-	padding-block: 16px !important;
-	padding-inline: 16px !important;
-	--embed-padding: 16px !important;
 }
 
 /* 嵌入块内部预览容器清零 padding 和 margin，防止 --file-margins 叠加造成不对称 */
