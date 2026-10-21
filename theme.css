@@ -236,10 +236,7 @@ video {
 	display: inline-block !important;
 }
 
-/* 编辑模式下将 .cm-content 容器下直接子元素居中 */
-.markdown-source-view.mod-cm6 .cm-content>* {
-	margin: auto !important;
-}
+/* （2026-10-21 已删除：原“cm-content 直接子元素居中”规则 margin: auto !important 会把实时预览所有顶级块的垂直 margin 压成 0，导致表格与上文贴死； 其历史用途（题图图片居中）已由嵌入方案与 img 居中规则取代） */
 
 /* 双模式添加图片圆角效果*/
 .markdown-source-view img,
