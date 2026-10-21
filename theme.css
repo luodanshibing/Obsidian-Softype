@@ -198,6 +198,13 @@ body .width-100 {
 	margin-block-end: 0;
 }
 
+/* 嵌入组件页的标题与内容块之间保持间距（2026-10-21）
+   v0.3.0 的嵌入内部 padding/margin 清零把组件页内 center 标题与
+   dataview 块之间的间距也清没了，此处按默认主题观感补偿。 */
+.markdown-embed .markdown-preview-view center {
+	margin-block: 0.75em;
+}
+
 /* ---------------------------------------- 自定义附件样式 ---------------------------------------- */
 
 /* 预览和编辑模式下居中附件 */
